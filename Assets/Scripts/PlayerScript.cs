@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
                 //LookAround().machine.activate
             }
         }
-        LookAt();
+        LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         AnimateMe();
     }
     public void Sit(Transform seat)
