@@ -66,6 +66,7 @@ public class PlayerScript : MonoBehaviour
         transform.parent = seat.transform;
         transform.position = seat.position;
         transform.rotation = seat.rotation;
+        rb.velocity = Vector2.zero;
     }
     public void StopSitting()
     {
