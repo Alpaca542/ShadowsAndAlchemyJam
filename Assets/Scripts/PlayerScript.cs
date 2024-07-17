@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
+using UnityEditor.SceneTemplate;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,9 +16,16 @@ public class PlayerScript : MonoBehaviour
     private bool sit;
     public bool selected;
     private Animator anim;
-    public GameObject attackHitbox;
     private Rigidbody2D rb;
+
+    [Header("Defender")]
+    public GameObject attackHitbox;
+
+    [Header("Cook")]
     public LayerMask brewerLayer;
+    public int amountOfBottles = 0;
+    public int max_amountOfBottles = 6;
+    public GameObject bottleGrid;
 
     void Start()
     {
@@ -26,10 +36,47 @@ public class PlayerScript : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
+
+    public void GetBottle()
+    {
+        if (amountOfBottles < max_amountOfBottles)
+        {
+            amountOfBottles++;
+            UpdateBottles();
+        }
+    }
+
+    public void RemoveBottle()
+    {
+        if (amountOfBottles > 0)
+        {
+            amountOfBottles--;
+            UpdateBottles();
+        }
+    }
+
+    void UpdateBottles()
+    {
+        int temp = amountOfBottles;
+        foreach (Transform gmb in bottleGrid.transform)
+        {
+            if (temp > 0)
+            {
+                temp--;
+                gmb.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+            else
+            {
+                gmb.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 5);
+            }
+        }
+    }
+
     void Attack()
     {
         attackHitbox.SetActive(true);
     }
+
     private void AnimateMe()
     {
         if (rb.velocity.magnitude >= 0.2f)
@@ -41,6 +88,7 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("Walking", false);
         }
     }
+
     private void Update()
     {
         if (selected)
@@ -60,6 +108,7 @@ public class PlayerScript : MonoBehaviour
             AnimateMe();
         }
     }
+
     public void Sit(Transform seat)
     {
         sit = true;
@@ -68,11 +117,13 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = seat.rotation;
         rb.velocity = Vector2.zero;
     }
+
     public void StopSitting()
     {
         sit = false;
         transform.parent = null;
     }
+
     void LookAt(Vector3 target)
     {
         if (transform.position != target)

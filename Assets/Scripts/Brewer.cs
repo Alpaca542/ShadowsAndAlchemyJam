@@ -28,11 +28,12 @@ public class Brewer : MonoBehaviour
     {
         if (NearCook)
         {
+            PlayerScript cook = GameObject.FindGameObjectWithTag("Cook").GetComponent<PlayerScript>();
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (myType == 0)
                 {
-                    Debug.Log("Brewer 0 got used");
+                    cook.GetBottle();
                 }
             }
         }
