@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Fields")]
     private bool sit;
+    public bool selected;
     private Animator anim;
     public GameObject attackHitbox;
     private Rigidbody2D rb;
@@ -18,7 +19,10 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        attackHitbox.GetComponent<AttackHitboxScript>().damage = damage;
+        if (Defender)
+        {
+            attackHitbox.GetComponent<AttackHitboxScript>().damage = damage;
+        }
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -39,20 +43,22 @@ public class PlayerScript : MonoBehaviour
     }
     private void Update()
     {
-        if (Defender)
+        if (selected)
         {
-            if (Input.GetMouseButton(0) && !attackHitbox.activeSelf)
-                Attack();
-        }
-        else
-        {
-            if (LookAround())
+            if (Defender)
             {
-                //LookAround().machine.activate
+                if (Input.GetMouseButton(0) && !attackHitbox.activeSelf)
+                    Attack();
             }
+            else
+            {
+                if (LookAround())
+                {
+                    //LookAround().machine.activate
+                }
+            }
+            AnimateMe();
         }
-        LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        AnimateMe();
     }
     public void Sit(Transform seat)
     {
@@ -68,19 +74,28 @@ public class PlayerScript : MonoBehaviour
     }
     void LookAt(Vector3 target)
     {
-        Quaternion rotation = Quaternion.LookRotation(target - transform.position, transform.TransformDirection(Vector3.up));
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        if (transform.position != target)
+        {
+            Vector3 diff = target - transform.position;
+            diff.Normalize();
+            float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+        }
     }
     void FixedUpdate()
     {
-        if (!sit)
+        if (selected)
         {
-            float dirX = Input.GetAxis("Horizontal");
-            float dirY = Input.GetAxis("Vertical");
+            if (!sit)
+            {
+                float dirX = Input.GetAxis("Horizontal");
+                float dirY = Input.GetAxis("Vertical");
 
-            rb.velocity = new Vector2(dirX, dirY) * speed;
+                rb.velocity = new Vector2(dirX, dirY) * speed;
+                LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
+
         }
-
     }
 
     bool LookAround()
