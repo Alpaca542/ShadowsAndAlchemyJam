@@ -11,6 +11,7 @@ public class Brewer : MonoBehaviour
     {
         if (other.gameObject.tag == "Cook")
         {
+            NearCook = true;
             myText.SetActive(true);
         }
     }
@@ -19,17 +20,20 @@ public class Brewer : MonoBehaviour
     {
         if (other.gameObject.tag == "Cook")
         {
+            NearCook = false;
             myText.SetActive(false);
         }
     }
-
-    private void OnTriggerStay2D(Collider2D other)
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (NearCook)
         {
-            if (myType == 0)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                //use for 0, etc
+                if (myType == 0)
+                {
+                    Debug.Log("Brewer 0 got used");
+                }
             }
         }
     }

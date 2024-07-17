@@ -5,8 +5,10 @@ using UnityEngine;
 public class CameraSwaper : MonoBehaviour
 {
     public GameObject inactiveCamera;
+    public Animation canvasAnimation;
     public void Swap()
     {
+        canvasAnimation.Play();
         GameObject player1 = Camera.main.GetComponent<playerFollow>().player.gameObject;
         GameObject player2 = inactiveCamera.GetComponent<playerFollow>().player.gameObject;
 
