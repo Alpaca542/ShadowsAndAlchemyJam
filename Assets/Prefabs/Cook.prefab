@@ -172,9 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cecc224fb94d420e8f8d86b666ec192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   damage: 3
   Defender: 0
+  selected: 0
   attackHitbox: {fileID: 0}
   brewerLayer:
     serializedVersion: 2
