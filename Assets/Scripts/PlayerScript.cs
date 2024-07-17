@@ -90,7 +90,7 @@ public class PlayerScript : MonoBehaviour
             if (!sit)
             {
                 float dirX = Input.GetAxis("Vertical");
-                if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position) > 0.2f || dirX < 0)
+                if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position) > 0.6f || dirX < 0)
                 {
                     rb.velocity = transform.up * dirX * speed;
                     LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
