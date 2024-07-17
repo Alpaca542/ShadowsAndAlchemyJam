@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class AttackHitboxScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Invoke(nameof(turnOff), GetComponent<Animation>().clip.length);
     }
-
-    // Update is called once per frame
-    void Update()
+    void turnOff()
     {
-        
+        gameObject.SetActive(false);
     }
 }

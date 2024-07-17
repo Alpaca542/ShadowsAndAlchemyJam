@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8014369061698524139}
   m_Layer: 0
   m_Name: Cook
-  m_TagString: Untagged
+  m_TagString: Cook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
