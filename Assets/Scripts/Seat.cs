@@ -9,6 +9,7 @@ public class Seat : MonoBehaviour
     public GameObject SitUI;
     public GameObject SitBTN;
     public GameObject StopSitBTN;
+    public carScript Car;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class Seat : MonoBehaviour
                 SitBTN.SetActive(true);
                 StopSitBTN.SetActive(false);
                 touchedPlayer = collision;
+                
             }
         }
         else
@@ -47,6 +49,10 @@ public class Seat : MonoBehaviour
     }
     public void MakeMeSit()
     {
+        if(ForCook)
+        {
+            Car.Moveable = true;
+        }
         touchedPlayer.gameObject.GetComponent<PlayerScript>().Sit(transform);
         SitBTN.SetActive(false);
         StopSitBTN.SetActive(true);
@@ -54,6 +60,11 @@ public class Seat : MonoBehaviour
     }
     public void MakeMeStopSit()
     {
+        if (ForCook)
+        {
+            Car.Moveable = false;
+        }
+
         touchedPlayer.gameObject.GetComponent<PlayerScript>().StopSitting();
         SitBTN.SetActive(true);
         StopSitBTN.SetActive(false);
@@ -61,6 +72,6 @@ public class Seat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        SitUI.transform.position = transform.position;
     }
 }
