@@ -103,12 +103,14 @@ public class PlayerScript : MonoBehaviour
                     rb.velocity = Vector2.zero;
                 }
             }
-            else
-            {
+            
+
+        }
+        if(sit)
+        {
                 transform.position = MySeat.position;
 
-            }
-
+            
         }
     }
 
