@@ -72,6 +72,6 @@ public class Seat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        SitUI.transform.position = transform.position;
     }
 }
