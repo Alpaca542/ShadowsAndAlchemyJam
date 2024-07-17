@@ -435,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358145119219963387, guid: 5d4d14f8a8ef540f3bd56ddf4694a921, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9158824814695856695, guid: 5d4d14f8a8ef540f3bd56ddf4694a921, type: 3}
       propertyPath: m_Name
@@ -830,6 +830,7 @@ MonoBehaviour:
   SitUI: {fileID: 785341238}
   SitBTN: {fileID: 1155903115}
   StopSitBTN: {fileID: 1933351447}
+  Car: {fileID: 1439095785}
 --- !u!212 &968134878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1333,6 +1334,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 839094927746107943, guid: 5d4d14f8a8ef540f3bd56ddf4694a921, type: 3}
   m_PrefabInstance: {fileID: 631068493}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1439095785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8358145119219963387, guid: 5d4d14f8a8ef540f3bd56ddf4694a921, type: 3}
+  m_PrefabInstance: {fileID: 631068493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b9a9416956de04e888384f738a646d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1629235234
 GameObject:
   m_ObjectHideFlags: 0

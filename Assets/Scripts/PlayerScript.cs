@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask brewerLayer;
 
+    public Transform MySeat;
+
     void Start()
     {
         if (Defender)
@@ -63,7 +65,7 @@ public class PlayerScript : MonoBehaviour
     public void Sit(Transform seat)
     {
         sit = true;
-        transform.parent = seat.transform;
+        MySeat = seat;
         transform.position = seat.position;
         transform.rotation = seat.rotation;
         rb.velocity = Vector2.zero;
@@ -71,6 +73,7 @@ public class PlayerScript : MonoBehaviour
     public void StopSitting()
     {
         sit = false;
+        MySeat = null;
         transform.parent = null;
     }
     void LookAt(Vector3 target)
@@ -99,6 +102,11 @@ public class PlayerScript : MonoBehaviour
                 {
                     rb.velocity = Vector2.zero;
                 }
+            }
+            else
+            {
+                transform.position = MySeat.position;
+
             }
 
         }

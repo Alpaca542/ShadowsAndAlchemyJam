@@ -7,6 +7,7 @@ public class carScript : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 10f;
     public float AngularSpeed = 10f;
+    public bool Moveable = false;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -16,15 +17,21 @@ public class carScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        if (Mathf.Abs(vertical) > 0.1)
+        if (Moveable)
         {
 
 
-            rb.velocity = transform.right * speed * Mathf.Sign(vertical);
-            float RotKoef = rb.velocity.magnitude * 0.6f;
-            rb.angularVelocity = -horizontal * AngularSpeed * RotKoef;
+
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            if (Mathf.Abs(vertical) > 0.1)
+            {
+
+
+                rb.velocity = transform.right * speed * Mathf.Sign(vertical);
+                float RotKoef = rb.velocity.magnitude * 0.6f;
+                rb.angularVelocity = -horizontal * AngularSpeed * RotKoef;
+            }
         }
     }
 }
