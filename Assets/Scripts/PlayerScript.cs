@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     {
         attackHitbox.SetActive(true);
     }
-    void Update()
+    void FixedUpdate()
     {
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
