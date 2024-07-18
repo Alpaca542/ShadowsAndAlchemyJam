@@ -9,6 +9,7 @@ TagManager:
   - Cook
   - Brewer
   - Car
+  - RedBTN
   layers:
   - Default
   - TransparentFX
