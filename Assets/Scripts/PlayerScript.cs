@@ -145,7 +145,7 @@ public class PlayerScript : MonoBehaviour
                 float dirY = Input.GetAxis("Vertical");
 
                 rb.velocity = new Vector2(dirX, dirY) * speed;
-                LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                //LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
             else
             {
