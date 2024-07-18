@@ -13,7 +13,6 @@ public class playerFollow : MonoBehaviour
     void FixedUpdate()
     {
         playerVector = player.position;
-        playerVector.z = -10;
-        transform.position = Vector3.Lerp(transform.position, playerVector, speed * Time.fixedDeltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(playerVector.x, playerVector.y, transform.position.z), Time.deltaTime * speed);
     }
 }
