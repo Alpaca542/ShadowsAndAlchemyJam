@@ -37,7 +37,7 @@ public class Brewer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (connectedPlayer.gameObject == other.gameObject)
+        if ((other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender") && connectedPlayer.gameObject == other.gameObject)
         {
             connectedPlayer = null;
             myText.SetActive(false);
@@ -67,7 +67,7 @@ public class Brewer : MonoBehaviour
                     }
                     else if (myType == 1)
                     {
-                        myCar.Stand(true);
+                        myCar.Sit(true);
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                         myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
                     }
@@ -84,7 +84,7 @@ public class Brewer : MonoBehaviour
 
                     if (myType == 1)
                     {
-                        myCar.Sit(true);
+                        myCar.Stand(true);
                         connectedPlayerScript.GetComponent<PlayerScript>().StopSitting();
                         myText.GetComponent<TMP_Text>().text = "<i><b>e</b> to sit</i>";
                     }
