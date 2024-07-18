@@ -116,12 +116,14 @@ public class PlayerScript : MonoBehaviour
         transform.position = seat.position;
         transform.rotation = seat.rotation;
         rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
     }
 
     public void StopSitting()
     {
         sit = false;
         transform.parent = null;
+        rb.isKinematic = false;
     }
 
     void LookAt(Vector3 target)
