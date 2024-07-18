@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     public bool Defender;
 
     [Header("Fields")]
-    private bool sit;
+    public bool sit;
     private GameObject MySeat;
     public bool selected;
     private Animator anim;

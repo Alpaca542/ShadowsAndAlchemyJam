@@ -8,6 +8,7 @@ TagManager:
   - Defender
   - Cook
   - Brewer
+  - Car
   layers:
   - Default
   - TransparentFX
