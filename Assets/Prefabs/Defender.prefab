@@ -181,6 +181,9 @@ MonoBehaviour:
   brewerLayer:
     serializedVersion: 2
     m_Bits: 0
+  amountOfBottles: 0
+  max_amountOfBottles: 6
+  bottleGrid: {fileID: 0}
 --- !u!95 &2030726968700550126
 Animator:
   serializedVersion: 5
@@ -230,13 +233,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8988112243599125865}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5604, y: 0.0109, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.594, y: 0.017, z: 0}
   m_LocalScale: {x: 0.7404614, y: 0.8701902, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8466076830414158507}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &8826068709272573898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -318,7 +321,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

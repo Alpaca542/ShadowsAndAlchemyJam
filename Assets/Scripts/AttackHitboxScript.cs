@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class AttackHitboxScript : MonoBehaviour
@@ -8,6 +9,7 @@ public class AttackHitboxScript : MonoBehaviour
 
     private void Start()
     {
+        CancelInvoke(nameof(turnOff));
         Invoke(nameof(turnOff), GetComponent<Animation>().clip.length);
     }
 

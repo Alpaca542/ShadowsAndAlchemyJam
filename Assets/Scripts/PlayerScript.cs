@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Fields")]
     private bool sit;
+    private GameObject MySeat;
     public bool selected;
     private Animator anim;
     private Rigidbody2D rb;
@@ -145,6 +146,10 @@ public class PlayerScript : MonoBehaviour
 
                 rb.velocity = new Vector2(dirX, dirY) * speed;
                 LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
+            else
+            {
+                transform.position = transform.parent.position;
             }
 
         }
