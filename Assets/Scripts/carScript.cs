@@ -56,16 +56,18 @@ public class carScript : MonoBehaviour
         }
     }
 
-    public void Sit()
+    public void Sit(bool shouldBeMoved)
     {
-        Moveable = true;
+        if (shouldBeMoved)
+            Moveable = true;
         animMover.clip = animClips[2];
         animMover.Play();
     }
 
-    public void Stand()
+    public void Stand(bool shouldBeMoved)
     {
-        Moveable = false;
+        if (shouldBeMoved)
+            Moveable = false;
         animMover.clip = animClips[3];
         animMover.Play();
     }

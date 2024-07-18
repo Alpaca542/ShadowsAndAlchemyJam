@@ -22,16 +22,13 @@ public class CameraSwaper : MonoBehaviour
             player2 = GameObject.FindGameObjectWithTag("Cook");
         }
 
-        //Camera.main.transform.position = player2.transform.position;
-        Camera.main.GetComponent<playerFollow>().player = player2.transform;
+        SwapSizes();
+        SwapPlayers(player1, player2);
+        SwapSelections(player1, player2);
 
         inactiveCamera.transform.position = player1.transform.position;
-        inactiveCamera.GetComponent<playerFollow>().player = player1.transform;
 
-        player1.GetComponent<PlayerScript>().selected = false;
-        player2.GetComponent<PlayerScript>().selected = true;
-
-        if (player2.GetComponent<PlayerScript>().sit)
+        if (player2.GetComponent<PlayerScript>().sit && player2.transform.parent.GetComponent<Brewer>().myType == 1)
         {
             GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = true;
         }
@@ -39,5 +36,23 @@ public class CameraSwaper : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = false;
         }
+    }
+
+    void SwapSizes()
+    {
+        float tempStor = Camera.main.GetComponent<Camera>().orthographicSize;
+        Camera.main.GetComponent<Camera>().orthographicSize = inactiveCamera.GetComponent<Camera>().orthographicSize;
+        inactiveCamera.GetComponent<Camera>().orthographicSize = tempStor;
+    }
+    void SwapPlayers(GameObject player1, GameObject player2)
+    {
+        Camera.main.GetComponent<playerFollow>().player = player2.transform;
+        inactiveCamera.GetComponent<playerFollow>().player = player1.transform;
+    }
+
+    void SwapSelections(GameObject player1, GameObject player2)
+    {
+        player1.GetComponent<PlayerScript>().selected = false;
+        player2.GetComponent<PlayerScript>().selected = true;
     }
 }
