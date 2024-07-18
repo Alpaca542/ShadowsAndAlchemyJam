@@ -37,8 +37,7 @@ public class Brewer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
-        if (connectedPlayer != other.gameObject)
+        if (connectedPlayer.gameObject == other.gameObject)
         {
             connectedPlayer = null;
             myText.SetActive(false);
