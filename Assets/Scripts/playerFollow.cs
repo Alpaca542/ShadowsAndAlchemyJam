@@ -10,10 +10,10 @@ public class playerFollow : MonoBehaviour
     public int speed;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         playerVector = player.position;
         playerVector.z = -10;
-        transform.position = Vector3.Lerp(transform.position, playerVector, speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, playerVector, speed * Time.fixedDeltaTime);
     }
 }
