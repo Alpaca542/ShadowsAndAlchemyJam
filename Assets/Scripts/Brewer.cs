@@ -37,21 +37,11 @@ public class Brewer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (connectedPlayer != other.gameObject)
         {
-            if (forCookOnly)
-            {
-                if (other.gameObject.tag == "Cook")
-                {
-                    connectedPlayer = null;
-                    myText.SetActive(false);
-                }
-            }
-            else if (other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender")
-            {
-                connectedPlayer = null;
-                myText.SetActive(false);
-            }
+            connectedPlayer = null;
+            myText.SetActive(false);
         }
     }
 
