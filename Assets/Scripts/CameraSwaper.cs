@@ -28,7 +28,7 @@ public class CameraSwaper : MonoBehaviour
 
         inactiveCamera.transform.position = player1.transform.position;
 
-        if (player2.GetComponent<PlayerScript>().sit && player2.transform.parent.GetComponent<Brewer>().myType == 1)
+        if (player2.GetComponent<PlayerScript>().sit && player2.GetComponent<PlayerScript>().mySeat.GetComponent<Brewer>().myType == 1)
         {
             GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = true;
         }

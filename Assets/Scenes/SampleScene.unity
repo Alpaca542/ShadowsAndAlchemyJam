@@ -833,6 +833,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1366150975}
     - target: {fileID: 1074858190851781268, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
+      propertyPath: defaultParent
+      value: 
+      objectReference: {fileID: 1032647803}
+    - target: {fileID: 1074858190851781268, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
       propertyPath: max_amountOfBottles
       value: 6
       objectReference: {fileID: 0}

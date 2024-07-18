@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     public bool selected;
     private Animator anim;
     private Rigidbody2D rb;
+    public GameObject mySeat;
 
     [Header("Defender")]
     public GameObject attackHitbox;
@@ -112,7 +113,7 @@ public class PlayerScript : MonoBehaviour
     public void Sit(Transform seat)
     {
         sit = true;
-        transform.parent = seat.transform;
+        mySeat = seat.gameObject;
         transform.position = seat.position;
         transform.rotation = seat.rotation;
         rb.velocity = Vector2.zero;
@@ -122,7 +123,7 @@ public class PlayerScript : MonoBehaviour
     public void StopSitting()
     {
         sit = false;
-        transform.parent = null;
+        mySeat = null;
         rb.isKinematic = false;
     }
 
@@ -152,7 +153,7 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            transform.position = transform.parent.position;
+            transform.position = mySeat.transform.position;
         }
     }
 
