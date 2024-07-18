@@ -8,15 +8,36 @@ public class shrederSctipt : MonoBehaviour
     public GameObject shrederUI;
     public GameObject[] spawnPoints;
     bool interact = false;
+    public GameObject tube;
     Collision2D collision;
 
     public GameObject redMatter;
     public GameObject Impure;
+    bool check = false;
     void Start()
     {
         
     }
+    void Check()
+    {
+        int k = 0;
+        foreach (Transform lol in gameObject.GetComponentsInChildren<Transform>())
+        {
+            if (lol.gameObject.CompareTag("RedBTN"))
+            {
+                k++;
+            }
+        }
 
+        if ((k == 0))
+        {
+
+            shrederUI.SetActive(false);
+            tube.GetComponent<SpriteRenderer>().color = Color.red;
+            collision.gameObject.GetComponent<CookScript>().UnFreeze();
+            check = false;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -25,12 +46,16 @@ public class shrederSctipt : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                interact = false;
+                
                 shrederUI.SetActive(true);
                 collision.gameObject.GetComponent<CookScript>().Freeze();
                 ClearMePlease();
+                interact = false;
+                check = true;
             }
+            
         }
+        if(check) { Check(); }
         
     }
     public void ClearMePlease()
