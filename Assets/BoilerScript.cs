@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,22 @@ using UnityEngine.UI;
 public class BoilerScript : MonoBehaviour
 {
     public GameObject indicator;
-    public GameObject requirer;
-    public GameObject requirer1;
+    public GameObject requirerLL;
+    public GameObject requireêL;
+
+    public Scrollbar requirer;
+    public Scrollbar requirer1;
+    public Scrollbar requirer2;
+    public Text loss;
+    public Text loss1;
+    public Text loss2;
+    public Text totalLoss;
+
+    float blue1;
+    float blue2;
+    float red;
+
+    bool check;
     void Start()
     {
         indicator.GetComponent<Image>().color = Color.red;
@@ -25,28 +40,33 @@ public class BoilerScript : MonoBehaviour
 
     void Check()
     {
-        int k = 0;
-        foreach (Transform lol in gameObject.GetComponentsInChildren<Transform>())
-        {
-            if (lol.gameObject.CompareTag("RedBTN"))
-            {
-                k++;
-            }
-        }
+        loss.text = "loss: " + Convert.ToString((int)(requirer.value * 100 - blue1 * 100) );
+        loss1.text = "loss: " + Convert.ToString((int)(requirer1.value * 100 - blue2 * 100));
+        loss2.text = "loss: " + Convert.ToString((int)(requirer2.value * 100 - red * 100));
+        
+        totalLoss.text = "Average loss: "+Convert.ToString((((int)(requirer.value * 100 - blue1 * 100))+ ((int)(requirer1.value * 100 - blue2 * 100))+ ((int)(requirer2.value * 100 - red * 100)))/3);
+        collision.gameObject.GetComponent<CookScript>().Freeze();
 
-        if (k == 0)
+
+        if (Mathf.Abs(((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100)))) / 3) <10) ;
         {
 
             //shrederUI.SetActive(false);
             tube.GetComponent<SpriteRenderer>().color = Color.red;
             Invoke(nameof(turnTube), 1f);
+            shrederUI.SetActive(false);
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
+            
+            
+            boiler.enabled = true;
+            check = false;
             // check = false;
         }
     }
 
     void turnTube()
     {
+        
         tube.GetComponent<SpriteRenderer>().color = Color.white;
         boiler.enabled = true;
     }
@@ -75,18 +95,25 @@ public class BoilerScript : MonoBehaviour
                     }
                     if (blueNum == 1)
                     {
-                        requirer1.gameObject.GetComponent<Image>().color = Color.blue;
+                        requirerLL.gameObject.GetComponent<Image>().color = Color.blue;
                     }
                     if (blueNum == 2)
                     {
-                        requirer.gameObject.GetComponent<Image>().color = Color.blue;
+                        requireêL.gameObject.GetComponent<Image>().color = Color.blue;
+                        blue1 = (UnityEngine.Random.Range(0, 100)) / 100.0f;
+                        blue2 = (UnityEngine.Random.Range(0, 100)) / 100.0f;
+                        red = (UnityEngine.Random.Range(0, 100))/100.0f;
+                        Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
+                        check = true;
                     }
-                    if (blueNum > 2)
-                    {
-                        turnTube();
-                    }
+                    
                 }
+                
             }
+        }
+        if (check)
+        {
+            Check();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
