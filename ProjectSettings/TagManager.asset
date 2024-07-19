@@ -10,6 +10,7 @@ TagManager:
   - Brewer
   - Car
   - RedBTN
+  - invis
   layers:
   - Default
   - TransparentFX

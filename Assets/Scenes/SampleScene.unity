@@ -3375,7 +3375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator: {fileID: 2109855620}
   requirerLL: {fileID: 507468165}
-  "require\u043AL": {fileID: 1061674498}
+  requireL: {fileID: 1061674498}
   Indicator: {fileID: 323503404}
   requirer: {fileID: 311986799}
   requirer1: {fileID: 1221592828}
@@ -5532,7 +5532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -849.6999, y: 0}
+  m_AnchoredPosition: {x: -849.69995, y: 0}
   m_SizeDelta: {x: -1699.38, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1366150977

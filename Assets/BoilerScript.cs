@@ -9,7 +9,7 @@ public class BoilerScript : MonoBehaviour
 {
     public GameObject indicator;
     public GameObject requirerLL;
-    public GameObject requireêL;
+    public GameObject requireL;
     public Image Indicator;
     public Slider requirer;
     public Slider requirer1;
@@ -40,21 +40,21 @@ public class BoilerScript : MonoBehaviour
 
     void Check()
     {
-        loss.text = "loss: " + Convert.ToString((int)(requirer.value * 100 - blue1 * 100) );
+        loss.text = "loss: " + Convert.ToString((int)(requirer.value * 100 - blue1 * 100));
         loss1.text = "loss: " + Convert.ToString((int)(requirer1.value * 100 - blue2 * 100));
         loss2.text = "loss: " + Convert.ToString((int)(requirer2.value * 100 - red * 100));
-        
-        totalLoss.text = "Average loss: "+Convert.ToString((((int)(requirer.value * 100 - blue1 * 100))+ ((int)(requirer1.value * 100 - blue2 * 100))+ ((int)(requirer2.value * 100 - red * 100)))/3);
+
+        totalLoss.text = "Average loss: " + Convert.ToString((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100))) / 3);
         collision.gameObject.GetComponent<CookScript>().Freeze();
-        Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100))/255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
+        Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
-        if (Mathf.Abs((((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100))) / 3) <=10)
+        if (Mathf.Abs((((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100))) / 3) <= 10)
         {
             Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
-            
+
             check = false;
-            
+
             //shrederUI.SetActive(false);
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
 
@@ -75,7 +75,7 @@ public class BoilerScript : MonoBehaviour
     }
     void turnTube()
     {
-        
+
         tube.GetComponent<SpriteRenderer>().color = Color.white;
         boiler.enabled = true;
     }
@@ -100,7 +100,7 @@ public class BoilerScript : MonoBehaviour
                         {
                             blueNum += 1;
                             collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                            
+
                         }
                     }
                     if (blueNum == 1)
@@ -111,20 +111,20 @@ public class BoilerScript : MonoBehaviour
                     {
                         shrederUI.SetActive(true);
                         check = true;
-                        requireêL.gameObject.GetComponent<Image>().color = Color.blue;
+                        requireL.gameObject.GetComponent<Image>().color = Color.blue;
                         blue1 = (UnityEngine.Random.Range(90, 100)) / 100.0f;
                         blue2 = (UnityEngine.Random.Range(50, 100)) / 100.0f;
-                        red = (UnityEngine.Random.Range(30, 100))/100.0f;
+                        red = (UnityEngine.Random.Range(30, 100)) / 100.0f;
                         Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
-                        
-                        
+
+
                     }
-                    
+
                 }
-                
+
             }
         }
-        if (check&&(collision!=null))
+        if (check && (collision != null))
         {
             Check();
         }
