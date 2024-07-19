@@ -56,32 +56,35 @@ public class BoilerScript : MonoBehaviour
     }
     void Update()
     {
-        CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (interact && checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+        if (collision != null && collision.gameObject.tag == "Cook")
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            CookScript cook = collision.gameObject.GetComponent<CookScript>();
+            if (interact && checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
             {
-                //shrederUI.SetActive(true);
-                //collision.gameObject.GetComponent<CookScript>().Freeze();
-                if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+                    //shrederUI.SetActive(true);
+                    //collision.gameObject.GetComponent<CookScript>().Freeze();
+                    if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
                     {
-                        blueNum += 1;
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                        if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+                        {
+                            blueNum += 1;
+                            collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                        }
                     }
-                }
-                if (blueNum == 1)
-                {
-                    requirer1.gameObject.GetComponent<Image>().color = Color.blue;
-                }
-                if (blueNum == 2)
-                {
-                    requirer.gameObject.GetComponent<Image>().color = Color.blue;
-                }
-                if (blueNum > 2)
-                {
-                    turnTube();
+                    if (blueNum == 1)
+                    {
+                        requirer1.gameObject.GetComponent<Image>().color = Color.blue;
+                    }
+                    if (blueNum == 2)
+                    {
+                        requirer.gameObject.GetComponent<Image>().color = Color.blue;
+                    }
+                    if (blueNum > 2)
+                    {
+                        turnTube();
+                    }
                 }
             }
         }

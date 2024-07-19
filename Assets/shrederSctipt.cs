@@ -44,21 +44,24 @@ public class shrederSctipt : MonoBehaviour
 
     void Update()
     {
-        CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (interact && cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
+        if (collision != null && collision.gameObject.tag == "Cook")
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            CookScript cook = collision.gameObject.GetComponent<CookScript>();
+            if (interact && cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
             {
-                shrederUI.SetActive(true);
-                cook.Freeze();
-                ClearMePlease();
-                cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                interact = false;
-                check = true;
-            }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    shrederUI.SetActive(true);
+                    cook.Freeze();
+                    ClearMePlease();
+                    cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    interact = false;
+                    check = true;
+                }
 
+            }
+            if (check) { Check(); }
         }
-        if (check) { Check(); }
     }
     public void ClearMePlease()
     {
