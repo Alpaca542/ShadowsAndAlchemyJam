@@ -10,7 +10,7 @@ public class playerFollow : MonoBehaviour
     public int speed;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         playerVector = player.position;
         playerVector.z = -10;
