@@ -46,20 +46,21 @@ public class BoilerScript : MonoBehaviour
         
         totalLoss.text = "Average loss: "+Convert.ToString((((int)(requirer.value * 100 - blue1 * 100))+ ((int)(requirer1.value * 100 - blue2 * 100))+ ((int)(requirer2.value * 100 - red * 100)))/3);
         collision.gameObject.GetComponent<CookScript>().Freeze();
+        Debug.Log("Checking");
 
-
-        if (Mathf.Abs(((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100)))) / 3) <10) ;
+        if (Mathf.Abs((((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100))) / 3) <=10);
         {
-
+            Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
             //shrederUI.SetActive(false);
-            tube.GetComponent<SpriteRenderer>().color = Color.red;
-            Invoke(nameof(turnTube), 1f);
-            shrederUI.SetActive(false);
-            collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            
-            
-            boiler.enabled = true;
             check = false;
+            
+            //shrederUI.SetActive(false);
+            collision.gameObject.GetComponent<CookScript>().UnFreeze();
+
+            Invoke(nameof(turnTube), 1f);
+           // boiler.enabled = true;
+            
+            //tube.GetComponent<SpriteRenderer>().color = Color.red;
             // check = false;
         }
     }
@@ -91,6 +92,7 @@ public class BoilerScript : MonoBehaviour
                         {
                             blueNum += 1;
                             collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                            
                         }
                     }
                     if (blueNum == 1)
@@ -99,19 +101,22 @@ public class BoilerScript : MonoBehaviour
                     }
                     if (blueNum == 2)
                     {
-                        requireêL.gameObject.GetComponent<Image>().color = Color.blue;
-                        blue1 = (UnityEngine.Random.Range(0, 100)) / 100.0f;
-                        blue2 = (UnityEngine.Random.Range(0, 100)) / 100.0f;
-                        red = (UnityEngine.Random.Range(0, 100))/100.0f;
-                        Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
+                        shrederUI.SetActive(true);
                         check = true;
+                        requireêL.gameObject.GetComponent<Image>().color = Color.blue;
+                        blue1 = (UnityEngine.Random.Range(90, 100)) / 100.0f;
+                        blue2 = (UnityEngine.Random.Range(50, 100)) / 100.0f;
+                        red = (UnityEngine.Random.Range(30, 100))/100.0f;
+                        Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
+                        
+                        
                     }
                     
                 }
                 
             }
         }
-        if (check)
+        if (check&&(collision!=null))
         {
             Check();
         }
@@ -129,6 +134,7 @@ public class BoilerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Cook"))
         {
             interact = false;
+            collision = null;
         }
     }
 }

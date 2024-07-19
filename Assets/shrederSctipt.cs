@@ -95,6 +95,7 @@ public class shrederSctipt : MonoBehaviour
         if (collision.gameObject.CompareTag("Cook"))
         {
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
+            collision = null;
         }
     }
 }
