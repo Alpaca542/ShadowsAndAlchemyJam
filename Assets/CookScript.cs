@@ -101,7 +101,6 @@ public class CookScript : MonoBehaviour
 
     void moveActiveSlot(bool up)
     {
-        Debug.Log(ActiveSlot);
         inventoryGrid.transform.GetChild(ActiveSlot).GetComponent<ImageKeeper>().myImg.gameObject.SetActive(false);
         if (ActiveSlot == 0 && !up)
         {

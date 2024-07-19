@@ -63,7 +63,7 @@ public class Brewer : MonoBehaviour
 
                     if (myType == 0)
                     {
-                        connectedPlayer.GetComponent<CookScript>().GetItem("Red");
+                        connectedPlayer.GetComponent<CookScript>().GetItem("white");
                     }
                     else if (myType == 1)
                     {
