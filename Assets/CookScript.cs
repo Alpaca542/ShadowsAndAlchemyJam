@@ -52,7 +52,7 @@ public class CookScript : MonoBehaviour
     {
         if (inventory.ContainsKey(whatItem))
         {
-            if (inventory[whatItem] > 0)
+            if (inventory[whatItem] > 1)
             {
                 inventory[whatItem]--;
                 UpdateInventory();
@@ -89,11 +89,11 @@ public class CookScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             moveActiveSlot(true);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.O))
         {
             moveActiveSlot(false);
         }
@@ -101,11 +101,13 @@ public class CookScript : MonoBehaviour
 
     void moveActiveSlot(bool up)
     {
+        Debug.Log(ActiveSlot);
+        inventoryGrid.transform.GetChild(ActiveSlot).GetComponent<ImageKeeper>().myImg.gameObject.SetActive(false);
         if (ActiveSlot == 0 && !up)
         {
-            ActiveSlot = max_slots;
+            ActiveSlot = max_slots - 1;
         }
-        else if (ActiveSlot == max_slots && up)
+        else if (ActiveSlot == max_slots - 1 && up)
         {
             ActiveSlot = 0;
         }
@@ -120,6 +122,7 @@ public class CookScript : MonoBehaviour
                 ActiveSlot--;
             }
         }
+        inventoryGrid.transform.GetChild(ActiveSlot).GetComponent<ImageKeeper>().myImg.gameObject.SetActive(true);
     }
 
     private void Start()
