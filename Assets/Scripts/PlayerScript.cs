@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
-using UnityEditor.SceneTemplate;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -24,9 +20,6 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Cook")]
     public LayerMask brewerLayer;
-    public int amountOfBottles = 0;
-    public int max_amountOfBottles = 6;
-    public GameObject bottleGrid;
 
     void Start()
     {
@@ -36,41 +29,6 @@ public class PlayerScript : MonoBehaviour
         }
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void GetBottle()
-    {
-        if (amountOfBottles < max_amountOfBottles)
-        {
-            amountOfBottles++;
-            UpdateBottles();
-        }
-    }
-
-    public void RemoveBottle()
-    {
-        if (amountOfBottles > 0)
-        {
-            amountOfBottles--;
-            UpdateBottles();
-        }
-    }
-
-    void UpdateBottles()
-    {
-        int temp = amountOfBottles;
-        foreach (Transform gmb in bottleGrid.transform)
-        {
-            if (temp > 0)
-            {
-                temp--;
-                gmb.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-            }
-            else
-            {
-                gmb.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 5);
-            }
-        }
     }
 
     void Attack()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,19 +9,17 @@ public class BoilerScript : MonoBehaviour
     public GameObject indicator;
     public GameObject requirer;
     public GameObject requirer1;
-    // Start is called before the first frame update
     void Start()
     {
         indicator.GetComponent<Image>().color = Color.red;
     }
 
-    // Update is called once per frame
     public GameObject shrederUI;
     bool interact = false;
     public GameObject tube;
     Collision2D collision;
     public BoilerScript boiler;
-    bool check = false;
+    // bool check = false;
 
     int blueNum = 0;
 
@@ -35,14 +34,14 @@ public class BoilerScript : MonoBehaviour
             }
         }
 
-        if ((k == 0))
+        if (k == 0)
         {
 
             //shrederUI.SetActive(false);
             tube.GetComponent<SpriteRenderer>().color = Color.red;
             Invoke(nameof(turnTube), 1f);
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            check = false;
+            // check = false;
         }
     }
 
@@ -51,23 +50,28 @@ public class BoilerScript : MonoBehaviour
         tube.GetComponent<SpriteRenderer>().color = Color.white;
         boiler.enabled = true;
     }
-    // Update is called once per frame
+    bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
+    {
+        return slot < inv.Count;
+    }
     void Update()
     {
-        if (interact)
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (interact && checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
         {
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 //shrederUI.SetActive(true);
                 //collision.gameObject.GetComponent<CookScript>().Freeze();
-                if ((collision.gameObject.GetComponent<CookScript>().WhatIHave == "blue"))
+                if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
                 {
-                    blueNum += 1;
-                    collision.gameObject.GetComponent<CookScript>().WhatIHave = "0";
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+                    {
+                        blueNum += 1;
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    }
                 }
-                if(blueNum ==1)
+                if (blueNum == 1)
                 {
                     requirer1.gameObject.GetComponent<Image>().color = Color.blue;
                 }
@@ -75,36 +79,26 @@ public class BoilerScript : MonoBehaviour
                 {
                     requirer.gameObject.GetComponent<Image>().color = Color.blue;
                 }
-                if(blueNum > 2)
+                if (blueNum > 2)
                 {
                     turnTube();
                 }
             }
-
         }
-       
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Cook"))
         {
-
-            if ((collision.gameObject.GetComponent<CookScript>().WhatIHave == "blue"))
-            {
-                interact = true;
-                this.collision = collision;
-            }
+            interact = true;
+            this.collision = collision;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Cook"))
         {
-
-
             interact = false;
-
         }
     }
 }
