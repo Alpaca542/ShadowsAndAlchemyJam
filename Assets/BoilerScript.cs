@@ -10,10 +10,10 @@ public class BoilerScript : MonoBehaviour
     public GameObject indicator;
     public GameObject requirerLL;
     public GameObject requireêL;
-
-    public Scrollbar requirer;
-    public Scrollbar requirer1;
-    public Scrollbar requirer2;
+    public Image Indicator;
+    public Slider requirer;
+    public Slider requirer1;
+    public Slider requirer2;
     public Text loss;
     public Text loss1;
     public Text loss2;
@@ -46,25 +46,33 @@ public class BoilerScript : MonoBehaviour
         
         totalLoss.text = "Average loss: "+Convert.ToString((((int)(requirer.value * 100 - blue1 * 100))+ ((int)(requirer1.value * 100 - blue2 * 100))+ ((int)(requirer2.value * 100 - red * 100)))/3);
         collision.gameObject.GetComponent<CookScript>().Freeze();
+        Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100))/255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
-        if (Mathf.Abs((((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100))) / 3) <=10);
+        if (Mathf.Abs((((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100))) / 3) <=10)
         {
             Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
-            //shrederUI.SetActive(false);
+            
             check = false;
             
             //shrederUI.SetActive(false);
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
 
-            Invoke(nameof(turnTube), 1f);
-           // boiler.enabled = true;
-            
+            Indicator.color = Color.green;
+            requirer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            requirer1.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            requirer2.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            Invoke(nameof(turnTube), 2f);
             //tube.GetComponent<SpriteRenderer>().color = Color.red;
             // check = false;
+            Invoke(nameof(DestroyUI), 2f);
+            boiler.enabled = true;
         }
     }
-
+    void DestroyUI()
+    {
+        shrederUI.SetActive(false);
+    }
     void turnTube()
     {
         
