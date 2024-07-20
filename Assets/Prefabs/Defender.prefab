@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8949084502396753461}
   - component: {fileID: 7913939151886338175}
   - component: {fileID: 2030726968700550126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Defender
   m_TagString: Defender
   m_Icon: {fileID: 0}
@@ -178,13 +178,11 @@ MonoBehaviour:
   Defender: 1
   sit: 0
   selected: 0
+  mySeat: {fileID: 0}
   attackHitbox: {fileID: 8988112243599125865}
   brewerLayer:
     serializedVersion: 2
     m_Bits: 0
-  amountOfBottles: 0
-  max_amountOfBottles: 6
-  bottleGrid: {fileID: 0}
 --- !u!95 &2030726968700550126
 Animator:
   serializedVersion: 5
@@ -219,7 +217,7 @@ GameObject:
   - component: {fileID: 8851555282718274339}
   - component: {fileID: 1081244885063501824}
   - component: {fileID: 1073757289283156440}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: MyHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

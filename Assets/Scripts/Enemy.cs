@@ -22,6 +22,17 @@ public class Enemy : MonoBehaviour
     private Vector2 patrollingPoint;
     private bool isAttacking;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        patrollingPoint = transform.position;
+    }
+
     void LookAt(Vector3 target)
     {
         if (transform.position != target)
@@ -46,6 +57,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            CancelInvoke(nameof(Attack));
             isAttacking = false;
             if (WeSeePlayer())
             {
@@ -53,6 +65,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                agent.SetDestination(patrollingPoint);
                 if (WeAreCloseToPatrollingPoint())
                 {
                     Patroll();
@@ -74,7 +87,7 @@ public class Enemy : MonoBehaviour
 
     bool CanAttack()
     {
-        return agent.remainingDistance <= agent.stoppingDistance;
+        return false;
     }
 
     Collider2D WeSeePlayer()
