@@ -6,9 +6,14 @@ public class CameraSwaper : MonoBehaviour
 {
     public GameObject inactiveCamera;
     public Animation canvasAnimation;
+    public GameObject activeUI;
+    public GameObject inactiveUI;
     public void Swap()
     {
-        canvasAnimation.Play();
+        SwapUI();
+
+        activeUI.GetComponent<Animation>().Play();
+
         GameObject player1 = Camera.main.GetComponent<playerFollow>().player.gameObject;
         GameObject player2 = inactiveCamera.GetComponent<playerFollow>().player.gameObject;
 
@@ -36,6 +41,8 @@ public class CameraSwaper : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = false;
         }
+
+
     }
 
     void SwapSizes()
@@ -44,6 +51,20 @@ public class CameraSwaper : MonoBehaviour
         Camera.main.GetComponent<Camera>().orthographicSize = inactiveCamera.GetComponent<Camera>().orthographicSize;
         inactiveCamera.GetComponent<Camera>().orthographicSize = tempStor;
     }
+
+    void SwapUI()
+    {
+        activeUI.GetComponent<Canvas>().worldCamera = inactiveCamera.GetComponent<Camera>();
+        inactiveUI.GetComponent<Canvas>().worldCamera = Camera.main;
+
+        activeUI.GetComponent<canvasImageHolder>().myTransition.SetActive(false);
+        inactiveUI.GetComponent<canvasImageHolder>().myTransition.SetActive(true);
+
+        GameObject temp = activeUI;
+        activeUI = inactiveUI;
+        inactiveUI = temp;
+    }
+
     void SwapPlayers(GameObject player1, GameObject player2)
     {
         Camera.main.GetComponent<playerFollow>().player = player2.transform;

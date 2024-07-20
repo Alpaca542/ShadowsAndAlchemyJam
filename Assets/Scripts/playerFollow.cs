@@ -7,6 +7,7 @@ public class playerFollow : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
     private Vector3 playerVector;
+    public GameObject myUI;
     public int speed;
 
     // Update is called once per frame
