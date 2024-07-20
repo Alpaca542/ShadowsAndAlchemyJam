@@ -66,7 +66,19 @@ public class MerryGoRound : MonoBehaviour
         if(clickrate>=5f)
         {
             check = false;
-            Debug.Log("win");
+
+            //shrederUI.SetActive(false);
+            collision.gameObject.GetComponent<CookScript>().UnFreeze();
+
+            // Indicator.color = Color.green;
+            requirer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            requirer1.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            requirer2.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            Invoke(nameof(turnTube), 2f);
+            //tube.GetComponent<SpriteRenderer>().color = Color.red;
+            // check = false;
+            Invoke(nameof(DestroyUI), 2f);
+            boiler.enabled = true;
         }
     }
     void Check()
@@ -107,21 +119,8 @@ public class MerryGoRound : MonoBehaviour
 
         
             //Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
-
-            check = false;
-
-            //shrederUI.SetActive(false);
-            collision.gameObject.GetComponent<CookScript>().UnFreeze();
-
-           // Indicator.color = Color.green;
-            requirer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            requirer1.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            requirer2.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            Invoke(nameof(turnTube), 2f);
-            //tube.GetComponent<SpriteRenderer>().color = Color.red;
-            // check = false;
-            Invoke(nameof(DestroyUI), 2f);
-            boiler.enabled = true;
+            
+           
         
     }
     void DestroyUI()

@@ -370,14 +370,14 @@ RectTransform:
   m_GameObject: {fileID: 67489873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115, y: -32}
+  m_AnchoredPosition: {x: -166.12, y: -41.122}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &67489875
@@ -414,7 +414,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &67489876
 Rigidbody2D:
   serializedVersion: 4
@@ -640,7 +640,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 75746421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 253424713}
+        m_TargetAssemblyTypeName: MerryGoRound, Assembly-CSharp
+        m_MethodName: BtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &75746421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,6 +1602,7 @@ GameObject:
   - component: {fileID: 253424715}
   - component: {fileID: 253424714}
   - component: {fileID: 253424713}
+  - component: {fileID: 253424716}
   m_Layer: 0
   m_Name: MerryGoRound
   m_TagString: Untagged
@@ -1698,6 +1711,51 @@ Transform:
   - {fileID: 1667124198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &253424716
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253424712}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &253930233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,14 +3116,14 @@ RectTransform:
   m_GameObject: {fileID: 397742495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89, y: 155}
+  m_AnchoredPosition: {x: -123, y: 129}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &397742497
@@ -3102,7 +3160,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &397742498
 Rigidbody2D:
   serializedVersion: 4
@@ -3265,14 +3323,14 @@ RectTransform:
   m_GameObject: {fileID: 492571257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: -171}
+  m_AnchoredPosition: {x: -27, y: -173}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &492571259
@@ -3309,7 +3367,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &492571260
 Rigidbody2D:
   serializedVersion: 4
@@ -4349,14 +4407,14 @@ RectTransform:
   m_GameObject: {fileID: 657883820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 142, y: -171}
+  m_AnchoredPosition: {x: 98, y: -176}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &657883822
@@ -4393,7 +4451,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &657883823
 Rigidbody2D:
   serializedVersion: 4
@@ -6520,14 +6578,14 @@ RectTransform:
   m_GameObject: {fileID: 1199278535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 158, y: 90}
+  m_AnchoredPosition: {x: 158, y: 51}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &1199278537
@@ -6564,7 +6622,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &1199278538
 Rigidbody2D:
   serializedVersion: 4
@@ -6973,14 +7031,14 @@ RectTransform:
   m_GameObject: {fileID: 1259697389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 151, y: -56}
+  m_AnchoredPosition: {x: 151, y: -89}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &1259697391
@@ -7017,7 +7075,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &1259697392
 Rigidbody2D:
   serializedVersion: 4
@@ -9223,14 +9281,14 @@ RectTransform:
   m_GameObject: {fileID: 1848348532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -119, y: -159}
+  m_AnchoredPosition: {x: -150, y: -176}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &1848348534
@@ -9267,7 +9325,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &1848348535
 Rigidbody2D:
   serializedVersion: 4
@@ -10379,14 +10437,14 @@ RectTransform:
   m_GameObject: {fileID: 2011671960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: 100}
+  m_AnchoredPosition: {x: 50.552, y: 141.05}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &2011671962
@@ -10423,7 +10481,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &2011671963
 Rigidbody2D:
   serializedVersion: 4
@@ -10518,14 +10576,14 @@ RectTransform:
   m_GameObject: {fileID: 2046231252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.76008546, y: 0.76008546, z: 0.76008546}
+  m_LocalScale: {x: 1.048994, y: 1.048994, z: 1.048994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580730674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23, y: -49}
+  m_AnchoredPosition: {x: 24.33, y: -64.583}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!58 &2046231254
@@ -10562,7 +10620,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 46.52
+  m_Radius: 20.54
 --- !u!50 &2046231255
 Rigidbody2D:
   serializedVersion: 4
