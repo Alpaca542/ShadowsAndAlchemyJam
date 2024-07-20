@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class MerryGoRound : MonoBehaviour
 {
-    Transform randomPoint;
+    public GameObject lp;
+    public Transform[] randomPoint;
     public Image glass;
     public GameObject indicator;
     public GameObject requirerLL;
@@ -67,9 +68,10 @@ public class MerryGoRound : MonoBehaviour
     }
     void BRRRR()
     {
+        lp.gameObject.transform.position = glass.transform.position;
         foreach (var p in points)
         {
-            p.transform.position = glass.transform.position;
+            p.transform.position = randomPoint[(UnityEngine.Random.Range(0, 5))].position;
         }
     }
     private void Winner()
