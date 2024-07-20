@@ -168,7 +168,7 @@ public class MerryGoRound : MonoBehaviour
                         {
                             blueNum += 1;
                             collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                            requirerLL.GetComponent<Image>().color = Color.blue;
+                            requirerLL.GetComponent<Image>().color = Color.green;
 
                         }
                     }
