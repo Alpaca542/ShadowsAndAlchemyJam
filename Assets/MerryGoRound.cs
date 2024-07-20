@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MerryGoRound : MonoBehaviour
 {
-
+    Transform randomPoint;
     public Image glass;
     public GameObject indicator;
     public GameObject requirerLL;
@@ -40,8 +40,9 @@ public class MerryGoRound : MonoBehaviour
         indicator.GetComponent<Image>().color = Color.red;
         InvokeRepeating(nameof(StopClick), 1f,1f);
         InvokeRepeating(nameof(Winner), 5f, 5f);
+        InvokeRepeating(nameof(BRRRR), 0.3f, 0.3f);
 
-        check = true;
+        //check = true;
 
     }
 
@@ -62,6 +63,14 @@ public class MerryGoRound : MonoBehaviour
         ClickRate.text = "CPS: "+Convert.ToString(clickCount / 1f);
         clickrate = (clickCount / 1f);
         clickCount = 0;
+        
+    }
+    void BRRRR()
+    {
+        foreach (var p in points)
+        {
+            p.transform.position = glass.transform.position;
+        }
     }
     private void Winner()
     {
@@ -85,10 +94,7 @@ public class MerryGoRound : MonoBehaviour
     void Check()
     {
         
-        foreach (var p in points)
-        {
-            p.velocity = p.gameObject.transform.up * 10f;
-        }
+        
         float speed = clickrate/3;
         glass.color = new Color(0, 1* clickrate/5+1, 0, 1 * clickrate/5+1);
         // CircleBlue.transform.Rotate(0,0,0);
@@ -150,7 +156,7 @@ public class MerryGoRound : MonoBehaviour
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
-            if (interact && checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+            if (interact && checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {

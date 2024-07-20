@@ -63,11 +63,13 @@ public class BoilerScript : MonoBehaviour
             requirer1.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
             requirer2.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
             Invoke(nameof(turnTube), 2f);
-            //tube.GetComponent<SpriteRenderer>().color = Color.red;
+            tube.GetComponent<SpriteRenderer>().color = Color.red;
             // check = false;
             Invoke(nameof(DestroyUI), 2f);
-            boiler.turnBlue();
             boiler.enabled = true;
+            boiler.turnBlue();
+            
+
         }
     }
     void DestroyUI()
