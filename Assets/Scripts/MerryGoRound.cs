@@ -13,33 +13,32 @@ public class MerryGoRound : MonoBehaviour
     public GameObject indicator;
     public GameObject requirerLL;
     public GameObject requireL;
-   // public Image Indicator;
+    // public Image Indicator;
     public Slider requirer;
     public Slider requirer1;
     public Slider requirer2;
-   // public Text loss;
+    // public Text loss;
     //public Text loss1;
-   // public Text loss2;
-   // public Text totalLoss;
+    // public Text loss2;
+    // public Text totalLoss;
     bool IHaveBlue = false;
-   //float blue1;
-   // float blue2;
-   // float red;
+    //float blue1;
+    // float blue2;
+    // float red;
     public Rigidbody2D[] points;
     bool check;
     float clickCount = 0;
-   // GameObject CircleRed;
-   // GameObject CircleGreen;
-   // GameObject CircleBlue;
-    bool clicked = false;
-    
+    // GameObject CircleRed;
+    // GameObject CircleGreen;
+    // GameObject CircleBlue;
+
     public Text ClickRate;
     float clickrate = 0f;
     void Start()
     {
-        
+
         indicator.GetComponent<Image>().color = Color.red;
-        InvokeRepeating(nameof(StopClick), 1f,1f);
+        InvokeRepeating(nameof(StopClick), 1f, 1f);
         InvokeRepeating(nameof(Winner), 5f, 5f);
         InvokeRepeating(nameof(BRRRR), 0.3f, 0.3f);
 
@@ -61,10 +60,10 @@ public class MerryGoRound : MonoBehaviour
     }
     void StopClick()
     {
-        ClickRate.text = "CPS: "+Convert.ToString(clickCount / 1f);
+        ClickRate.text = "CPS: " + Convert.ToString(clickCount / 1f);
         clickrate = (clickCount / 1f);
         clickCount = 0;
-        
+
     }
     void BRRRR()
     {
@@ -76,7 +75,7 @@ public class MerryGoRound : MonoBehaviour
     }
     private void Winner()
     {
-        if(clickrate>=5f)
+        if (clickrate >= 5f)
         {
             check = false;
 
@@ -84,21 +83,21 @@ public class MerryGoRound : MonoBehaviour
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
 
             // Indicator.color = Color.green;
-            
+
             Invoke(nameof(turnTube), 2f);
             //tube.GetComponent<SpriteRenderer>().color = Color.red;
             // check = false;
             Invoke(nameof(DestroyUI), 2f);
             boiler.enabled = true;
-            
+
         }
     }
     void Check()
     {
-        
-        
-        float speed = clickrate/3;
-        glass.color = new Color(0, 1* clickrate/5+1, 0, 1 * clickrate/5+1);
+
+
+        float speed = clickrate / 3;
+        glass.color = new Color(0, 1 * clickrate / 5 + 1, 0, 1 * clickrate / 5 + 1);
         // CircleBlue.transform.Rotate(0,0,0);
         foreach (var p in points)
         {
@@ -121,16 +120,16 @@ public class MerryGoRound : MonoBehaviour
             }
         }
 
-       // totalLoss.text = "Average loss: " + Convert.ToString((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100))) / 3);
+        // totalLoss.text = "Average loss: " + Convert.ToString((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100))) / 3);
         collision.gameObject.GetComponent<CookScript>().Freeze();
-       // Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
+        // Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
-        
-            //Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
-            
-           
-        
+
+        //Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
+
+
+
     }
     void DestroyUI()
     {
@@ -154,7 +153,7 @@ public class MerryGoRound : MonoBehaviour
     }
     void Update()
     {
-        
+
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
@@ -174,13 +173,13 @@ public class MerryGoRound : MonoBehaviour
 
                         }
                     }
-                    if ((blueNum == 1)&&(IHaveBlue))
+                    if ((blueNum == 1) && (IHaveBlue))
                     {
 
                         check = true;
                         shrederUI.SetActive(true);
                     }
-                    
+
 
                 }
 
