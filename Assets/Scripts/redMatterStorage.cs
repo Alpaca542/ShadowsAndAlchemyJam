@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+using System.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,20 +31,22 @@ public class redMatterStorage : MonoBehaviour
     void Update()
     {
         MatterText.text = whichMatter + ": " + Convert.ToString(matter);
-
-        if (interact)
+        if (collision != null && collision.gameObject.tag == "Cook")
         {
-            if (Input.GetKeyDown(KeyCode.E) && matter > 0)
+            if (interact)
             {
-                matter -= 1;
-                collision.gameObject.GetComponent<CookScript>().GetItem(whichMatter);
-            }
-            else if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (collision.gameObject.GetComponent<CookScript>().inventory.ContainsKey(whichMatter) && collision.gameObject.GetComponent<CookScript>().inventory[whichMatter] > 0)
+                if (Input.GetKeyDown(KeyCode.E) && matter > 0)
                 {
-                    matter += 1;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(whichMatter);
+                    matter -= 1;
+                    collision.gameObject.GetComponent<CookScript>().GetItem(whichMatter);
+                }
+                else if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (collision.gameObject.GetComponent<CookScript>().inventory.ContainsKey(whichMatter) && collision.gameObject.GetComponent<CookScript>().inventory[whichMatter] > 0)
+                    {
+                        matter += 1;
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(whichMatter);
+                    }
                 }
             }
         }
