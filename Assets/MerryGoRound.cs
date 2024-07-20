@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MerryGoRound : MonoBehaviour
 {
+
+    public Image glass;
     public GameObject indicator;
     public GameObject requirerLL;
     public GameObject requireL;
@@ -71,14 +73,13 @@ public class MerryGoRound : MonoBehaviour
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
 
             // Indicator.color = Color.green;
-            requirer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            requirer1.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            requirer2.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+            
             Invoke(nameof(turnTube), 2f);
             //tube.GetComponent<SpriteRenderer>().color = Color.red;
             // check = false;
             Invoke(nameof(DestroyUI), 2f);
             boiler.enabled = true;
+            
         }
     }
     void Check()
@@ -88,9 +89,9 @@ public class MerryGoRound : MonoBehaviour
         {
             p.velocity = p.gameObject.transform.up * 10f;
         }
-        float speed = clickrate;
-
-       // CircleBlue.transform.Rotate(0,0,0);
+        float speed = clickrate/3;
+        glass.color = new Color(0, 1* clickrate/5+1, 0, 1 * clickrate/5+1);
+        // CircleBlue.transform.Rotate(0,0,0);
         foreach (var p in points)
         {
             int a = UnityEngine.Random.Range(0, 4);
