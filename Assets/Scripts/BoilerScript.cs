@@ -70,7 +70,10 @@ public class BoilerScript : MonoBehaviour
             Invoke(nameof(DestroyUI), 2f);
             AmIFilled = true;
             indicator.GetComponent<Image>().color = Color.red;
-            
+            requirerLL.gameObject.GetComponent<Image>().color = Color.white;
+            requireL.gameObject.GetComponent<Image>().color = Color.white;
+            RedNum = false;
+            blueNum = false;
 
         }
     }
@@ -143,8 +146,7 @@ public class BoilerScript : MonoBehaviour
                 cook.GetItem("redANDblue");
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
-                requirerLL.gameObject.GetComponent<Image>().color = Color.white;
-                requireL.gameObject.GetComponent<Image>().color = Color.white;
+                
             }
         }
         if (check && (collision != null))
