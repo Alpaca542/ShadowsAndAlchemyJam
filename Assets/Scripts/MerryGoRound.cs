@@ -21,7 +21,6 @@ public class MerryGoRound : MonoBehaviour
     //public Text loss1;
     // public Text loss2;
     // public Text totalLoss;
-    bool IHaveBlue = false;
     //float blue1;
     // float blue2;
     // float red;
@@ -41,17 +40,16 @@ public class MerryGoRound : MonoBehaviour
     {
 
         //indicator.GetComponent<Image>().color = Color.red;
-        
+
 
         //check = true;
 
     }
 
     public GameObject shrederUI;
-    bool interact = false;
-   // public GameObject tube;
-    Collision2D collision;
-   // public BoilerScript boiler;
+    // public GameObject tube;
+    public GameObject collision;
+    // public BoilerScript boiler;
     // bool check = false;
 
     bool blueNum = false;
@@ -82,7 +80,7 @@ public class MerryGoRound : MonoBehaviour
             check = false;
 
             //shrederUI.SetActive(false);
-           // collision.gameObject.GetComponent<CookScript>().UnFreeze();
+            // collision.gameObject.GetComponent<CookScript>().UnFreeze();
 
             // Indicator.color = Color.green;
 
@@ -100,7 +98,7 @@ public class MerryGoRound : MonoBehaviour
             AmIFilled = true;
             RedNum = false;
             blueNum = false;
-            
+
             CancelInvoke(nameof(BRRRR));
             CancelInvoke(nameof(Winner));
             CancelInvoke(nameof(StopClick));
@@ -156,8 +154,8 @@ public class MerryGoRound : MonoBehaviour
     void turnTube()
     {
 
-       // tube.GetComponent<SpriteRenderer>().color = Color.white;
-       //boiler.enabled = true;
+        // tube.GetComponent<SpriteRenderer>().color = Color.white;
+        //boiler.enabled = true;
     }
     bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
     {
@@ -166,7 +164,6 @@ public class MerryGoRound : MonoBehaviour
 
     public void turnBlue()
     {
-        IHaveBlue = true;
         requireL.GetComponent<Image>().color = Color.blue;
     }
     void Update()
@@ -175,55 +172,12 @@ public class MerryGoRound : MonoBehaviour
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
-            if (interact && ((checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")||((checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue"))))
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    if (!AmIFilled)
-                    {
-
-
-                        //shrederUI.SetActive(true);
-                        //collision.gameObject.GetComponent<CookScript>().Freeze();
-                        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
-                        {
-                            if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
-                            {
-                                blueNum = true;
-                                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                                requirerLL.GetComponent<Image>().color = Color.green;
-
-                            }
-                            if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
-                            {
-                                RedNum = true;
-                                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                                requireL.GetComponent<Image>().color = Color.blue;
-                            }
-                        }
-                        if ((blueNum) && (RedNum))
-                        {
-
-                            check = true;
-                            shrederUI.SetActive(true);
-                            collision.gameObject.GetComponent<CookScript>().Freeze();
-
-                            InvokeRepeating(nameof(StopClick), 1f, 1f);
-                            InvokeRepeating(nameof(Winner), 5f, 5f);
-                            InvokeRepeating(nameof(BRRRR), 0.3f, 0.3f);
-
-                        }
-                    }
-
-                }
-
-            }
-            if(AmIFilled && (Input.GetKeyDown(KeyCode.Space)))
+            if (AmIFilled && (Input.GetKeyDown(KeyCode.E)))
             {
                 cook.GetItem("greenANDblue");
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
-              
+
             }
         }
         if (check && (collision != null))
@@ -231,20 +185,44 @@ public class MerryGoRound : MonoBehaviour
             Check();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void GetStarted()
     {
-        if (collision.gameObject.CompareTag("Cook"))
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "green" && !blueNum) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue" && !RedNum)))
         {
-            interact = true;
-            this.collision = collision;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Cook"))
-        {
-            interact = false;
-            collision = null;
+            if (!AmIFilled)
+            {
+                if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
+                {
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+                    {
+                        blueNum = true;
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                        requirerLL.GetComponent<Image>().color = Color.green;
+
+                    }
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
+                    {
+                        RedNum = true;
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                        requireL.GetComponent<Image>().color = Color.blue;
+                    }
+                }
+                if (blueNum && RedNum)
+                {
+
+                    check = true;
+                    shrederUI.SetActive(true);
+                    collision.gameObject.GetComponent<CookScript>().Freeze();
+
+                    InvokeRepeating(nameof(StopClick), 1f, 1f);
+                    InvokeRepeating(nameof(Winner), 5f, 5f);
+                    InvokeRepeating(nameof(BRRRR), 0.3f, 0.3f);
+
+                }
+
+            }
         }
     }
 }

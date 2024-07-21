@@ -10,9 +10,8 @@ public class shrederSctipt : MonoBehaviour
     public bool AmIFilled = false;
     public GameObject shrederUI;
     public GameObject[] spawnPoints;
-    bool interact = false;
-    Collision2D collision;
-   // public BoilerScript boiler;
+    public GameObject collision;
+    // public BoilerScript boiler;
     public GameObject redMatter;
     public GameObject Impure;
     bool check = false;
@@ -31,22 +30,15 @@ public class shrederSctipt : MonoBehaviour
 
         if (k == 0)
         {
-            
+
             AmIFilled = true;
             shrederUI.SetActive(false);
-           // tube.GetComponent<SpriteRenderer>().color = Color.red;
-            Invoke(nameof(turnTube), 1f);
-           collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            
+            // tube.GetComponent<SpriteRenderer>().color = Color.red;
+            collision.gameObject.GetComponent<CookScript>().UnFreeze();
+
             AmIFULLIMAGE.color = Color.red;
             check = false;
         }
-    }
-
-    void turnTube()
-    {
-        //tube.GetComponent<SpriteRenderer>().color = Color.white;
-       // boiler.enabled = true;
     }
 
     void Update()
@@ -54,35 +46,33 @@ public class shrederSctipt : MonoBehaviour
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
-            if (interact && cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    if (!AmIFilled)
-                    {
-                        shrederUI.SetActive(true);
-                        cook.Freeze();
-                        ClearMePlease();
-                        cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        interact = false;
-                        check = true;
-                        
-                    }
 
-                }
-                
-
-            }
-            if (AmIFilled&& (Input.GetKeyDown(KeyCode.Space)))
+            if (AmIFilled && Input.GetKeyDown(KeyCode.E))
             {
                 cook.GetItem("pureRed");
                 AmIFilled = false;
                 AmIFULLIMAGE.color = Color.white;
-
             }
             if (check) { Check(); }
         }
     }
+
+    public void GetStarted()
+    {
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
+        {
+            if (!AmIFilled)
+            {
+                shrederUI.SetActive(true);
+                cook.Freeze();
+                ClearMePlease();
+                cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                check = true;
+            }
+        }
+    }
+
     public void ClearMePlease()
     {
         foreach (GameObject go in spawnPoints)
@@ -98,25 +88,6 @@ public class shrederSctipt : MonoBehaviour
                     Instantiate(redMatter, go.transform.position, Quaternion.identity, shrederUI.transform);
                 }
             }
-        }
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        CookScript cck = collision.gameObject.GetComponent<CookScript>();
-        if (collision.gameObject.CompareTag("Cook"))
-        {
-            interact = true;
-            this.collision = collision;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Cook"))
-        {
-            //collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            interact = false;
-            collision = null;
         }
     }
 }

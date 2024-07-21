@@ -13,6 +13,7 @@ public class Brewer : MonoBehaviour
     public int myType;
     public carScript myCar;
     public bool StickToTheParent;
+    public bool activatable;
     private bool active;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,10 +38,21 @@ public class Brewer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if ((other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender") && connectedPlayer.gameObject == other.gameObject)
+        if (connectedPlayer != null)
         {
-            connectedPlayer = null;
-            myText.SetActive(false);
+            if (forCookOnly)
+            {
+                if (other.gameObject.tag == "Cook")
+                {
+                    connectedPlayer = null;
+                    myText.SetActive(false);
+                }
+            }
+            else if (other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender")
+            {
+                connectedPlayer = null;
+                myText.SetActive(false);
+            }
         }
     }
 
@@ -57,13 +69,14 @@ public class Brewer : MonoBehaviour
 
             if (connectedPlayerScript.selected)
             {
-                if (Input.GetKeyDown(KeyCode.E) && !active) // activate
+                if (Input.GetKeyDown(KeyCode.E) && (!active || !activatable)) // activate
                 {
                     active = true;
 
                     if (myType == 0)
                     {
-                        connectedPlayer.GetComponent<CookScript>().GetItem("white");
+                        GetComponent<BoilerScript>().collision = connectedPlayer;
+                        GetComponent<BoilerScript>().GetStarted();
                     }
                     else if (myType == 1)
                     {
@@ -77,8 +90,28 @@ public class Brewer : MonoBehaviour
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                         myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
                     }
+                    if (myType == 3)
+                    {
+                        GetComponent<grapherScript>().collision = connectedPlayer;
+                        GetComponent<grapherScript>().GetStarted();
+                    }
+                    if (myType == 4)
+                    {
+                        GetComponent<MerryGoRound>().collision = connectedPlayer;
+                        GetComponent<MerryGoRound>().GetStarted();
+                    }
+                    if (myType == 5)
+                    {
+                        GetComponent<analyzercript>().collision = connectedPlayer;
+                        GetComponent<analyzercript>().GetStarted();
+                    }
+                    if (myType == 6)
+                    {
+                        GetComponent<shrederSctipt>().collision = connectedPlayer;
+                        GetComponent<shrederSctipt>().GetStarted();
+                    }
                 }
-                else if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && active)// deactivate
+                else if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && active) && activatable)// deactivate
                 {
                     active = false;
 

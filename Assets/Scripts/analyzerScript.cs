@@ -9,35 +9,29 @@ public class analyzercript : MonoBehaviour
     public GameObject myUI;
     public GameObject[] spawnPoints;
     public GameObject[] bacterias;
-    bool interact = false;
     public GameObject tube;
-    Collision2D collision;
+    public GameObject collision;
     public BoilerScript boiler;
     //public GameObject require1;
     private int totalAmount;
 
     void turnTube()
     {
-        tube.GetComponent<SpriteRenderer>().color = Color.white;
+        Debug.Log("analyzerWin");
     }
 
-    void Update()
+    public void GetStarted()
     {
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
-            if (interact && cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+            if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    //require1.gameObject.GetComponent<Image>().color = Color.blue;
-                    myUI.SetActive(true);
-                    cook.Freeze();
-                    StartTask();
-                    cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    interact = false;
-                }
-
+                //require1.gameObject.GetComponent<Image>().color = Color.blue;
+                myUI.SetActive(true);
+                cook.Freeze();
+                StartTask();
+                cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
             }
         }
     }
@@ -68,22 +62,6 @@ public class analyzercript : MonoBehaviour
         {
             myUI.SetActive(false);
             turnTube();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Cook"))
-        {
-            interact = true;
-            this.collision = collision;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Cook"))
-        {
-            collision.gameObject.GetComponent<CookScript>().UnFreeze();
         }
     }
 }
