@@ -8,8 +8,12 @@ using UnityEngine.UI;
 public class grapherScript : MonoBehaviour
 {
     //public GameObject graph;
-   // public GameObject preLine;
-     float rndA;
+    // public GameObject preLine;
+
+    public Slider sliderA;
+    public Slider sliderB;
+    public Slider sliderC;
+    float rndA;
      float rndB;
      float rndC;
     float rndAUSER;
@@ -139,7 +143,11 @@ public class grapherScript : MonoBehaviour
                             // y = Mathf.Clamp(y, yMin, yMax);
             lineRenderer2.SetPosition(i, new Vector3(x / 100.0f, y / 100.0f, 0));
         }
-
+        if(CalculateAverage()<10f)
+        {
+            check = false;
+            shrederUI.SetActive(false);
+        }
     }
     void DestroyUI()
     {
@@ -150,6 +158,18 @@ public class grapherScript : MonoBehaviour
 
         tube.GetComponent<SpriteRenderer>().color = Color.white;
         boiler.enabled = true;
+    }
+
+    float CalculateAverage()
+    {
+        int k = 0;
+        float sm = 0;
+        for (int i = 0; i <= 10;i++)
+        {
+            sm += (float)Math.Pow((lineRenderer.GetPosition(i) - lineRenderer2.GetPosition(i)).magnitude,2);
+            k += 1;
+        }
+        return sm / (float)k;
     }
     bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
     {
@@ -168,7 +188,7 @@ public class grapherScript : MonoBehaviour
     }
     public float fUSER(float x)
     {
-        return (x * x * rndAUSER + x * rndBUSER + rndCUSER);
+        return (x * x * sliderA.value + x * sliderB.value + sliderC.value);
     }
     void Update()
     {
