@@ -19,6 +19,7 @@ public class shrederSctipt : MonoBehaviour
 
     void Check()
     {
+        Debug.Log("Checking");
         int k = 0;
         foreach (Transform lol in gameObject.GetComponentsInChildren<Transform>())
         {
@@ -30,12 +31,13 @@ public class shrederSctipt : MonoBehaviour
 
         if (k == 0)
         {
+            check = false;
+            AmIFilled = true;
             shrederUI.SetActive(false);
            // tube.GetComponent<SpriteRenderer>().color = Color.red;
             Invoke(nameof(turnTube), 1f);
            collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            check = false;
-            AmIFilled = true;
+            
             AmIFULLIMAGE.color = Color.red;
         }
     }
@@ -111,7 +113,8 @@ public class shrederSctipt : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cook"))
         {
-            collision.gameObject.GetComponent<CookScript>().UnFreeze();
+            //collision.gameObject.GetComponent<CookScript>().UnFreeze();
+            interact = false;
             collision = null;
         }
     }
