@@ -9,7 +9,7 @@ public class grapherScript : MonoBehaviour
 {
     //public GameObject graph;
     // public GameObject preLine;
-
+    public Image shower;
     public Slider sliderA;
     public Slider sliderB;
     public Slider sliderC;
@@ -133,7 +133,7 @@ public class grapherScript : MonoBehaviour
 
 
         //Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
-
+        
         lineRenderer2.positionCount = resolution2 + 1; // +1 для завершения линии
 
         for (int i = 0; i <= resolution2; i++)
@@ -146,7 +146,8 @@ public class grapherScript : MonoBehaviour
         if(CalculateAverage()<10f)
         {
             check = false;
-            shrederUI.SetActive(false);
+            Invoke(nameof(DestroyUI), 1f);
+            shower.color = Color.green;
         }
     }
     void DestroyUI()
