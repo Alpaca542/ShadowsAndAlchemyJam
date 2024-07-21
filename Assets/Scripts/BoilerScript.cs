@@ -37,8 +37,8 @@ public class BoilerScript : MonoBehaviour
     //public MerryGoRound boiler;
     // bool check = false;
 
-    int blueNum = 0;
-    int RedNum =0;
+    bool blueNum = false;
+    bool RedNum =false;
 
     void Check()
     {
@@ -107,20 +107,20 @@ public class BoilerScript : MonoBehaviour
                         {
                             if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
                             {
-                                blueNum += 1;
+                                blueNum = true;
                                 requirerLL.gameObject.GetComponent<Image>().color = Color.blue;
                                 collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
 
                             }
                             else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
                             {
-                                RedNum += 1;
+                                RedNum = true;
                                 requireL.gameObject.GetComponent<Image>().color = Color.red;
                                 collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                             }
                         }
 
-                        if (blueNum + RedNum == 2)
+                        if (blueNum&&RedNum)
                         {
                             shrederUI.SetActive(true);
                             check = true;
