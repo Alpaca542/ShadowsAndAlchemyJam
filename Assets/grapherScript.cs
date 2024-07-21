@@ -9,6 +9,7 @@ public class grapherScript : MonoBehaviour
 {
     //public GameObject graph;
     // public GameObject preLine;
+    bool AmIFilled;
     public Image shower;
     public Slider sliderA;
     public Slider sliderB;
@@ -96,8 +97,8 @@ public class grapherScript : MonoBehaviour
     public BoilerScript boiler;
     // bool check = false;
 
-    int blueNum = 0;
-
+    bool blueNum = false;
+    bool redNum = false;
     private void Winner()
     {
         if (clickrate >= 5f)
@@ -145,14 +146,22 @@ public class grapherScript : MonoBehaviour
         }
         if(CalculateAverage()<10f)
         {
+            
             check = false;
             Invoke(nameof(DestroyUI), 1f);
+            indicator.gameObject.GetComponent<Image>().color = Color.red;
             shower.color = Color.green;
+            blueNum = false;
+            redNum = false;
+            requirerLL.GetComponent<Image>().color = Color.white;
+            requireL.GetComponent<Image>().color = Color.white;
+            AmIFilled = true;
         }
     }
     void DestroyUI()
     {
         shrederUI.SetActive(false);
+        collision.gameObject.GetComponent<CookScript>().UnFreeze();
     }
     void turnTube()
     {
@@ -198,7 +207,7 @@ public class grapherScript : MonoBehaviour
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
-            if (interact && checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+            if (interact && ((checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")||((checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue"))))
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -206,20 +215,32 @@ public class grapherScript : MonoBehaviour
                     //collision.gameObject.GetComponent<CookScript>().Freeze();
                     if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
                     {
-                        if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+                        if (!AmIFilled)
                         {
-                            blueNum += 1;
-                            collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                            requirerLL.GetComponent<Image>().color = Color.green;
 
+
+                            if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+                            {
+                                blueNum = true;
+                                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                                requirerLL.GetComponent<Image>().color = Color.green;
+
+                            }
+                            if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
+                            {
+                                redNum = true;
+                                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                                requireL.GetComponent<Image>().color = Color.cyan;
+
+                            }
                         }
                     }
-                    if ((blueNum == 1))
+                    if ((blueNum&&redNum))
                     {
                         rndA = UnityEngine.Random.Range(10, 100) / 100.0f;
                         rndB = UnityEngine.Random.Range(-6, 6);
                         rndC = UnityEngine.Random.Range(-100, -10);
-
+                        collision.gameObject.GetComponent<CookScript>().Freeze();
                         check = true;
                         lineRenderer.positionCount = resolution + 1; // +1 для завершения линии
 
@@ -235,6 +256,13 @@ public class grapherScript : MonoBehaviour
 
 
                 }
+
+            }
+            if (AmIFilled && (Input.GetKeyDown(KeyCode.Space)))
+            {
+                cook.GetItem("Graphed");
+                AmIFilled = false;
+                indicator.GetComponent<Image>().color = Color.white;
 
             }
         }

@@ -31,7 +31,7 @@ public class shrederSctipt : MonoBehaviour
 
         if (k == 0)
         {
-            check = false;
+            
             AmIFilled = true;
             shrederUI.SetActive(false);
            // tube.GetComponent<SpriteRenderer>().color = Color.red;
@@ -39,6 +39,7 @@ public class shrederSctipt : MonoBehaviour
            collision.gameObject.GetComponent<CookScript>().UnFreeze();
             
             AmIFULLIMAGE.color = Color.red;
+            check = false;
         }
     }
 
