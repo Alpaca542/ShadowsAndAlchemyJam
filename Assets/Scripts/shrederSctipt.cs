@@ -17,7 +17,7 @@ public class shrederSctipt : MonoBehaviour
     public GameObject Impure;
     bool check = false;
 
-    void Check()
+    public void Check()
     {
         Debug.Log("Checking");
         int k = 0;

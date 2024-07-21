@@ -11,6 +11,7 @@ public class KillMeScript : MonoBehaviour
     }
     public void Die()
     {
+        transform.parent.transform.parent.gameObject.GetComponent<shrederSctipt>().Check();
         Destroy(gameObject);
     }
     // Update is called once per frame
