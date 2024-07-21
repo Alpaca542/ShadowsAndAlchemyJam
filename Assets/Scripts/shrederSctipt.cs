@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class shrederSctipt : MonoBehaviour
 {
+    public Image AmIFULLIMAGE;
+    public bool AmIFilled = false;
     public GameObject shrederUI;
     public GameObject[] spawnPoints;
     bool interact = false;
-    public GameObject tube;
     Collision2D collision;
-    public BoilerScript boiler;
+   // public BoilerScript boiler;
     public GameObject redMatter;
     public GameObject Impure;
     bool check = false;
@@ -29,17 +31,19 @@ public class shrederSctipt : MonoBehaviour
         if (k == 0)
         {
             shrederUI.SetActive(false);
-            tube.GetComponent<SpriteRenderer>().color = Color.red;
+           // tube.GetComponent<SpriteRenderer>().color = Color.red;
             Invoke(nameof(turnTube), 1f);
-            collision.gameObject.GetComponent<CookScript>().UnFreeze();
+           collision.gameObject.GetComponent<CookScript>().UnFreeze();
             check = false;
+            AmIFilled = true;
+            AmIFULLIMAGE.color = Color.red;
         }
     }
 
     void turnTube()
     {
-        tube.GetComponent<SpriteRenderer>().color = Color.white;
-        boiler.enabled = true;
+        //tube.GetComponent<SpriteRenderer>().color = Color.white;
+       // boiler.enabled = true;
     }
 
     void Update()
@@ -51,13 +55,26 @@ public class shrederSctipt : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    shrederUI.SetActive(true);
-                    cook.Freeze();
-                    ClearMePlease();
-                    cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    interact = false;
-                    check = true;
+                    if (!AmIFilled)
+                    {
+                        shrederUI.SetActive(true);
+                        cook.Freeze();
+                        ClearMePlease();
+                        cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                        interact = false;
+                        check = true;
+                        
+                    }
+
                 }
+                
+
+            }
+            if (AmIFilled&& (Input.GetKeyDown(KeyCode.Space)))
+            {
+                cook.GetItem("pureRed");
+                AmIFilled = false;
+                AmIFULLIMAGE.color = Color.white;
 
             }
             if (check) { Check(); }
