@@ -15,7 +15,7 @@ public class shrederSctipt : MonoBehaviour
     public GameObject redMatter;
     public GameObject Impure;
     bool check = false;
-
+    bool active = false;
     public void Check()
     {
         Debug.Log("Checking");
@@ -35,7 +35,7 @@ public class shrederSctipt : MonoBehaviour
             shrederUI.SetActive(false);
             // tube.GetComponent<SpriteRenderer>().color = Color.red;
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
-
+            active = false;
             AmIFULLIMAGE.color = new Color32(255, 0, 0, 255);
             check = false;
         }
@@ -60,7 +60,7 @@ public class shrederSctipt : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
+        if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red"&&!active)
         {
             if (!AmIFilled)
             {
@@ -69,6 +69,7 @@ public class shrederSctipt : MonoBehaviour
                 ClearMePlease();
                 cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                 check = true;
+                active = true;
             }
         }
     }
