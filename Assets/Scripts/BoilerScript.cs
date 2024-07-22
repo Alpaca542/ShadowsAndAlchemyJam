@@ -83,7 +83,7 @@ public class BoilerScript : MonoBehaviour
         Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
-        if (Mathf.Abs((((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100))) / 3) <= 10)
+        if ((Mathf.Abs((int)(requirer.value * 100 - blue1 * 100))<=10.0f)&& (Mathf.Abs(((int)(requirer1.value * 100 - blue2 * 100))) <= 10.0f)&& (Mathf.Abs(((int)(requirer2.value * 100 - red * 100))) <= 10.0f))
         {
             Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
 
