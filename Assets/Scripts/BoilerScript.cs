@@ -99,9 +99,7 @@ public class BoilerScript : MonoBehaviour
 
 
             Indicator.color = Color.green;
-            requirer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            requirer1.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
-            requirer2.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.green;
+           
 
             // check = false;
             Invoke(nameof(DestroyUI), 2f);
@@ -132,19 +130,21 @@ public class BoilerScript : MonoBehaviour
 
             if (AmIFilled && (Input.GetKeyDown(KeyCode.E)))
             {
-                cook.GetItem("redANDblue");
+                
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
+                cook.GetItem("redANDblue");
+                Debug.Log("AfterGive");
 
             }
         }
         if (check && (collision != null))
         {
-            
+            Check();
         }
         if(collision!=null)
         {
-            Check();
+           // Check();
             rot1.Rotate(0, 0, Mathf.Abs(requirer.value * 100 - blue1 * 100 * Time.deltaTime) / 100f);
             rot2.Rotate(0, 0, Mathf.Abs(requirer1.value * 100 - blue2 * 100 * Time.deltaTime) / 100f);
             rot3.Rotate(0, 0, Mathf.Abs(requirer2.value * 100 - red * 100 * Time.deltaTime) / 100f);
