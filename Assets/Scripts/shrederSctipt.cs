@@ -36,7 +36,7 @@ public class shrederSctipt : MonoBehaviour
             // tube.GetComponent<SpriteRenderer>().color = Color.red;
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
 
-            AmIFULLIMAGE.color = Color.red;
+            AmIFULLIMAGE.color = new Color32(255, 0, 0, 255);
             check = false;
         }
     }
@@ -51,7 +51,7 @@ public class shrederSctipt : MonoBehaviour
             {
                 cook.GetItem("pureRed");
                 AmIFilled = false;
-                AmIFULLIMAGE.color = Color.white;
+                AmIFULLIMAGE.color = new Color32(255, 255, 255, 150);
             }
             if (check) { Check(); }
         }

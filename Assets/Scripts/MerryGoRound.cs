@@ -89,8 +89,8 @@ public class MerryGoRound : MonoBehaviour
             // check = false;
             //Invoke(nameof(DestroyUI), 2f);
             //boiler.enabled = true;
-            requirerLL.gameObject.GetComponent<Image>().color = Color.white;
-            requireL.gameObject.GetComponent<Image>().color = Color.white;
+            requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             indicator.GetComponent<Image>().color = Color.red;
             shrederUI.SetActive(false);
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
@@ -145,8 +145,8 @@ public class MerryGoRound : MonoBehaviour
     }
     void DestroyUI()
     {
-        requirerLL.gameObject.GetComponent<Image>().color = Color.white;
-        requireL.gameObject.GetComponent<Image>().color = Color.white;
+        requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
         indicator.GetComponent<Image>().color = Color.red;
         shrederUI.SetActive(false);
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
@@ -199,14 +199,14 @@ public class MerryGoRound : MonoBehaviour
                     {
                         blueNum = true;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requirerLL.GetComponent<Image>().color = Color.green;
+                        requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
                     {
                         RedNum = true;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requireL.GetComponent<Image>().color = Color.blue;
+                        requireL.GetComponent<Image>().color = new Color32(122, 247, 255, 255);
                     }
                 }
                 if (blueNum && RedNum)

@@ -45,14 +45,14 @@ public class BoilerScript : MonoBehaviour
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
                     {
                         blueNum = true;
-                        requirerLL.gameObject.GetComponent<Image>().color = Color.blue;
+                        requirerLL.gameObject.GetComponent<Image>().color = new Color32(0, 0, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
 
                     }
                     else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
                     {
                         RedNum = true;
-                        requireL.gameObject.GetComponent<Image>().color = Color.red;
+                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                 }
@@ -101,8 +101,8 @@ public class BoilerScript : MonoBehaviour
             Invoke(nameof(DestroyUI), 2f);
             AmIFilled = true;
             indicator.GetComponent<Image>().color = Color.red;
-            requirerLL.gameObject.GetComponent<Image>().color = Color.white;
-            requireL.gameObject.GetComponent<Image>().color = Color.white;
+            requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             RedNum = false;
             blueNum = false;
 

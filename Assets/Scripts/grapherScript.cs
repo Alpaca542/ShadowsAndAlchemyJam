@@ -106,8 +106,8 @@ public class grapherScript : MonoBehaviour
             shower.color = Color.green;
             blueNum = false;
             redNum = false;
-            requirerLL.GetComponent<Image>().color = Color.white;
-            requireL.GetComponent<Image>().color = Color.white;
+            requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             AmIFilled = true;
         }
     }
@@ -160,14 +160,14 @@ public class grapherScript : MonoBehaviour
                     {
                         blueNum = true;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requirerLL.GetComponent<Image>().color = Color.green;
+                        requirerLL.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
 
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
                     {
                         redNum = true;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requireL.GetComponent<Image>().color = Color.cyan;
+                        requirerLL.GetComponent<Image>().color = new Color32(0, 151, 11, 255);
 
                     }
                 }
