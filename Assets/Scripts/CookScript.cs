@@ -89,11 +89,11 @@ public class CookScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L) || Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetKeyDown(KeyCode.H) || Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             moveActiveSlot(true);
         }
-        else if (Input.GetKeyDown(KeyCode.O) || Input.GetAxis("Mouse ScrollWheel") > 0)
+        else if (Input.GetKeyDown(KeyCode.K) || Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             moveActiveSlot(false);
         }
