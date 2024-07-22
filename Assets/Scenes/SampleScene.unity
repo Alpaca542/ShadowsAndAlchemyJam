@@ -2134,6 +2134,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4426212508717550744, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8500119680873212279, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
       propertyPath: m_Name
       value: Cook
@@ -5179,10 +5183,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 53804701168928585, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3484027478089742133, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3484027478089742133, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5876894241581518663, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.14
@@ -5361,9 +5373,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6749053225763293192, guid: aa1f45bd531ab47b2ac1777fea958f72, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7393663551882305727, guid: aa1f45bd531ab47b2ac1777fea958f72, type: 3}
       propertyPath: m_Name
       value: shreder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8802093747422701983, guid: aa1f45bd531ab47b2ac1777fea958f72, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5382,6 +5402,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6227137136782570610, guid: 9327bd070a788469ba3ce46e83a9ce2e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7374329414475288552, guid: 9327bd070a788469ba3ce46e83a9ce2e, type: 3}
       propertyPath: m_Name
       value: MerryGoRound
@@ -5390,6 +5414,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8078346668227664129, guid: 9327bd070a788469ba3ce46e83a9ce2e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9187855000060367208, guid: 9327bd070a788469ba3ce46e83a9ce2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9
@@ -5443,6 +5471,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1715624003361736257, guid: ef237c277572d48ac886871460db6992, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2033908410544419286, guid: ef237c277572d48ac886871460db6992, type: 3}
       propertyPath: m_Name
       value: Analyzer
@@ -5487,6 +5519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3851944645864463131, guid: ef237c277572d48ac886871460db6992, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5500,6 +5536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 729485886108149361, guid: 9d2e9c488454afb4c851f875d554a538, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1263102407387566813, guid: 9d2e9c488454afb4c851f875d554a538, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.16
@@ -5543,6 +5583,18 @@ PrefabInstance:
     - target: {fileID: 2009353847078173147, guid: 9d2e9c488454afb4c851f875d554a538, type: 3}
       propertyPath: m_Name
       value: Grapher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039951902232297719, guid: 9d2e9c488454afb4c851f875d554a538, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138950262912201434, guid: 9d2e9c488454afb4c851f875d554a538, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6250098096806396168, guid: 9d2e9c488454afb4c851f875d554a538, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
