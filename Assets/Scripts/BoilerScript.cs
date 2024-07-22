@@ -19,7 +19,11 @@ public class BoilerScript : MonoBehaviour
     public Text loss1;
     public Text loss2;
     public Text totalLoss;
-
+    public Transform rot1;
+    public Transform rot2;
+    public Transform rot3;
+    public Transform rot4;
+    public Transform rot5;
     float blue1;
     float blue2;
     float red;
@@ -78,9 +82,11 @@ public class BoilerScript : MonoBehaviour
         loss1.text = "loss: " + Convert.ToString((int)(requirer1.value * 100 - blue2 * 100));
         loss2.text = "loss: " + Convert.ToString((int)(requirer2.value * 100 - red * 100));
 
+        
         totalLoss.text = "Average loss: " + Convert.ToString((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100))) / 3);
         collision.gameObject.GetComponent<CookScript>().Freeze();
-        Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
+
+        //Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
         if ((Mathf.Abs((int)(requirer.value * 100 - blue1 * 100))<=10.0f)&& (Mathf.Abs(((int)(requirer1.value * 100 - blue2 * 100))) <= 10.0f)&& (Mathf.Abs(((int)(requirer2.value * 100 - red * 100))) <= 10.0f))
@@ -134,7 +140,16 @@ public class BoilerScript : MonoBehaviour
         }
         if (check && (collision != null))
         {
+            
+        }
+        if(collision!=null)
+        {
             Check();
+            rot1.Rotate(0, 0, Mathf.Abs(requirer.value * 100 - blue1 * 100 * Time.deltaTime) / 100f);
+            rot2.Rotate(0, 0, Mathf.Abs(requirer1.value * 100 - blue2 * 100 * Time.deltaTime) / 100f);
+            rot3.Rotate(0, 0, Mathf.Abs(requirer2.value * 100 - red * 100 * Time.deltaTime) / 100f);
+            rot4.Rotate(0, 0, Mathf.Abs(requirer.value * 100 - blue1 * 100 * Time.deltaTime) / 40f);
+            rot5.Rotate(0, 0, Mathf.Abs(requirer2.value * 100 - blue1 * 100 * Time.deltaTime) / 70f);
         }
     }
 }
