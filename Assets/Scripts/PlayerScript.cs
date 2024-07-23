@@ -24,26 +24,6 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void AnimateMe()
-    {
-        if (rb.velocity.magnitude >= 0.2f)
-        {
-            anim.SetBool("Walking", true);
-        }
-        else
-        {
-            anim.SetBool("Walking", false);
-        }
-    }
-
-    private void Update()
-    {
-        if (selected)
-        {
-            AnimateMe();
-        }
-    }
-
     public void Sit(Transform seat)
     {
         sit = true;
@@ -71,7 +51,6 @@ public class PlayerScript : MonoBehaviour
                 float dirY = Input.GetAxis("Vertical");
 
                 rb.velocity = new Vector2(dirX, dirY) * speed;
-                //LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
 
         }
