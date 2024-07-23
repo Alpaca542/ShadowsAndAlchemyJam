@@ -12,6 +12,9 @@ public class MixerScript : MonoBehaviour
     public GameObject indicator;
     public GameObject requirerLL;
     public GameObject requireL;
+    public GameObject requirerLLL;
+    public GameObject requirerLLLL;
+    public GameObject requirerLLLLL;
     public Image Indicator;
     float blue1;
     float blue2;
@@ -54,19 +57,19 @@ public class MixerScript : MonoBehaviour
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
                     {
                         greenANDblue = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requirerLLL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed")
                     {
                         Analyzed = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requirerLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
                     {
                         Graphed = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requirerLLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                 }
