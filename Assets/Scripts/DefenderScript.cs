@@ -2,49 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Microlight.MicroBar;
 
 public class DefenderScript1 : MonoBehaviour
 {
     private bool Died;
-    private bool healing;
-    private float AllTheDamage;
     private float health;
-    private Slider healthBar;
+    private MicroBar healthBar;
     private Gradient healthGradient;
-    private Image fill;
+
     public void TakeDamage(float dmg)
     {
         if (!Died)
         {
-            AllTheDamage += dmg;
-            health -= dmg;
-            health = Mathf.Clamp(health, 0, 100);
             if (health <= 0)
             {
                 Died = true;
                 Invoke(nameof(Die), 1f);
             }
-            if (!healing)
+            else
             {
-                StartCoroutine(CrtnTakeDamage());
+                health -= dmg;
+                if (health - dmg > health)
+                {
+                    healthBar.UpdateBar(health, UpdateAnim.Heal);
+                }
+                else
+                {
+                    healthBar.UpdateBar(health, UpdateAnim.Damage);
+                }
             }
         }
-
     }
+
     private void Die()
     {
-
+        Destroy(gameObject);
     }
-    public IEnumerator CrtnTakeDamage()
+
+    private void Start()
     {
-        healing = true;
-        while (AllTheDamage >= 0.4f)
-        {
-            healthBar.value -= 0.2f;
-            AllTheDamage -= 0.2f;
-            fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-            yield return new WaitForSeconds(0.01f);
-        }
-        healing = false;
+        healthBar.Initialize(health);
     }
 }

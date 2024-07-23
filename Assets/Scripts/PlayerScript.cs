@@ -15,25 +15,13 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject mySeat;
 
-    [Header("Defender")]
-    public GameObject attackHitbox;
-
     [Header("Cook")]
     public LayerMask brewerLayer;
 
     void Start()
     {
-        if (Defender)
-        {
-            attackHitbox.GetComponent<AttackHitboxScript>().damage = damage;
-        }
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Attack()
-    {
-        attackHitbox.SetActive(true);
     }
 
     private void AnimateMe()
@@ -52,18 +40,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (selected)
         {
-            if (Defender)
-            {
-                if (Input.GetMouseButton(0) && !attackHitbox.activeSelf)
-                    Attack();
-            }
-            else
-            {
-                if (LookAround())
-                {
-                    //LookAround().machine.activate
-                }
-            }
             AnimateMe();
         }
     }
@@ -103,10 +79,5 @@ public class PlayerScript : MonoBehaviour
         {
             transform.position = mySeat.transform.position;
         }
-    }
-
-    bool LookAround()
-    {
-        return Physics2D.OverlapCircle(transform.position, 2f, brewerLayer);
     }
 }
