@@ -110,6 +110,11 @@ public class Brewer : MonoBehaviour
                         GetComponent<shrederSctipt>().collision = connectedPlayer;
                         GetComponent<shrederSctipt>().GetStarted();
                     }
+                    if (myType == 7)
+                    {
+                        GetComponent<MixerScript>().collision = connectedPlayer;
+                        GetComponent<MixerScript>().GetStarted();
+                    }
                 }
                 else if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && active) && activatable)// deactivate
                 {

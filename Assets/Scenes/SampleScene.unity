@@ -347,6 +347,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 483372753977605701, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+      propertyPath: myType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 483372753977605701, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+      propertyPath: StickToTheParent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 852183091971226001, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
       propertyPath: m_Text
       value: Mixer
@@ -539,7 +547,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1474063381426517673, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
       insertIndex: -1
       addedObject: {fileID: 179420528}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7824909086353868146, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 180928234}
   m_SourcePrefab: {fileID: 100100000, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
 --- !u!224 &180928231 stripped
 RectTransform:
@@ -551,6 +562,42 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1474063381426517673, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
   m_PrefabInstance: {fileID: 180928230}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &180928233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7824909086353868146, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+  m_PrefabInstance: {fileID: 180928230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &180928234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180928233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71331fe2bc37f91449ecd20ecc00ae36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmIFilled: 0
+  indicator: {fileID: 0}
+  requirerLL: {fileID: 0}
+  requireL: {fileID: 0}
+  Indicator: {fileID: 0}
+  requirer: {fileID: 0}
+  requirer1: {fileID: 0}
+  requirer2: {fileID: 0}
+  loss: {fileID: 0}
+  loss1: {fileID: 0}
+  loss2: {fileID: 0}
+  totalLoss: {fileID: 0}
+  rot1: {fileID: 0}
+  rot2: {fileID: 0}
+  rot3: {fileID: 0}
+  rot4: {fileID: 0}
+  rot5: {fileID: 0}
+  shrederUI: {fileID: 0}
+  collision: {fileID: 0}
 --- !u!1 &193343487
 GameObject:
   m_ObjectHideFlags: 0

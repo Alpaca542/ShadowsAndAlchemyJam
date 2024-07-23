@@ -35,8 +35,11 @@ public class MixerScript : MonoBehaviour
     public GameObject shrederUI;
     public GameObject collision;
 
-    bool blueNum = false;
-    bool RedNum = false;
+    bool redANDblue = false;
+    bool pureRed = false;
+    bool greenANDblue = false;
+    bool Analyzed = false;
+    bool Graphed = false;
 
     public void GetStarted()
     {
@@ -47,22 +50,40 @@ public class MixerScript : MonoBehaviour
             {
                 if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
                 {
-                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
                     {
-                        blueNum = true;
+                        redANDblue = true;
                         requirerLL.gameObject.GetComponent<Image>().color = new Color32(0, 0, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
 
                     }
-                    else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
                     {
-                        RedNum = true;
+                        pureRed = true;
+                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    }
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
+                    {
+                        greenANDblue = true;
+                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    }
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed")
+                    {
+                        Analyzed = true;
+                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    }
+                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
+                    {
+                        Graphed = true;
                         requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                 }
 
-                if (blueNum && RedNum)
+                if (redANDblue&&pureRed&&greenANDblue&&Analyzed&&Graphed)
                 {
                     shrederUI.SetActive(true);
                     check = true;
@@ -108,8 +129,11 @@ public class MixerScript : MonoBehaviour
             indicator.GetComponent<Image>().color = Color.red;
             requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
-            RedNum = false;
-            blueNum = false;
+            pureRed = false;
+            Analyzed = false;
+            Graphed = false;
+            greenANDblue = false;
+            redANDblue = false;
 
         }
     }
