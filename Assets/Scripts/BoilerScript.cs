@@ -56,7 +56,7 @@ public class BoilerScript : MonoBehaviour
                     else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
                     {
                         RedNum = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requireL.gameObject.GetComponent<Image>().color = Color.white;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                 }

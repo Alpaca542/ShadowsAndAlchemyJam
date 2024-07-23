@@ -59,7 +59,7 @@ public class analyzercript : MonoBehaviour
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
                     {
                         blueNum = true;
-                        requireLL.gameObject.GetComponent<Image>().color = new Color32(0, 0, 255, 255);
+                        requireLL.gameObject.GetComponent<Image>().color = Color.white;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
 
                     }
