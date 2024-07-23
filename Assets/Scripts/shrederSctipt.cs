@@ -38,6 +38,7 @@ public class shrederSctipt : MonoBehaviour
             active = false;
             AmIFULLIMAGE.color = new Color32(255, 0, 0, 255);
             check = false;
+            ClearAllPoints();
         }
     }
 
@@ -70,11 +71,23 @@ public class shrederSctipt : MonoBehaviour
                 cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                 check = true;
                 active = true;
+                
             }
         }
     }
+    void ClearAllPoints()
+    {
+        foreach (var tr in shrederUI.transform.GetComponentsInChildren<Transform>())
+        {
+            if(tr!= shrederUI.transform.GetComponentsInChildren<Transform>()[0])
+            if (tr.gameObject.CompareTag("RedBTN") || tr.gameObject.CompareTag("RP"))
+            {
+                Destroy(tr.gameObject);
+            }
 
-    public void ClearMePlease()
+        }
+    }
+            public void ClearMePlease()
     {
         foreach (GameObject go in spawnPoints)
         {

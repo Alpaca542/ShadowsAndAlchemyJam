@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7743038344558489043}
   m_Layer: 0
   m_Name: RedMat
-  m_TagString: Untagged
+  m_TagString: RP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
