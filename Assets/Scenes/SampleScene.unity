@@ -553,6 +553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mixer
       objectReference: {fileID: 0}
+    - target: {fileID: 7824909086353868146, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7868821491368419299, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6915,9 +6919,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: 4d5ba8c8c540343679415d72b5b2ec28, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: rocket
+      value: 
+      objectReference: {fileID: 2733071860470294366, guid: c35f733c0ecfd4894b3e0104ada8b956, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 278273322}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: activeWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8466076830414158507, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.61

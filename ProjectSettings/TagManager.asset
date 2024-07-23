@@ -11,6 +11,8 @@ TagManager:
   - Car
   - RedBTN
   - invis
+  - RP
+  - bullet
   layers:
   - Default
   - TransparentFX

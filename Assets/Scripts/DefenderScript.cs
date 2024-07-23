@@ -14,11 +14,15 @@ public class DefenderScript1 : MonoBehaviour
 
     public Sprite[] weaponSprites;
     public Sprite[] weaponNames;
-    private int activeWeapon;
+    public int activeWeapon;
     private Animator anim;
     private Rigidbody2D rb;
 
-    private GameObject myGun;
+    public GameObject myGun;
+    public GameObject bullet;
+    public GameObject rocket;
+
+    private bool CanIShoot = true;
 
     public Image WeaponShowcase;
 
@@ -26,25 +30,81 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (GetComponent<PlayerScript>().selected)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && CanIShoot)
             {
-                if (activeWeapon == 1)
-                {
-                    Shoot();
-                }
+                CanIShoot = false;
+                Shoot(activeWeapon);
             }
+            LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             AnimateMe();
         }
     }
 
-    public void Shoot()
+    void LookAt(Vector3 target)
     {
-
+        if (transform.position != target)
+        {
+            Vector3 diff = target - transform.position;
+            diff.Normalize();
+            float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+        }
     }
 
-    private void SummonBullet()
+    public void Shoot(int type)
     {
+        if (type == 1)
+        {
+            InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
+            Invoke(nameof(stopshooting), 1f);
+        }
+        else if (type == 2)
+        {
+            int angle = 50;
+            for (int i = 0; i < 11; i++)
+            {
+                GameObject newBullet = SummonBullet();
+                newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                newBullet.GetComponent<bulletScript>().damage = 2f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                angle -= 10;
+            }
+        }
+        else if (type == 3)
+        {
+            GameObject newBullet = SummonRocket();
+            newBullet.GetComponent<bulletScript>().damage = 5f;
+            newBullet.GetComponent<bulletScript>().fromEnemy = false;
+        }
 
+        Invoke(nameof(makemeshoot), 3f);
+    }
+
+    private void SummonBulletWithSpread()
+    {
+        GameObject newBullet = Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
+        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().fromEnemy = false;
+    }
+
+    private GameObject SummonBullet()
+    {
+        return Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+    }
+
+    private GameObject SummonRocket()
+    {
+        return Instantiate(rocket, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+    }
+
+    void stopshooting()
+    {
+        CancelInvoke(nameof(SummonBulletWithSpread));
+    }
+
+    public void makemeshoot()
+    {
+        CanIShoot = true;
     }
 
     private void AnimateMe()
@@ -90,6 +150,7 @@ public class DefenderScript1 : MonoBehaviour
 
     private void Start()
     {
+        CanIShoot = true;
         healthBar.Initialize(health);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
