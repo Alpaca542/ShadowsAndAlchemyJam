@@ -18,6 +18,8 @@ public class DefenderScript1 : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
 
+    private GameObject myGun;
+
     public Image WeaponShowcase;
 
     private void Update()
@@ -31,12 +33,16 @@ public class DefenderScript1 : MonoBehaviour
                     Shoot();
                 }
             }
-
             AnimateMe();
         }
     }
 
     public void Shoot()
+    {
+
+    }
+
+    private void SummonBullet()
     {
 
     }
