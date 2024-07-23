@@ -13,18 +13,6 @@ public class MixerScript : MonoBehaviour
     public GameObject requirerLL;
     public GameObject requireL;
     public Image Indicator;
-    public Slider requirer;
-    public Slider requirer1;
-    public Slider requirer2;
-    public Text loss;
-    public Text loss1;
-    public Text loss2;
-    public Text totalLoss;
-    public Transform rot1;
-    public Transform rot2;
-    public Transform rot3;
-    public Transform rot4;
-    public Transform rot5;
     float blue1;
     float blue2;
     float red;
@@ -44,7 +32,7 @@ public class MixerScript : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue" && !blueNum) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed" && !RedNum)))
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed" && !pureRed) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue" && !redANDblue) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue" && !greenANDblue) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed" && !Analyzed) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed" && !Graphed)))
         {
             if (!AmIFilled)
             {
@@ -100,21 +88,18 @@ public class MixerScript : MonoBehaviour
 
     void Check()
     {
-        loss.text = "loss: " + Convert.ToString((int)(requirer.value * 100 - blue1 * 100));
-        loss1.text = "loss: " + Convert.ToString((int)(requirer1.value * 100 - blue2 * 100));
-        loss2.text = "loss: " + Convert.ToString((int)(requirer2.value * 100 - red * 100));
+      
 
 
-        totalLoss.text = "Average loss: " + Convert.ToString((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100))) / 3);
+       
         collision.gameObject.GetComponent<CookScript>().Freeze();
 
         //Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
-        if ((Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) <= 10.0f) && (Mathf.Abs(((int)(requirer1.value * 100 - blue2 * 100))) <= 10.0f) && (Mathf.Abs(((int)(requirer2.value * 100 - red * 100))) <= 10.0f))
+        if (false)
         {
-            Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
-
+           
             check = false;
 
             //shrederUI.SetActive(false);
@@ -170,11 +155,7 @@ public class MixerScript : MonoBehaviour
         if (collision != null)
         {
             // Check();
-            rot1.Rotate(0, 0, Mathf.Abs(requirer.value * 100 - blue1 * 100 * Time.deltaTime) / 100f);
-            rot2.Rotate(0, 0, Mathf.Abs(requirer1.value * 100 - blue2 * 100 * Time.deltaTime) / 100f);
-            rot3.Rotate(0, 0, Mathf.Abs(requirer2.value * 100 - red * 100 * Time.deltaTime) / 100f);
-            rot4.Rotate(0, 0, Mathf.Abs(requirer.value * 100 - blue1 * 100 * Time.deltaTime) / 40f);
-            rot5.Rotate(0, 0, Mathf.Abs(requirer2.value * 100 - blue1 * 100 * Time.deltaTime) / 70f);
+           
         }
     }
 }
