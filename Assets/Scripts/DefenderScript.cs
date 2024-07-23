@@ -60,14 +60,14 @@ public class DefenderScript1 : MonoBehaviour
         }
         else if (type == 2)
         {
-            int angle = 50;
-            for (int i = 0; i < 11; i++)
+            int angle = 30;
+            for (int i = 0; i < 10; i++)
             {
                 GameObject newBullet = SummonBullet();
                 newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
                 newBullet.GetComponent<bulletScript>().damage = 2f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
-                angle -= 10;
+                angle -= 6;
             }
         }
         else if (type == 3)
