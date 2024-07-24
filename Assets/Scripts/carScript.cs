@@ -15,6 +15,9 @@ public class carScript : MonoBehaviour
     private Rigidbody2D rb;
     public bool Moveable = false;
 
+
+    public bool CookInMe;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -42,6 +45,8 @@ public class carScript : MonoBehaviour
             Camera.main.GetComponent<playerFollow>().player = transform;
             animMover.clip = animClips[0];
             animMover.Play();
+            CookInMe = true;
+            other.GetComponent<CookScript>().InCar = true;
         }
     }
 
@@ -52,6 +57,8 @@ public class carScript : MonoBehaviour
             Camera.main.GetComponent<playerFollow>().player = other.transform;
             animMover.clip = animClips[1];
             animMover.Play();
+            CookInMe = false;
+            other.GetComponent<CookScript>().InCar = false;
         }
     }
 
@@ -61,6 +68,7 @@ public class carScript : MonoBehaviour
             Moveable = true;
         animMover.clip = animClips[2];
         animMover.Play();
+        CookInMe = false;
     }
 
     public void Stand(bool shouldBeMoved)
@@ -69,5 +77,6 @@ public class carScript : MonoBehaviour
             Moveable = false;
         animMover.clip = animClips[3];
         animMover.Play();
+        CookInMe = true;
     }
 }

@@ -18,6 +18,9 @@ public class PlayerScript : MonoBehaviour
     [Header("Cook")]
     public LayerMask brewerLayer;
 
+
+    public GameObject car;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -49,9 +52,19 @@ public class PlayerScript : MonoBehaviour
             {
                 float dirX = Input.GetAxis("Horizontal");
                 float dirY = Input.GetAxis("Vertical");
-                
-                
-                    rb.velocity = transform.up * dirY * speed+ transform.right * dirX * speed;
+
+                Vector3 director = transform.up;
+                Vector3 director2 = transform.right;
+                if (gameObject.GetComponent<CookScript>()!=null)
+                {
+                    if (gameObject.GetComponent<CookScript>().InCar)
+                    {
+                        director = car.transform.up;
+                        director2 = car.transform.right;
+                    }
+                }
+                    
+                    rb.velocity = director * dirY * speed+ director2 * dirX * speed;
                
 
             }

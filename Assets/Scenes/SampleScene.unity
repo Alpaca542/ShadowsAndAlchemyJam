@@ -2624,6 +2624,10 @@ PrefabInstance:
       value: Cook
       objectReference: {fileID: 0}
     - target: {fileID: 8704541647986191417, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704541647986191417, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
       propertyPath: m_Interpolate
       value: 2
       objectReference: {fileID: 0}
@@ -2857,6 +2861,11 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &1071889344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5184079157861346808, guid: 0cbea299d0d0b4bd2a38e422b29d92c9, type: 3}
+  m_PrefabInstance: {fileID: 5669185840637309223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128436518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,6 +4019,8 @@ MonoBehaviour:
   defaultSprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   max_slots: 8
   inventoryGrid: {fileID: 1366150975}
+  myCar: {fileID: 1071889344}
+  keepRot: 0
 --- !u!1 &1366150975
 GameObject:
   m_ObjectHideFlags: 0
