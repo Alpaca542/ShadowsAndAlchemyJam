@@ -7360,6 +7360,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4735333715275098793, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5121717412644723288, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
       propertyPath: m_Color.b
       value: 0.29000536
@@ -7376,7 +7380,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mixer (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9088283441337755449, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+    - {fileID: 8259190580390662086, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
