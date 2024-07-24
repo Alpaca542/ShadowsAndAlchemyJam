@@ -181,7 +181,7 @@ public class Enemy : MonoBehaviour
             case 3:
                 return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
             case 4:
-                return Physics2D.OverlapCircle(transform.position, 2f, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
             default:
                 return false;
         }
