@@ -21,7 +21,7 @@ public class MixerScript : MonoBehaviour
     float blue2;
     float red;
 
-    bool check;
+    public bool check;
 
 
     public GameObject shrederUI;
@@ -92,39 +92,23 @@ public class MixerScript : MonoBehaviour
 
     void Check()
     {
-      
-
-
-       
-        collision.gameObject.GetComponent<CookScript>().Freeze();
-
-        //Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
-        Debug.Log("Checking");
-
-        if (false)
-        {
-           
-            check = false;
-
-            //shrederUI.SetActive(false);
-
-
-            Indicator.color = Color.green;
-
-
-            // check = false;
-            Invoke(nameof(DestroyUI), 2f);
-            AmIFilled = true;
-            indicator.GetComponent<Image>().color = Color.red;
-            requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
-            requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
-            pureRed = false;
-            Analyzed = false;
-            Graphed = false;
-            greenANDblue = false;
-            redANDblue = false;
-
-        }
+        
+    }
+    public void FinishGame()
+    {
+        Invoke(nameof(DestroyUI), 2f);
+        AmIFilled = true;
+        indicator.GetComponent<Image>().color = Color.red;
+        requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+        requirerLLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+        requirerLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+        requirerLLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+        pureRed = false;
+        Analyzed = false;
+        Graphed = false;
+        greenANDblue = false;
+        redANDblue = false;
     }
     void DestroyUI()
     {
@@ -147,7 +131,7 @@ public class MixerScript : MonoBehaviour
 
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
-                cook.GetItem("redANDblue");
+                cook.GetItem("whiteMatter");
                 Debug.Log("AfterGive");
 
             }
