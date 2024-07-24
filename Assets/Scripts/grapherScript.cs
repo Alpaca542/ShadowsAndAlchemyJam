@@ -115,6 +115,7 @@ public class grapherScript : MonoBehaviour
     {
         shrederUI.SetActive(false);
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
+        shower.color = Color.white;
     }
 
     float CalculateAverage()
