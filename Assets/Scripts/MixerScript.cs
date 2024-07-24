@@ -32,7 +32,19 @@ public class MixerScript : MonoBehaviour
     bool greenANDblue = false;
     bool Analyzed = false;
     bool Graphed = false;
+    GameObject restarter;
 
+    private void Start()
+    {
+        restarter = shrederUI.gameObject;
+        CookScript cook = GameObject.FindWithTag("Cook").GetComponent<CookScript>();
+        cook.GetItem("redANDblue");
+        cook.GetItem("pureRed");
+        cook.GetItem("greenANDblue");
+        cook.GetItem("Analyzed");
+        cook.GetItem("Graphed");
+
+    }
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
@@ -109,6 +121,7 @@ public class MixerScript : MonoBehaviour
         Graphed = false;
         greenANDblue = false;
         redANDblue = false;
+        
     }
     void DestroyUI()
     {
@@ -131,7 +144,7 @@ public class MixerScript : MonoBehaviour
 
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
-                cook.GetItem("whiteMatter");
+                cook.GetItem("white");
                 Debug.Log("AfterGive");
 
             }

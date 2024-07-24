@@ -58,10 +58,7 @@ public class Brewer : MonoBehaviour
 
     private void Update()
     {
-        if (StickToTheParent)
-        {
-            GetComponent<Rigidbody2D>().velocity = transform.parent.GetComponent<Rigidbody2D>().velocity;
-        }
+        
 
         if (connectedPlayer != null)
         {
@@ -134,6 +131,10 @@ public class Brewer : MonoBehaviour
                     }
                 }
             }
+        }
+        if (StickToTheParent)
+        {
+            GetComponent<Rigidbody2D>().velocity = transform.parent.GetComponent<Rigidbody2D>().velocity;
         }
     }
 }

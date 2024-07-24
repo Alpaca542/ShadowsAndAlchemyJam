@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac238760ac1a54fa65d9496814d809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
 --- !u!114 &180812403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,6 +2638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac238760ac1a54fa65d9496814d809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
 --- !u!114 &569035371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,6 +3014,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708128523}
   m_CullTransparentMesh: 1
+--- !u!114 &736093150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1944310204418767560, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+  m_PrefabInstance: {fileID: 2006269911}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &773811349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5275,6 +5288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac238760ac1a54fa65d9496814d809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1346999334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5388,6 +5402,7 @@ MonoBehaviour:
   - greenANDblue
   - Graphed
   - Analyzed
+  - white
   itemSprites:
   - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   - {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
@@ -5887,6 +5902,11 @@ CanvasRenderer:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1872248586924173277, guid: 214f96cb3413a41eab26b99d904ae658, type: 3}
   m_PrefabInstance: {fileID: 180928230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1533984001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3797775047964455470, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+  m_PrefabInstance: {fileID: 2006269911}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1573189970
 GameObject:
@@ -7356,10 +7376,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2945299962001375024, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: m_TagString
+      value: greenANDblue
+      objectReference: {fileID: 0}
     - target: {fileID: 3414274613418554939, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3773757580343094437, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: m_TagString
+      value: greenANDblue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631982733403604415, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1533984001}
     - target: {fileID: 4735333715275098793, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7376,10 +7408,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.46226418
       objectReference: {fileID: 0}
+    - target: {fileID: 6260928637735361894, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: m_TagString
+      value: greenANDblue
+      objectReference: {fileID: 0}
     - target: {fileID: 6752555989471046536, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
       propertyPath: m_Name
       value: Mixer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7416557995968142794, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: m_TagString
+      value: greenANDblue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661457276886869215, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
+      propertyPath: self
+      value: 
+      objectReference: {fileID: 736093150}
     m_RemovedComponents:
     - {fileID: 9088283441337755449, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
     - {fileID: 8259190580390662086, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
@@ -7469,6 +7513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac238760ac1a54fa65d9496814d809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2021730140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7788,6 +7833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac238760ac1a54fa65d9496814d809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2108782310
 MonoBehaviour:
   m_ObjectHideFlags: 0

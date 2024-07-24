@@ -5,7 +5,11 @@ using UnityEngine.EventSystems;
 
 public class Drager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Vector3 initialPos;
+    private void Start()
+    {
+        initialPos = transform.position;
+    }
     public void DragHandler(BaseEventData data)
     {  
         PointerEventData poinerData = (PointerEventData)data;
