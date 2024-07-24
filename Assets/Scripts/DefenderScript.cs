@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class DefenderScript1 : MonoBehaviour
 {
     private bool Died;
-    private float health;
+    public float health;
     public MicroBar healthBar;
     public Gradient healthGradient;
 
@@ -74,7 +74,7 @@ public class DefenderScript1 : MonoBehaviour
         {
             GameObject newBullet = SummonRocket();
             newBullet.GetComponent<bulletScript>().damage = 5f;
-            newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            newBullet.GetComponent<bulletScript>().fromEnemy = true;
         }
 
         Invoke(nameof(makemeshoot), 3f);
@@ -131,14 +131,7 @@ public class DefenderScript1 : MonoBehaviour
             else
             {
                 health -= dmg;
-                if (health - dmg > health)
-                {
-                    healthBar.UpdateBar(health, UpdateAnim.Heal);
-                }
-                else
-                {
-                    healthBar.UpdateBar(health, UpdateAnim.Damage);
-                }
+                healthBar.UpdateBar(health);
             }
         }
     }

@@ -6,15 +6,12 @@ using UnityEngine;
 public class AttackHitboxScript : MonoBehaviour
 {
     public float damage;
-
+    public bool fromPlayer;
     private void Start()
     {
-        CancelInvoke(nameof(turnOff));
-        Invoke(nameof(turnOff), GetComponent<Animation>().clip.length);
-    }
-
-    void turnOff()
-    {
-        gameObject.SetActive(false);
+        if (transform.parent.tag == "Enemy")
+        {
+            damage = transform.parent.GetComponent<Enemy>().meleeDamage;
+        }
     }
 }

@@ -26,26 +26,33 @@ public class bulletScript : MonoBehaviour
     {
         if (other.tag != "bg" && other.tag != "bullet")
         {
-            if (other.tag == "Defender" && fromEnemy)
+            if (rocket)
             {
-                if (rocket)
+                foreach (Collider2D gmb in Physics2D.OverlapCircleAll(transform.position, 3))
                 {
-                    foreach (Collider2D gmb in Physics2D.OverlapCircleAll(transform.position, 3))
+                    if (gmb.tag == "Defender" && fromEnemy)
                     {
-                        if (gmb.tag == "Defender" && fromEnemy)
-                        {
-                            gmb.GetComponent<DefenderScript1>().TakeDamage(damage);
-                        }
+                        gmb.GetComponent<DefenderScript1>().TakeDamage(damage);
+                    }
+                    if (gmb.tag == "Enemy" && !fromEnemy)
+                    {
+                        gmb.GetComponent<Enemy>().TakeDamage(damage);
                     }
                 }
-
-                else
+            }
+            else
+            {
+                if (other.tag == "Defender" && fromEnemy)
                 {
                     other.GetComponent<DefenderScript1>().TakeDamage(damage);
                 }
+                else if (other.tag == "Enemy" && !fromEnemy)
+                {
+                    other.GetComponent<Enemy>().TakeDamage(damage);
+                }
             }
 
-            if (other.tag != "Defender" || fromEnemy)
+            if (!(other.tag == "Defender" && !fromEnemy) || !(other.tag == "Enemy" && fromEnemy))
             {
                 Instantiate(myDeathParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);

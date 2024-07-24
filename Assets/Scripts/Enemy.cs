@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,16 +8,22 @@ public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
     public float speed;
-    [Range(1, 3)]
+    [Range(1, 4)]
     public int MyType;
     public float radiusOfPatrolling;
     public float radiusOfSeeing;
     public float attackingCD;
+    public float health;
 
     [Header("Fields")]
     public LayerMask playerLayer;
     private NavMeshAgent agent;
     private Rigidbody2D rb;
+    public GameObject attack;
+    private Animator anim;
+    public float meleeDamage;
+    public GameObject bullet;
+    public GameObject rocket;
 
     [Header("Debug")]
     private Vector2 patrollingPoint;
@@ -25,6 +32,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
 
         agent.updateRotation = false;
@@ -71,13 +79,81 @@ public class Enemy : MonoBehaviour
                     Patroll();
                 }
             }
+
+            if (rb.velocity.magnitude > 0.2f)
+            {
+                anim.SetBool("Walking", true);
+                anim.SetBool("Hitting", false);
+                anim.SetBool("Shooting", false);
+            }
+            else
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Hitting", false);
+                anim.SetBool("Shooting", false);
+            }
         }
 
     }
 
     public void Attack()
     {
-        Debug.Log("fuck you (psychological attack epta)");
+        if (MyType == 1 || MyType == 2 || MyType == 3)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Hitting", false);
+            anim.SetBool("Shooting", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Hitting", true);
+            anim.SetBool("Shooting", false);
+        }
+
+        switch (MyType)
+        {
+            case 1:
+                SummonBulletWithSpread();
+                break;
+
+            case 2:
+                SummonBullet();
+                break;
+
+            case 3:
+                SummonRocket();
+                break;
+            case 4:
+                Hit();
+                break;
+        }
+    }
+
+    private void Hit()
+    {
+        //animation does it by itself, but we can add more functionality here
+    }
+
+    private void SummonBulletWithSpread()
+    {
+        GameObject newBullet = Instantiate(bullet, attack.transform.position, new Quaternion(attack.transform.rotation.x, attack.transform.rotation.y, attack.transform.rotation.z + Random.Range(-0.3f, 0.3f), attack.transform.rotation.w));
+        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().fromEnemy = true;
+    }
+
+    private void SummonBullet()
+    {
+        GameObject newBullet = Instantiate(bullet, attack.transform.position, new Quaternion(attack.transform.rotation.x, attack.transform.rotation.y, attack.transform.rotation.z, attack.transform.rotation.w));
+        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().fromEnemy = true;
+    }
+
+    private void SummonRocket()
+    {
+        GameObject newBullet = Instantiate(rocket, attack.transform.position, new Quaternion(attack.transform.rotation.x, attack.transform.rotation.y, attack.transform.rotation.z, attack.transform.rotation.w));
+        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().fromEnemy = true;
     }
 
     bool WeAreCloseToPatrollingPoint()
@@ -85,9 +161,30 @@ public class Enemy : MonoBehaviour
         return Vector2.Distance(transform.position, patrollingPoint) <= agent.stoppingDistance + 1;
     }
 
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     bool CanAttack()
     {
-        return false;
+        switch (MyType)
+        {
+            case 1:
+                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+            case 2:
+                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+            case 3:
+                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+            case 4:
+                return Physics2D.OverlapCircle(transform.position, 2f, playerLayer);
+            default:
+                return false;
+        }
     }
 
     Collider2D WeSeePlayer()
