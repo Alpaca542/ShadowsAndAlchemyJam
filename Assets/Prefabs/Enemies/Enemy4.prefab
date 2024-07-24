@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8333954394444868786}
   m_Layer: 0
   m_Name: Enemy4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   radiusOfPatrolling: 10
   radiusOfSeeing: 5
   attackingCD: 1
+  health: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -322,7 +323,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5151144329909149957}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

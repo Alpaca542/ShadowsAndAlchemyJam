@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4234574018091298399}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf5d2a4e62b9404c9dc60970328cbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   healthBar: {fileID: 0}
   healthGradient:
     serializedVersion: 2
@@ -451,3 +452,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  fromPlayer: 0

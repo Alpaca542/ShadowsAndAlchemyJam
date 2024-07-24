@@ -52,7 +52,7 @@ public class bulletScript : MonoBehaviour
                 }
             }
 
-            if (!(other.tag == "Defender" && !fromEnemy) || !(other.tag == "Enemy" && fromEnemy))
+            if (!(other.tag == "Defender" && !fromEnemy) && !(other.tag == "Enemy" && fromEnemy))
             {
                 Instantiate(myDeathParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);

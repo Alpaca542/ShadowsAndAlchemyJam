@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5292042903979240833}
   - component: {fileID: 1074858190851781268}
   - component: {fileID: 2915216129229942325}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cook
   m_TagString: Cook
   m_Icon: {fileID: 0}
@@ -177,13 +177,10 @@ MonoBehaviour:
   Defender: 0
   sit: 0
   selected: 0
-  attackHitbox: {fileID: 0}
+  mySeat: {fileID: 0}
   brewerLayer:
     serializedVersion: 2
     m_Bits: 0
-  amountOfBottles: 0
-  max_amountOfBottles: 6
-  bottleGrid: {fileID: 0}
 --- !u!95 &2915216129229942325
 Animator:
   serializedVersion: 5

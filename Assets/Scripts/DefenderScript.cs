@@ -17,6 +17,7 @@ public class DefenderScript1 : MonoBehaviour
     public int activeWeapon;
     private Animator anim;
     private Rigidbody2D rb;
+    public float meleeDamage;
 
     public GameObject myGun;
     public GameObject bullet;

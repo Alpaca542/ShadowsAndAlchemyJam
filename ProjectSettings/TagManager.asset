@@ -13,6 +13,7 @@ TagManager:
   - invis
   - RP
   - bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
