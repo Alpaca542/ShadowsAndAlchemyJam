@@ -99,7 +99,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &6210453377293067727
 MonoBehaviour:
@@ -1195,7 +1195,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &3198479030184392610
 MonoBehaviour:
@@ -1942,7 +1942,7 @@ RectTransform:
   m_GameObject: {fileID: 8394686857130111390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.003938257}
+  m_LocalScale: {x: 1.6276, y: 1.6276, z: 0.0064099072}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1269484102952006337}
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f965607a9dc0743c6b124361f57d4437, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bbb99e9c4b10214493f09e6d3269eb4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

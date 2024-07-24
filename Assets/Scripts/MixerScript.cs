@@ -36,7 +36,7 @@ public class MixerScript : MonoBehaviour
 
     private void Start()
     {
-        restarter = shrederUI.gameObject;
+        
         CookScript cook = GameObject.FindWithTag("Cook").GetComponent<CookScript>();
         cook.GetItem("redANDblue");
         cook.GetItem("pureRed");
