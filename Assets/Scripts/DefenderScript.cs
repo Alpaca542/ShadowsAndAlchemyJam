@@ -75,7 +75,7 @@ public class DefenderScript1 : MonoBehaviour
         {
             GameObject newBullet = SummonRocket();
             newBullet.GetComponent<bulletScript>().damage = 5f;
-            newBullet.GetComponent<bulletScript>().fromEnemy = true;
+            newBullet.GetComponent<bulletScript>().fromEnemy = false;
         }
 
         Invoke(nameof(makemeshoot), 3f);
