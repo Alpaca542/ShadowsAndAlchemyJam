@@ -49,8 +49,11 @@ public class PlayerScript : MonoBehaviour
             {
                 float dirX = Input.GetAxis("Horizontal");
                 float dirY = Input.GetAxis("Vertical");
+                
+                
+                    rb.velocity = Vector2.up * dirY * speed+ Vector2.right * dirX * speed;
+               
 
-                rb.velocity = new Vector2(dirX, dirY) * speed;
             }
 
         }
