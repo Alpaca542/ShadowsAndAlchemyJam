@@ -14,7 +14,14 @@ public class bulletScript : MonoBehaviour
     private void Start()
     {
         Invoke(nameof(DieInTime), 3f);
-        GetComponent<Rigidbody2D>().AddForce(transform.up * 1000);
+        if (rocket)
+        {
+            GetComponent<Rigidbody2D>().AddForce(transform.up * 600);
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().AddForce(transform.up * 1000);
+        }
     }
 
     void DieInTime()

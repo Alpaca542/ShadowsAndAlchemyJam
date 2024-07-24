@@ -13,7 +13,8 @@ public class DefenderScript1 : MonoBehaviour
     public Gradient healthGradient;
 
     public Sprite[] weaponSprites;
-    public Sprite[] weaponNames;
+    public string[] weaponNames;
+    public float[] weaponCDs;
     public int activeWeapon;
     private Animator anim;
     private Rigidbody2D rb;
@@ -36,8 +37,11 @@ public class DefenderScript1 : MonoBehaviour
                 CanIShoot = false;
                 Shoot(activeWeapon);
             }
+            else
+            {
+                AnimateMe();
+            }
             LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            AnimateMe();
         }
     }
 
@@ -56,29 +60,47 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (type == 1)
         {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", true);
+            anim.SetBool("Hitting", false);
+
             InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
             Invoke(nameof(stopshooting), 1f);
         }
         else if (type == 2)
         {
-            int angle = 30;
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", true);
+            anim.SetBool("Hitting", false);
+
+            int angle = 40;
             for (int i = 0; i < 10; i++)
             {
                 GameObject newBullet = SummonBullet();
                 newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
                 newBullet.GetComponent<bulletScript>().damage = 2f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
-                angle -= 6;
+                angle -= 8;
             }
         }
         else if (type == 3)
         {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", true);
+            anim.SetBool("Hitting", false);
+
             GameObject newBullet = SummonRocket();
             newBullet.GetComponent<bulletScript>().damage = 5f;
             newBullet.GetComponent<bulletScript>().fromEnemy = false;
         }
+        else if (type == 4)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+        }
 
-        Invoke(nameof(makemeshoot), 3f);
+        Invoke(nameof(makemeshoot), weaponCDs[activeWeapon - 1]);
     }
 
     private void SummonBulletWithSpread()
@@ -113,10 +135,14 @@ public class DefenderScript1 : MonoBehaviour
         if (rb.velocity.magnitude >= 0.2f)
         {
             anim.SetBool("Walking", true);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", false);
         }
         else
         {
             anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", false);
         }
     }
 
