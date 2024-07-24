@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
                 float dirY = Input.GetAxis("Vertical");
                 
                 
-                    rb.velocity = Vector2.up * dirY * speed+ Vector2.right * dirX * speed;
+                    rb.velocity = transform.up * dirY * speed+ transform.right * dirX * speed;
                
 
             }
