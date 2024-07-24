@@ -53,18 +53,27 @@ public class PlayerScript : MonoBehaviour
                 float dirX = Input.GetAxis("Horizontal");
                 float dirY = Input.GetAxis("Vertical");
 
-                Vector3 director = transform.up;
-                Vector3 director2 = transform.right;
-                if (gameObject.GetComponent<CookScript>()!=null)
+                if(gameObject.GetComponent<DefenderScript1>()!=null)
                 {
+
+                    rb.velocity = Vector2.up * dirY * speed + Vector2.right * dirX * speed;
+                
+                }
+                else if(gameObject.GetComponent<CookScript>() != null)
+                {
+                    Vector3 director = transform.up;
+                Vector3 director2 = transform.right;
+                
                     if (gameObject.GetComponent<CookScript>().InCar)
                     {
                         director = car.transform.up;
                         director2 = car.transform.right;
                     }
-                }
+                
                     
                     rb.velocity = director * dirY * speed+ director2 * dirX * speed;
+                }
+                
                
 
             }
