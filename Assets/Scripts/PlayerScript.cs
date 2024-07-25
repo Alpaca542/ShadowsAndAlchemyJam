@@ -70,7 +70,7 @@ public class PlayerScript : MonoBehaviour
                         director = car.transform.up;
                         director2 = car.transform.right;
                     }
-                    else if (Mathf.Abs(movement.x) > 0.2f || Mathf.Abs(movement.y) > 0.2f)
+                    if (Mathf.Abs(movement.x) > 0.2f || Mathf.Abs(movement.y) > 0.2f)
                     {
                         GetComponent<CookScript>().myBody.SetBool("Walking", true);
                         float targetAngle = Mathf.Atan2(-movement.x, movement.y) * Mathf.Rad2Deg;
