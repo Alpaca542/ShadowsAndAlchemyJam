@@ -8,6 +8,7 @@ public class MainShop : MonoBehaviour
 {
     public Sprite[] EverythingISell;
     public int[] EverythingISellPrices;
+    public bool[] EverythingISellForCookBools;
 
     public Sprite[] EverythingIBuy;
     public int[] EverythingIBuyPrices;
@@ -25,6 +26,8 @@ public class MainShop : MonoBehaviour
     public GameObject myUI;
     public bool isCookHere;
     public GameObject collision;
+
+    public GameObject grid;
 
     private void Start()
     {
@@ -46,6 +49,7 @@ public class MainShop : MonoBehaviour
             slots[chosenSlot].GetComponent<slotHolder>().myPrice = setPrice;
             slots[chosenSlot].GetComponent<slotHolder>().myAmount = chosenAmount;
             slots[chosenSlot].GetComponent<slotHolder>().myName = EverythingISell[chosenObject].name;
+            slots[chosenSlot].GetComponent<slotHolder>().forCookOnly = EverythingISellForCookBools[chosenObject];
             slots.RemoveAt(chosenSlot);
         }
 
@@ -59,12 +63,20 @@ public class MainShop : MonoBehaviour
             slotForSale[i].GetComponent<slotHolder>().myPrice = -setPrice;
             slotForSale[i].GetComponent<slotHolder>().myAmount = chosenAmount;
             slotForSale[i].GetComponent<slotHolder>().myName = EverythingIBuy[chosenObject].name;
+            slotForSale[i].GetComponent<slotHolder>().forCookOnly = true;
         }
 
     }
 
     public void Open()
     {
+        foreach (Transform slot in grid.transform)
+        {
+            if (slot.GetComponent<slotHolder>() != null)
+            {
+                slot.GetComponent<slotHolder>().Start();
+            }
+        }
         myUI.SetActive(true);
     }
 

@@ -18,13 +18,13 @@ public class slotHolder : MonoBehaviour
 
     public int myAmount;
 
-    private void Start()
+    public void Start()
     {
-        if (myshop.isCookHere && forCookOnly)
+        if (!myshop.isCookHere && forCookOnly)
         {
             Deactivate();
         }
-        else if (!myshop.isCookHere && !forCookOnly)
+        else if (myshop.isCookHere && !forCookOnly)
         {
             Deactivate();
         }

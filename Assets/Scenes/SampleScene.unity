@@ -1096,6 +1096,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5bbb99e9c4b10214493f09e6d3269eb4, type: 3}
   - {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
   EverythingISellPrices: 6400000064000000640000006400000064000000640000006400000064000000
+  EverythingISellForCookBools: 0101010101010101
   EverythingIBuy:
   - {fileID: 21300000, guid: 5bbb99e9c4b10214493f09e6d3269eb4, type: 3}
   - {fileID: 21300000, guid: e17fb498aeec63341b00b733582ba3f4, type: 3}
@@ -1120,6 +1121,7 @@ MonoBehaviour:
   myUI: {fileID: 522639419}
   isCookHere: 0
   collision: {fileID: 0}
+  grid: {fileID: 1879941808}
 --- !u!61 &79131646
 BoxCollider2D:
   m_ObjectHideFlags: 0
