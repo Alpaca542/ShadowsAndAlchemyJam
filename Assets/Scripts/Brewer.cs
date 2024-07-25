@@ -74,7 +74,7 @@ public class Brewer : MonoBehaviour
                         GetComponent<BoilerScript>().collision = connectedPlayer;
                         GetComponent<BoilerScript>().GetStarted();
                     }
-                    else if (myType == 1)
+                    else if (myType == 1d)
                     {
                         myCar.Sit(true);
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);

@@ -21,6 +21,7 @@ TagManager:
   - Analyzed
   - greenANDblue
   - Crystallimage
+  - MoneyManager
   layers:
   - Default
   - TransparentFX

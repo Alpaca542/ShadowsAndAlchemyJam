@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,13 @@ public class slotHolder : MonoBehaviour
 {
     public Image img;
     public TMP_Text txt;
+    public TMP_Text txtAmount;
     public MainShop myshop;
     public bool forCookOnly;
     public int myPrice;
     public string myName;
+
+    public int myAmount;
 
     private void Start()
     {
@@ -30,11 +34,35 @@ public class slotHolder : MonoBehaviour
             GetComponent<Image>().enabled = true;
             gameObject.GetComponent<Button>().interactable = true;
         }
-    }
 
+        txtAmount.text = myAmount.ToString();
+    }
+    bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
+    {
+        return slot < inv.Count;
+    }
     public void BuyMe()
     {
         moneyManager MoneyManager = GameObject.FindGameObjectWithTag("MoneyManager").GetComponent<moneyManager>();
+        if (myPrice < 0)
+        {
+            CookScript cook = myshop.collision.GetComponent<CookScript>();
+            if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && (cook.inventory.ElementAt(cook.ActiveSlot).Key == myName))
+            {
+                Debug.Log(123);
+                myshop.collision.GetComponent<CookScript>().RemoveItem(myName);
+                myAmount--;
+                txtAmount.text = myAmount.ToString();
+                if (myAmount <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
         if (MoneyManager.MyMoney >= myPrice)
         {
             if (myshop.isCookHere)
@@ -45,9 +73,13 @@ public class slotHolder : MonoBehaviour
             {
                 myshop.collision.GetComponent<DefenderScript1>().GetItem(myName);
             }
-
+            myAmount--;
+            txtAmount.text = myAmount.ToString();
+            if (myAmount <= 0)
+            {
+                Destroy(gameObject);
+            }
             MoneyManager.LoseMoney(myPrice);
-            Destroy(gameObject);
         }
     }
 
