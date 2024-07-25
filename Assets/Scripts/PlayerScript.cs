@@ -54,7 +54,6 @@ public class PlayerScript : MonoBehaviour
             {
                 float dirX = Input.GetAxis("Horizontal");
                 float dirY = Input.GetAxis("Vertical");
-                Vector2 movement = new Vector2(dirX, dirY).normalized * speed;
 
                 if (Defender)
                 {
@@ -70,6 +69,7 @@ public class PlayerScript : MonoBehaviour
                         director = car.transform.up;
                         director2 = car.transform.right;
                     }
+                    Vector2 movement = director * dirY * speed + director2 * dirX * speed;
                     if (Mathf.Abs(movement.x) > 0.2f || Mathf.Abs(movement.y) > 0.2f)
                     {
                         GetComponent<CookScript>().myBody.SetBool("Walking", true);
