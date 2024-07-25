@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class playerFollow : MonoBehaviour
@@ -18,13 +17,16 @@ public class playerFollow : MonoBehaviour
         playerVector.z = -10;
         transform.position = Vector3.Lerp(transform.position, playerVector, speed * Time.fixedDeltaTime);
 
-        if (player.tag == "Car")
+        if(player.GetComponent<carScript>() != null )
         {
+            if(player.GetComponent<carScript>().CookInMe)
             transform.rotation = Quaternion.Lerp(transform.rotation, player.rotation, speed * Time.fixedDeltaTime);
+            else
+                transform.rotation = Quaternion.identity;
         }
         else
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, speed * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.identity;
         }
     }
 }
