@@ -5,8 +5,10 @@ using UnityEngine;
 public class dieInTIme : MonoBehaviour
 {
     public float time_;
-    private void Start()
+
+    public void Start()
     {
+        CancelInvoke(nameof(DieInTime));
         Invoke(nameof(DieInTime), time_);
     }
 

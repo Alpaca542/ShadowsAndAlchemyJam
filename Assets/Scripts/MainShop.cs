@@ -73,6 +73,7 @@ public class MainShop : MonoBehaviour
 
     public void Open()
     {
+        GetComponent<dieInTIme>().Start();
         foreach (Transform slot in grid.transform)
         {
             if (slot.GetComponent<slotHolder>() != null)

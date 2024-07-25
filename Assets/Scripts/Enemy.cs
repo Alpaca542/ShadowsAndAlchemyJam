@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     [Header("Debug")]
     private Vector2 patrollingPoint;
     private bool isAttacking;
+    private bool attackedSecondAgo;
 
     private void Start()
     {
@@ -51,24 +52,42 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
         }
     }
-
+    void attackBuffer()
+    {
+        attackedSecondAgo = false;
+    }
     void Update()
     {
-        LookAt(agent.destination);
+        if (attackedSecondAgo)
+        {
+            LookAt(GameObject.FindGameObjectWithTag("Defender").transform.position);
+        }
+        else
+        {
+            LookAt(agent.destination);
+        }
         if (CanAttack())
         {
+            attackedSecondAgo = true;
+            CancelInvoke(nameof(attackBuffer));
+            Invoke(nameof(attackBuffer), 0.5f);
+
+            GetComponent<dieInTIme>().Start();
             if (!isAttacking)
             {
                 isAttacking = true;
+                Debug.Log(1);
                 InvokeRepeating(nameof(Attack), 0, attackingCD);
             }
         }
         else
         {
+            LookAt(agent.destination);
             CancelInvoke(nameof(Attack));
             isAttacking = false;
             if (WeSeePlayer())
             {
+                GetComponent<dieInTIme>().Start();
                 agent.SetDestination(WeSeePlayer().transform.position);
             }
             else
@@ -138,21 +157,21 @@ public class Enemy : MonoBehaviour
     private void SummonBulletWithSpread()
     {
         GameObject newBullet = Instantiate(bullet, attack.transform.position, new Quaternion(attack.transform.rotation.x, attack.transform.rotation.y, attack.transform.rotation.z + Random.Range(-0.3f, 0.3f), attack.transform.rotation.w));
-        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().damage = meleeDamage;
         newBullet.GetComponent<bulletScript>().fromEnemy = true;
     }
 
     private void SummonBullet()
     {
         GameObject newBullet = Instantiate(bullet, attack.transform.position, new Quaternion(attack.transform.rotation.x, attack.transform.rotation.y, attack.transform.rotation.z, attack.transform.rotation.w));
-        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().damage = meleeDamage;
         newBullet.GetComponent<bulletScript>().fromEnemy = true;
     }
 
     private void SummonRocket()
     {
         GameObject newBullet = Instantiate(rocket, attack.transform.position, new Quaternion(attack.transform.rotation.x, attack.transform.rotation.y, attack.transform.rotation.z, attack.transform.rotation.w));
-        newBullet.GetComponent<bulletScript>().damage = 2f;
+        newBullet.GetComponent<bulletScript>().damage = meleeDamage;
         newBullet.GetComponent<bulletScript>().fromEnemy = true;
     }
 
@@ -175,13 +194,13 @@ public class Enemy : MonoBehaviour
         switch (MyType)
         {
             case 1:
-                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer);
             case 2:
-                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer);
             case 3:
-                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer);
             case 4:
-                return Physics2D.Raycast(transform.position, transform.up, 10, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer);
             default:
                 return false;
         }

@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     public float amountOfEnemies;
     public float minSpawnRadius;
     public float maxSpawnRadius;
+    public float enemiesSpawningCD;
 
     [Header("Corners")]
     public Transform corner1;
@@ -17,12 +18,15 @@ public class Spawner : MonoBehaviour
 
     [Header("Prefabs")]
     public GameObject shop;
+    public CookScript cook;
     public GameObject[] enemies;
+
+    private bool SpawningEnemies;
 
     private void Update()
     {
         SpawnShops();
-        SpawnEnemy();
+        SpawnEnemies();
     }
 
     private void SpawnShops()
@@ -37,8 +41,20 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    private void SpawnEnemies()
+    {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < amountOfEnemies)
+        {
+            if (!SpawningEnemies)
+            {
+                SpawningEnemies = true;
+                InvokeRepeating(nameof(SpawnEnemy), 0, enemiesSpawningCD);
+            }
+        }
+    }
+
     private void SpawnEnemy()
     {
-
+        GameObject newEnemy = Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(cook.transform.position.x - maxSpawnRadius, cook.transform.position.x + maxSpawnRadius), Random.Range(cook.transform.position.y - maxSpawnRadius, cook.transform.position.y + maxSpawnRadius), 0), Quaternion.identity);
     }
 }

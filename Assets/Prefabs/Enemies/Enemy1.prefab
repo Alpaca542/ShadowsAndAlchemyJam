@@ -160,6 +160,8 @@ GameObject:
   - component: {fileID: 7042447654855766376}
   - component: {fileID: 6536917605753072336}
   - component: {fileID: 1867448801309731572}
+  - component: {fileID: -1198662722121063710}
+  - component: {fileID: 5951679921354550218}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -375,3 +377,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1198662722121063710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054476815910095659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f06f757144bc461a8642f2176026baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time_: 30
+--- !u!111 &5951679921354550218
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054476815910095659}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b8dcc5c16749946d9b32c45b0693374d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b8dcc5c16749946d9b32c45b0693374d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
