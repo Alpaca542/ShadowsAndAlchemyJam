@@ -10,6 +10,7 @@ public class Brewer : MonoBehaviour
     public GameObject myText;
     private GameObject connectedPlayer;
     public bool forCookOnly;
+    public bool forDefenderOnly;
     public int myType;
     public carScript myCar;
     public bool StickToTheParent;
@@ -58,8 +59,6 @@ public class Brewer : MonoBehaviour
 
     private void Update()
     {
-        
-
         if (connectedPlayer != null)
         {
             PlayerScript connectedPlayerScript = connectedPlayer.GetComponent<PlayerScript>();
@@ -87,30 +86,35 @@ public class Brewer : MonoBehaviour
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                         myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
                     }
-                    if (myType == 3)
+                    else if (myType == 3)
                     {
                         GetComponent<grapherScript>().collision = connectedPlayer;
                         GetComponent<grapherScript>().GetStarted();
                     }
-                    if (myType == 4)
+                    else if (myType == 4)
                     {
                         GetComponent<MerryGoRound>().collision = connectedPlayer;
                         GetComponent<MerryGoRound>().GetStarted();
                     }
-                    if (myType == 5)
+                    else if (myType == 5)
                     {
                         GetComponent<analyzercript>().collision = connectedPlayer;
                         GetComponent<analyzercript>().GetStarted();
                     }
-                    if (myType == 6)
+                    else if (myType == 6)
                     {
                         GetComponent<shrederSctipt>().collision = connectedPlayer;
                         GetComponent<shrederSctipt>().GetStarted();
                     }
-                    if (myType == 7)
+                    else if (myType == 7)
                     {
                         GetComponent<MixerScript>().collision = connectedPlayer;
                         GetComponent<MixerScript>().GetStarted();
+                    }
+                    else if (myType == 8)
+                    {
+                        GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
+                        GetComponent<MainShop>().Open();
                     }
                 }
                 else if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && active) && activatable)// deactivate

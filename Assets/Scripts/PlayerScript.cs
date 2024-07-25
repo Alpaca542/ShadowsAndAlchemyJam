@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     public GameObject mySeat;
+    public float rotationSmoothTime = 0.2f;
+    private float currentVelocity;
 
     [Header("Cook")]
     public LayerMask brewerLayer;
@@ -52,29 +54,34 @@ public class PlayerScript : MonoBehaviour
             {
                 float dirX = Input.GetAxis("Horizontal");
                 float dirY = Input.GetAxis("Vertical");
+                Vector2 movement = new Vector2(dirX, dirY).normalized * speed;
 
-                if(gameObject.GetComponent<DefenderScript1>()!=null)
+                if (Defender)
                 {
-
                     rb.velocity = Vector2.up * dirY * speed + Vector2.right * dirX * speed;
-                
                 }
-                else if(gameObject.GetComponent<CookScript>() != null)
+                else if (!Defender)
                 {
-                    Vector3 director = transform.up;
-                Vector3 director2 = transform.right;
-                
+                    Vector3 director = Vector2.up;
+                    Vector3 director2 = Vector2.right;
+
                     if (gameObject.GetComponent<CookScript>().InCar)
                     {
                         director = car.transform.up;
                         director2 = car.transform.right;
                     }
-                
-                    
-                    rb.velocity = director * dirY * speed+ director2 * dirX * speed;
+                    else if (Mathf.Abs(movement.x) > 0.2f || Mathf.Abs(movement.y) > 0.2f)
+                    {
+                        float targetAngle = Mathf.Atan2(-movement.x, movement.y) * Mathf.Rad2Deg;
+                        float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.z, targetAngle, ref currentVelocity, rotationSmoothTime);
+                        transform.rotation = Quaternion.Euler(0, 0, smoothedAngle);
+                    }
+
+
+                    rb.velocity = director * dirY * speed + director2 * dirX * speed;
                 }
-                
-               
+
+
 
             }
 

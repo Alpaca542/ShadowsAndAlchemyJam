@@ -41,10 +41,15 @@ public class DefenderScript1 : MonoBehaviour
             {
                 AnimateMe();
             }
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (GetComponent<PlayerScript>().selected)
+        {
             LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
-
     void LookAt(Vector3 target)
     {
         if (transform.position != target)
