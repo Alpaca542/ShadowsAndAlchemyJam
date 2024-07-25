@@ -102,9 +102,11 @@ public class CookScript : MonoBehaviour
         {
             moveActiveSlot(false);
         }
-        
-       
-        handCarry.sprite = itemSprites[Array.IndexOf(itemFilter, inventory.ElementAt(ActiveSlot).Key)];
+
+        if (ActiveSlot < inventory.Count)
+        {
+            handCarry.sprite = itemSprites[Array.IndexOf(itemFilter, inventory.ElementAt(ActiveSlot).Key)];
+        }
     }
 
     void moveActiveSlot(bool up)
@@ -137,5 +139,5 @@ public class CookScript : MonoBehaviour
         inventory = new Dictionary<string, int>();
     }
 
-    
+
 }
