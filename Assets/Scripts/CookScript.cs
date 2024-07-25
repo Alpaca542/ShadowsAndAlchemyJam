@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class CookScript : MonoBehaviour
     public bool InCar;
     public Animator myBody;
 
+
+    public SpriteRenderer handCarry;
     public void Freeze()
     {
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
@@ -99,6 +102,9 @@ public class CookScript : MonoBehaviour
         {
             moveActiveSlot(false);
         }
+        
+       
+        handCarry.sprite = itemSprites[Array.IndexOf(itemFilter, inventory.ElementAt(ActiveSlot).Key)];
     }
 
     void moveActiveSlot(bool up)
@@ -130,4 +136,6 @@ public class CookScript : MonoBehaviour
     {
         inventory = new Dictionary<string, int>();
     }
+
+    
 }
