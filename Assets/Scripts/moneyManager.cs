@@ -19,9 +19,9 @@ public class moneyManager : MonoBehaviour
         MyMoney -= howMuch;
     }
 
-    private void Update()
-    {
-        txt1.text = MyMoney.ToString();
-        txt2.text = MyMoney.ToString();
-    }
+    // private void Update()
+    // {
+    //     txt1.text = MyMoney.ToString();
+    //     txt2.text = MyMoney.ToString();
+    // }
 }
