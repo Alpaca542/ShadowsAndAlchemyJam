@@ -386,6 +386,8 @@ MonoBehaviour:
   txt: {fileID: 2024233241}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &50212319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,6 +829,7 @@ MonoBehaviour:
   priceSpread: 0
   myUI: {fileID: 0}
   isCookHere: 0
+  collision: {fileID: 0}
 --- !u!1 &96115882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,6 +2451,8 @@ MonoBehaviour:
   txt: {fileID: 1079223156}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &399164784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4319,6 +4324,8 @@ MonoBehaviour:
   txt: {fileID: 1256176854}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &869250593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4438,9 +4445,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4426212508717550744, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426212508717550744, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8500119680873212279, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8500119680873212279, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
       propertyPath: m_Name
       value: Cook
@@ -4459,7 +4474,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3716102588143499928, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1519726552}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8500119680873212279, guid: 467b13610488245d7bcf7078589c4fe2, type: 3}
       insertIndex: -1
@@ -4739,6 +4757,8 @@ MonoBehaviour:
   txt: {fileID: 1240085145}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &985985894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,6 +6926,7 @@ MonoBehaviour:
   max_slots: 8
   inventoryGrid: {fileID: 1366150975}
   InCar: 0
+  myBody: {fileID: 1519726551}
 --- !u!1 &1365929366
 GameObject:
   m_ObjectHideFlags: 0
@@ -7202,6 +7223,8 @@ MonoBehaviour:
   txt: {fileID: 71402926}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &1367868969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7560,6 +7583,8 @@ MonoBehaviour:
   txt: {fileID: 1094936539}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &1457289249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7756,7 +7781,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 879383872}
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_Name
@@ -7772,15 +7797,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.028337695
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.139436
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.410215
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7788,7 +7813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7800,7 +7825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7812,7 +7837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -7221020487405985688, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7864,6 +7889,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1519726552 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: f5ed7035d10166846a4920240796bfb4, type: 3}
+  m_PrefabInstance: {fileID: 1519726549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1533984001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3797775047964455470, guid: 100ecd24ca29d894f8c33a58a3b59d82, type: 3}
@@ -8698,6 +8728,8 @@ MonoBehaviour:
   txt: {fileID: 683089829}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &1761413552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9786,6 +9818,8 @@ MonoBehaviour:
   txt: {fileID: 1508672863}
   myshop: {fileID: 0}
   forCookOnly: 0
+  myPrice: 0
+  myName: 
 --- !u!114 &1947305769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11162,4 +11196,3 @@ SceneRoots:
   - {fileID: 1660508345}
   - {fileID: 79131643}
   - {fileID: 105289350}
-  - {fileID: 1519726549}

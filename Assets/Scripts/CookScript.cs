@@ -16,6 +16,7 @@ public class CookScript : MonoBehaviour
     public int max_slots = 6;
     public GameObject inventoryGrid;
     public bool InCar;
+    public Animator myBody;
 
     public void Freeze()
     {

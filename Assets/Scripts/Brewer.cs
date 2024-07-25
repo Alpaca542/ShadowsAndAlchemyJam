@@ -114,6 +114,7 @@ public class Brewer : MonoBehaviour
                     else if (myType == 8)
                     {
                         GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
+                        GetComponent<MainShop>().collision = connectedPlayer.gameObject;
                         GetComponent<MainShop>().Open();
                     }
                 }

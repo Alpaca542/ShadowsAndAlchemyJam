@@ -72,9 +72,14 @@ public class PlayerScript : MonoBehaviour
                     }
                     else if (Mathf.Abs(movement.x) > 0.2f || Mathf.Abs(movement.y) > 0.2f)
                     {
+                        GetComponent<CookScript>().myBody.SetBool("Walking", true);
                         float targetAngle = Mathf.Atan2(-movement.x, movement.y) * Mathf.Rad2Deg;
                         float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.z, targetAngle, ref currentVelocity, rotationSmoothTime);
                         transform.rotation = Quaternion.Euler(0, 0, smoothedAngle);
+                    }
+                    else
+                    {
+                        GetComponent<CookScript>().myBody.SetBool("Walking", false);
                     }
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Microlight.MicroBar;
 using UnityEngine.Video;
+using Unity.VisualScripting;
 
 public class DefenderScript1 : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class DefenderScript1 : MonoBehaviour
     private bool CanIShoot = true;
 
     public Image WeaponShowcase;
+
+    public void GetItem(string whatItem)
+    {
+        //idk
+    }
 
     private void Update()
     {
