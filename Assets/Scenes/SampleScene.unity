@@ -1705,7 +1705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfShops: 10
   amountOfStorages: 0
-  amountOfEnemies: 0
+  amountOfEnemies: 10
   minSpawnRadius: 0
   maxSpawnRadius: 5
   enemiesSpawningCD: 0.5
