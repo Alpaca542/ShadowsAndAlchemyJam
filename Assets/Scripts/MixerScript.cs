@@ -36,18 +36,18 @@ public class MixerScript : MonoBehaviour
 
     private void Start()
     {
-        
-        CookScript cook = GameObject.FindWithTag("Cook").GetComponent<CookScript>();
-        cook.GetItem("redANDblue");
-        cook.GetItem("pureRed");
-        cook.GetItem("greenANDblue");
-        cook.GetItem("Analyzed");
-        cook.GetItem("Graphed");
+
+
 
     }
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        cook.GetItem("redANDblue");
+        cook.GetItem("pureRed");
+        cook.GetItem("greenANDblue");
+        cook.GetItem("Analyzed");
+        cook.GetItem("Graphed");
         if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed" && !pureRed) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue" && !redANDblue) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue" && !greenANDblue) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed" && !Analyzed) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed" && !Graphed)))
         {
             if (!AmIFilled)
@@ -87,7 +87,7 @@ public class MixerScript : MonoBehaviour
                     }
                 }
 
-                if (redANDblue&&pureRed&&greenANDblue&&Analyzed&&Graphed)
+                if (redANDblue && pureRed && greenANDblue && Analyzed && Graphed)
                 {
                     shrederUI.SetActive(true);
                     check = true;
@@ -104,7 +104,7 @@ public class MixerScript : MonoBehaviour
 
     void Check()
     {
-        
+
     }
     public void FinishGame()
     {
@@ -121,7 +121,7 @@ public class MixerScript : MonoBehaviour
         Graphed = false;
         greenANDblue = false;
         redANDblue = false;
-        
+
     }
     void DestroyUI()
     {
@@ -144,7 +144,7 @@ public class MixerScript : MonoBehaviour
 
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
-                cook.GetItem("white");
+                // cook.GetItem("white");
                 Debug.Log("AfterGive");
 
             }
@@ -156,7 +156,7 @@ public class MixerScript : MonoBehaviour
         if (collision != null)
         {
             // Check();
-           
+
         }
     }
 }

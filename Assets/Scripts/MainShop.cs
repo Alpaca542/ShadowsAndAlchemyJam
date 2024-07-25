@@ -32,6 +32,7 @@ public class MainShop : MonoBehaviour
     private void Start()
     {
         howManySlots = Random.Range(howManySlotsMin, howManySlotsMax + 1);
+        Debug.Log(howManySlots);
         GenerteAssortiment();
     }
 
@@ -42,6 +43,7 @@ public class MainShop : MonoBehaviour
             int chosenObject = Random.Range(0, EverythingISell.Length);
             int chosenSlot = Random.Range(0, slots.Count);
             int chosenAmount = Random.Range(1, maxAmount);
+
             slots[chosenSlot].SetActive(true);
             slots[chosenSlot].GetComponent<slotHolder>().img.sprite = EverythingISell[chosenObject];
             int setPrice = EverythingISellPrices[chosenObject] + Random.Range(-priceSpread, priceSpread);
@@ -57,6 +59,7 @@ public class MainShop : MonoBehaviour
         {
             int chosenAmount = Random.Range(1, maxAmount);
             int chosenObject = Random.Range(0, EverythingIBuy.Length);
+
             slotForSale[i].GetComponent<slotHolder>().img.sprite = EverythingIBuy[chosenObject];
             int setPrice = EverythingIBuyPrices[chosenObject] + Random.Range(-priceSpread, priceSpread);
             slotForSale[i].GetComponentInChildren<TMP_Text>().text = setPrice.ToString();

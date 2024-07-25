@@ -21,12 +21,12 @@ public class MixerCollector : MonoBehaviour
     public Image V;
     private void Start()
     {
-        self.color = Color.white; 
+        self.color = Color.white;
     }
     private void Update()
     {
-        if(redANDblue&&
-        pureRed&&
+        if (redANDblue &&
+        pureRed &&
         greenANDblue &&
         Analyzed &&
         Graphed)
@@ -42,7 +42,8 @@ public class MixerCollector : MonoBehaviour
         III.color = Color.white;
         IV.color = Color.white;
         V.color = Color.white;
-        foreach(var img in imgs) {
+        foreach (var img in imgs)
+        {
             img.transform.position = img.GetComponent<Drager>().initialPos;
         }
     }
@@ -57,13 +58,13 @@ public class MixerCollector : MonoBehaviour
             Analyzed = false;
             Graphed = false;
             self.color = Color.red;
-            
-            
+
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("redANDblue"))
+        if (collision.CompareTag("redANDblue"))
         {
             redANDblue = true;
             collision.GetComponent<Drager>().enabled = false;

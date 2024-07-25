@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2287045311079423575}
   - component: {fileID: 1416709629539824794}
   - component: {fileID: 2084928933785893949}
-  - component: {fileID: 8827362883082014827}
   - component: {fileID: 4324187352025797828}
+  - component: {fileID: 5786752976026092571}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: bullet
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.6638, y: 0.5903, z: 0}
-  m_LocalScale: {x: 0.37940684, y: 0.8946923, z: 1}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1006824475992194394}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98bf96bfe379f4e569a05bd4e0f844b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,8 +115,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &8827362883082014827
-CircleCollider2D:
+--- !u!114 &4324187352025797828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733071860470294366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0504871e757b34d99a444b20edd38678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fromEnemy: 0
+  rocket: 1
+  myDeathParticles: {fileID: 9085568598567956780, guid: 7f590e06acf8b431cb92922465419ebf, type: 3}
+--- !u!61 &5786752976026092571
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,25 +163,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.9011106, y: 0.9127259}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 24.800001, y: 24.800001}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &4324187352025797828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733071860470294366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0504871e757b34d99a444b20edd38678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  fromEnemy: 0
-  rocket: 1
-  myDeathParticles: {fileID: 9085568598567956780, guid: 7f590e06acf8b431cb92922465419ebf, type: 3}
+  m_Size: {x: 8.916017, y: 18.681282}
+  m_EdgeRadius: 0
 --- !u!1 &3505547253952936602
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 3505547253952936602}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.05, y: -0.398, z: 0}
+  m_LocalPosition: {x: -1.87, y: -8.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
