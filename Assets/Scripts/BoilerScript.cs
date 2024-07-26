@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BoilerScript : MonoBehaviour
 {
@@ -63,6 +64,10 @@ public class BoilerScript : MonoBehaviour
 
                 if (blueNum && RedNum)
                 {
+                    Camera.main.GetComponent<playerFollow>().enabled = false;
+                    Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                    Camera.main.DOOrthoSize(0.5f, 0.3f);
+
                     shrederUI.SetActive(true);
                     check = true;
 
@@ -82,14 +87,14 @@ public class BoilerScript : MonoBehaviour
         loss1.text = "loss: " + Convert.ToString((int)(requirer1.value * 100 - blue2 * 100));
         loss2.text = "loss: " + Convert.ToString((int)(requirer2.value * 100 - red * 100));
 
-        
+
         totalLoss.text = "Average loss: " + Convert.ToString((((int)(requirer.value * 100 - blue1 * 100)) + ((int)(requirer1.value * 100 - blue2 * 100)) + ((int)(requirer2.value * 100 - red * 100))) / 3);
         collision.gameObject.GetComponent<CookScript>().Freeze();
 
         //Indicator.color = new Color(Mathf.Abs((int)(requirer1.value * 100 - blue2 * 100)) / 255.0f, Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) / 255.0f, Mathf.Abs((int)(requirer2.value * 100 - red * 100)) / 255.0f, 1);
         Debug.Log("Checking");
 
-        if ((Mathf.Abs((int)(requirer.value * 100 - blue1 * 100))<=10.0f)&& (Mathf.Abs(((int)(requirer1.value * 100 - blue2 * 100))) <= 10.0f)&& (Mathf.Abs(((int)(requirer2.value * 100 - red * 100))) <= 10.0f))
+        if ((Mathf.Abs((int)(requirer.value * 100 - blue1 * 100)) <= 10.0f) && (Mathf.Abs(((int)(requirer1.value * 100 - blue2 * 100))) <= 10.0f) && (Mathf.Abs(((int)(requirer2.value * 100 - red * 100))) <= 10.0f))
         {
             Debug.Log(((requirer.value * 100 - blue1 * 100) + (requirer1.value * 100 - blue2 * 100) + (requirer2.value * 100 - red * 100) / 3));
 
@@ -99,7 +104,7 @@ public class BoilerScript : MonoBehaviour
 
 
             Indicator.color = Color.green;
-           
+
 
             // check = false;
             Invoke(nameof(DestroyUI), 2f);
@@ -115,6 +120,9 @@ public class BoilerScript : MonoBehaviour
     void DestroyUI()
     {
         shrederUI.SetActive(false);
+        Camera.main.GetComponent<playerFollow>().enabled = false;
+        Camera.main.DOOrthoSize(2f, 0.3f);
+
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
     }
 
@@ -130,7 +138,7 @@ public class BoilerScript : MonoBehaviour
 
             if (AmIFilled && (Input.GetKeyDown(KeyCode.E)))
             {
-                
+
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
                 cook.GetItem("redANDblue");
@@ -142,9 +150,9 @@ public class BoilerScript : MonoBehaviour
         {
             Check();
         }
-        if(collision!=null)
+        if (collision != null)
         {
-           // Check();
+            // Check();
             rot1.Rotate(0, 0, Mathf.Abs(requirer.value * 100 - blue1 * 100 * Time.deltaTime) / 100f);
             rot2.Rotate(0, 0, Mathf.Abs(requirer1.value * 100 - blue2 * 100 * Time.deltaTime) / 100f);
             rot3.Rotate(0, 0, Mathf.Abs(requirer2.value * 100 - red * 100 * Time.deltaTime) / 100f);

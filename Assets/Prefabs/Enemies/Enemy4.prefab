@@ -108,7 +108,7 @@ MonoBehaviour:
   radiusOfPatrolling: 10
   radiusOfSeeing: 5
   attackingCD: 5
-  health: 10
+  health: 30
   playerLayer:
     serializedVersion: 2
     m_Bits: 512

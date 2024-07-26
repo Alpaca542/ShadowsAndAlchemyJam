@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class analyzercript : MonoBehaviour
 {
@@ -74,6 +75,9 @@ public class analyzercript : MonoBehaviour
                 if (blueNum && redNum)
                 {
                     myUI.SetActive(true);
+                    Camera.main.GetComponent<playerFollow>().enabled = false;
+                    Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                    Camera.main.DOOrthoSize(0.5f, 0.3f);
                     cook.Freeze();
                     StartTask();
                     cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
@@ -111,6 +115,9 @@ public class analyzercript : MonoBehaviour
             requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             indicator.GetComponent<Image>().color = Color.red;
             myUI.SetActive(false);
+            Camera.main.GetComponent<playerFollow>().enabled = false;
+            Camera.main.DOOrthoSize(2f, 0.3f);
+            collision.gameObject.GetComponent<CookScript>().UnFreeze();
             turnTube();
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class grapherScript : MonoBehaviour
 {
@@ -114,6 +115,8 @@ public class grapherScript : MonoBehaviour
     void DestroyUI()
     {
         shrederUI.SetActive(false);
+        Camera.main.GetComponent<playerFollow>().enabled = false;
+        Camera.main.DOOrthoSize(2f, 0.3f);
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
         shower.color = Color.white;
     }
@@ -190,6 +193,9 @@ public class grapherScript : MonoBehaviour
                     lineRenderer.SetPosition(i, new Vector3(x / 100.0f, y / 100.0f, 0));
                 }
                 shrederUI.SetActive(true);
+                Camera.main.GetComponent<playerFollow>().enabled = false;
+                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                Camera.main.DOOrthoSize(0.5f, 0.3f);
             }
         }
     }

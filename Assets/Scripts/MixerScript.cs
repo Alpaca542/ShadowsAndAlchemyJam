@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class MixerScript : MonoBehaviour
@@ -43,11 +44,6 @@ public class MixerScript : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        cook.GetItem("redANDblue");
-        cook.GetItem("pureRed");
-        cook.GetItem("greenANDblue");
-        cook.GetItem("Analyzed");
-        cook.GetItem("Graphed");
         if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed" && !pureRed) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue" && !redANDblue) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue" && !greenANDblue) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed" && !Analyzed) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed" && !Graphed)))
         {
             if (!AmIFilled)
@@ -90,13 +86,16 @@ public class MixerScript : MonoBehaviour
                 if (redANDblue && pureRed && greenANDblue && Analyzed && Graphed)
                 {
                     shrederUI.SetActive(true);
+                    Camera.main.GetComponent<playerFollow>().enabled = false;
+                    Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                    Camera.main.DOOrthoSize(0.5f, 0.3f);
+                    collision.gameObject.GetComponent<CookScript>().Freeze();
                     check = true;
 
 
                     blue1 = (UnityEngine.Random.Range(90, 100)) / 100.0f;
                     blue2 = (UnityEngine.Random.Range(50, 100)) / 100.0f;
                     red = (UnityEngine.Random.Range(30, 100)) / 100.0f;
-                    Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
                 }
             }
         }
@@ -126,6 +125,8 @@ public class MixerScript : MonoBehaviour
     void DestroyUI()
     {
         shrederUI.SetActive(false);
+        Camera.main.GetComponent<playerFollow>().enabled = false;
+        Camera.main.DOOrthoSize(2f, 0.3f);
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
     }
 

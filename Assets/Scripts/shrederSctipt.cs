@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class shrederSctipt : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class shrederSctipt : MonoBehaviour
             AmIFilled = true;
             shrederUI.SetActive(false);
             // tube.GetComponent<SpriteRenderer>().color = Color.red;
+
+            Camera.main.GetComponent<playerFollow>().enabled = false;
+            Camera.main.DOOrthoSize(2f, 0.3f);
+
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
             active = false;
             AmIFULLIMAGE.color = new Color32(255, 0, 0, 255);
@@ -61,17 +66,20 @@ public class shrederSctipt : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red"&&!active)
+        if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red" && !active)
         {
             if (!AmIFilled)
             {
+                Camera.main.GetComponent<playerFollow>().enabled = false;
+                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                Camera.main.DOOrthoSize(0.5f, 0.3f);
                 shrederUI.SetActive(true);
                 cook.Freeze();
                 ClearMePlease();
                 cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                 check = true;
                 active = true;
-                
+
             }
         }
     }
@@ -79,15 +87,15 @@ public class shrederSctipt : MonoBehaviour
     {
         foreach (var tr in shrederUI.transform.GetComponentsInChildren<Transform>())
         {
-            if(tr!= shrederUI.transform.GetComponentsInChildren<Transform>()[0])
-            if (tr.gameObject.CompareTag("RedBTN") || tr.gameObject.CompareTag("RP"))
-            {
-                Destroy(tr.gameObject);
-            }
+            if (tr != shrederUI.transform.GetComponentsInChildren<Transform>()[0])
+                if (tr.gameObject.CompareTag("RedBTN") || tr.gameObject.CompareTag("RP"))
+                {
+                    Destroy(tr.gameObject);
+                }
 
         }
     }
-            public void ClearMePlease()
+    public void ClearMePlease()
     {
         foreach (GameObject go in spawnPoints)
         {

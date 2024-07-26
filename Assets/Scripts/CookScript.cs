@@ -107,6 +107,10 @@ public class CookScript : MonoBehaviour
         {
             handCarry.sprite = itemSprites[Array.IndexOf(itemFilter, inventory.ElementAt(ActiveSlot).Key)];
         }
+        else
+        {
+            handCarry.sprite = null;
+        }
     }
 
     void moveActiveSlot(bool up)
