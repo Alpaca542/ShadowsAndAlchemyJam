@@ -73,11 +73,27 @@ public class DefenderScript1 : MonoBehaviour
         }
     }
 
+    public bool AmountIsOK()
+    {
+        if (activeWeapon == 10)
+        {
+            return true;
+        }
+        else if (bullets[activeWeapon - 1] > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void Update()
     {
         if (GetComponent<PlayerScript>().selected)
         {
-            if (Input.GetMouseButton(0) && CanIShoot && (bullets[activeWeapon - 1] > 0 || activeWeapon == 10))
+            if (Input.GetMouseButton(0) && CanIShoot && AmountIsOK())
             {
                 fixedActiveWeapon = activeWeapon;
                 Shoot(fixedActiveWeapon);
