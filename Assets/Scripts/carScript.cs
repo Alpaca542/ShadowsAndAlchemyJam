@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.Scripting.APIUpdating;
 
 public class carScript : MonoBehaviour
@@ -46,6 +47,7 @@ public class carScript : MonoBehaviour
             animMover.clip = animClips[0];
             animMover.Play();
             CookInMe = true;
+            other.transform.DOMove(transform.position, 0.5f);
             other.GetComponent<CookScript>().InCar = true;
         }
     }
@@ -58,6 +60,7 @@ public class carScript : MonoBehaviour
             animMover.clip = animClips[1];
             animMover.Play();
             CookInMe = false;
+            other.transform.DOMove(other.transform.position + (other.transform.position - transform.position), 0.5f);
             other.GetComponent<CookScript>().InCar = false;
         }
     }
