@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public GameObject bullet;
     public GameObject rocket;
     public GameObject myMoney;
+    public GameObject myDeathParticles;
 
     [Header("Debug")]
     private Vector2 patrollingPoint;
@@ -193,9 +194,23 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        GameObject newMoney = Instantiate(myMoney, transform.position, Quaternion.identity);
-        newMoney.GetComponent<flyingMoney>().myValue = myValue;
         Destroy(gameObject);
+    }
+
+    public void SpawnMoney()
+    {
+        GameObject newMoney = Instantiate(myMoney, transform.position, Quaternion.identity);
+        newMoney.GetComponent<flyingMoney>().myValue = myValue / 3;
+    }
+
+    public void SpawnParticles()
+    {
+        Instantiate(myDeathParticles, transform.position, Quaternion.identity);
+    }
+
+    private void OnDestroy()
+    {
+        SpawnMoney();
     }
 
     bool CanAttack()
