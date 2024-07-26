@@ -16,7 +16,7 @@ public class DefenderScript1 : MonoBehaviour
     public Gradient healthGradient;
 
     public Sprite[] weaponSprites;
-   // public string[] weaponNames;
+    // public string[] weaponNames;
     public float[] weaponCDs;
     public int activeWeapon;
     private Animator anim;
@@ -38,6 +38,8 @@ public class DefenderScript1 : MonoBehaviour
     public Image WeaponShowcase;
 
     public int fixedActiveWeapon;
+
+    public bool doIShoot;
 
     public void GetItem(string whatItem)
     {
@@ -67,11 +69,17 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (GetComponent<PlayerScript>().selected)
         {
-            if (Input.GetMouseButtonDown(0) && CanIShoot)
+            if (Input.GetMouseButton(0) && CanIShoot)
             {
-                CanIShoot = false;
                 fixedActiveWeapon = activeWeapon;
                 Shoot(fixedActiveWeapon);
+                doIShoot = true;
+                AnimateMe();
+            }
+            else if (activeWeapon != 1)
+            {
+                doIShoot = false;
+                AnimateMe();
             }
             else
             {
@@ -99,135 +107,127 @@ public class DefenderScript1 : MonoBehaviour
 
     public void Shoot(int type)
     {
-        if (type == 1)//
+        if (type == 1)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", true);
-            anim.SetBool("Hitting", false);
-
-            InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
-            Invoke(nameof(stopshooting), 1f);
+            if (bullets[activeWeapon] > 0)
+            {
+                CanIShoot = false;
+                InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
+                Invoke(nameof(stopshooting), 1f);
+            }
         }
         else if (type == 2)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", true);
-            anim.SetBool("Hitting", false);
-
-            int angle = 40;
-            for (int i = 0; i < 10; i++)
+            if (bullets[activeWeapon] > 0)
             {
-                GameObject newBullet = SummonBullet();
-                if (newBullet != null)
+                CanIShoot = false;
+                int angle = 40;
+                for (int i = 0; i < 10; i++)
                 {
-                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
-                    newBullet.GetComponent<bulletScript>().damage = 2f;
-                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                    GameObject newBullet = SummonBullet();
+                    if (newBullet != null)
+                    {
+                        newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                        newBullet.GetComponent<bulletScript>().damage = 2f;
+                        newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                    }
+                    angle -= 8;
                 }
-                angle -= 8;
             }
-
-            // bullets[activeWeapon] -= bulletsForUse[activeWeapon];
-            // BulletTextUpdate(activeWeapon - 1);
         }
         else if (type == 3)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", true);
-            anim.SetBool("Hitting", false);
-
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
         else if (type == 4)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-
         }
         else if (type == 5)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
         else if (type == 6)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
         else if (type == 7)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
-        else if (type ==8)
+        else if (type == 8)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
         else if (type == 9)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
         else if (type == 10)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
+            if (bullets[activeWeapon] > 0)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                CanIShoot = false;
+                GameObject newBullet = SummonRocket();
+                if (newBullet != null)
+                {
+                    newBullet.GetComponent<bulletScript>().damage = 5f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
             }
-
         }
 
         Invoke(nameof(makemeshoot), weaponCDs[fixedActiveWeapon - 1]);
@@ -281,6 +281,7 @@ public class DefenderScript1 : MonoBehaviour
     void stopshooting()
     {
         CancelInvoke(nameof(SummonBulletWithSpread));
+        doIShoot = false;
     }
 
     public void makemeshoot()
@@ -290,7 +291,23 @@ public class DefenderScript1 : MonoBehaviour
 
     private void AnimateMe()
     {
-        if (rb.velocity.magnitude >= 0.2f)
+        if (doIShoot)
+        {
+            if (activeWeapon == 4)
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Shooting", false);
+                anim.SetBool("Hitting", true);
+            }
+            else
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Shooting", true);
+                anim.SetBool("Hitting", false);
+            }
+
+        }
+        else if (rb.velocity.magnitude >= 0.2f)
         {
             anim.SetBool("Walking", true);
             anim.SetBool("Shooting", false);

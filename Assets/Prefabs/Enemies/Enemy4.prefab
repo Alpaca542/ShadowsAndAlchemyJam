@@ -110,7 +110,7 @@ MonoBehaviour:
   radiusOfSeeing: 5
   attackingCD: 5
   health: 30
-  myValue: 2
+  myValue: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 512

@@ -7,15 +7,17 @@ public class flyingMoney : MonoBehaviour
 {
     public int myValue;
 
-    private void Start()
+    private void Update()
     {
-        transform.DOMove(GameObject.FindGameObjectWithTag("Defender").transform.position, 0.4f);
-        Invoke(nameof(Die), 0.45f);
+        var step = 5 * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("Defender").transform.position, step);
     }
-
-    private void Die()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject.FindGameObjectWithTag("MoneyManager").GetComponent<moneyManager>().GetMoney(myValue);
-        Destroy(gameObject);
+        if (other.tag == "Defender")
+        {
+            GameObject.FindGameObjectWithTag("MoneyManager").GetComponent<moneyManager>().GetMoney(myValue);
+            Destroy(gameObject);
+        }
     }
 }

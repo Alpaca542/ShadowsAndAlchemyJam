@@ -194,23 +194,19 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        SpawnMoney();
         Destroy(gameObject);
     }
 
     public void SpawnMoney()
     {
         GameObject newMoney = Instantiate(myMoney, transform.position, Quaternion.identity);
-        newMoney.GetComponent<flyingMoney>().myValue = myValue / 3;
+        newMoney.GetComponent<flyingMoney>().myValue = myValue;
     }
 
     public void SpawnParticles()
     {
         Instantiate(myDeathParticles, transform.position, Quaternion.identity);
-    }
-
-    private void OnDestroy()
-    {
-        SpawnMoney();
     }
 
     bool CanAttack()

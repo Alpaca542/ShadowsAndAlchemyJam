@@ -44,13 +44,13 @@ public class moneyManager : MonoBehaviour
             {
                 txt1.text = (Convert.ToInt32(txt1.text) - 1).ToString();
                 totalDebt--;
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSeconds(0.05f);
             }
             else if (totalDebt < 0)
             {
                 txt1.text = (Convert.ToInt32(txt1.text) + 1).ToString();
                 totalDebt++;
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSeconds(0.05f);
             }
         }
         counting = false;
