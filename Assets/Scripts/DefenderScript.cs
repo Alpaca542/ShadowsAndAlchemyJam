@@ -99,7 +99,7 @@ public class DefenderScript1 : MonoBehaviour
 
     public void Shoot(int type)
     {
-        if (type == 1)//
+        if (type == 1)//red
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", true);
@@ -108,7 +108,7 @@ public class DefenderScript1 : MonoBehaviour
             InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
             Invoke(nameof(stopshooting), 1f);
         }
-        else if (type == 2)
+        else if (type == 2)//green
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", true);
@@ -130,7 +130,7 @@ public class DefenderScript1 : MonoBehaviour
             // bullets[activeWeapon] -= bulletsForUse[activeWeapon];
             // BulletTextUpdate(activeWeapon - 1);
         }
-        else if (type == 3)
+        else if (type == 3)//blue
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", true);
@@ -144,14 +144,47 @@ public class DefenderScript1 : MonoBehaviour
             }
 
         }
-        else if (type == 4)
+        else if (type == 4)//pureRed
         {
             anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
+            anim.SetBool("Shooting", true);
+            anim.SetBool("Hitting", false);
+
+            int angle = 40;
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject newBullet = SummonBullet();
+                if (newBullet != null)
+                {
+                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                    newBullet.GetComponent<bulletScript>().damage = 2f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
+                angle -= 8;
+            }
 
         }
-        else if (type == 5)
+        else if (type == 5)//redANDblue
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", true);
+            anim.SetBool("Hitting", false);
+
+            int angle = 40;
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject newBullet = SummonBullet();
+                if (newBullet != null)
+                {
+                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                    newBullet.GetComponent<bulletScript>().damage = 2f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
+                angle -= 8;
+            }
+
+        }
+        else if (type == 6)//greenANDblue
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
@@ -164,7 +197,7 @@ public class DefenderScript1 : MonoBehaviour
             }
 
         }
-        else if (type == 6)
+        else if (type == 7)//Analyzed
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
@@ -177,7 +210,7 @@ public class DefenderScript1 : MonoBehaviour
             }
 
         }
-        else if (type == 7)
+        else if (type ==8)//Graphed
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
@@ -190,7 +223,7 @@ public class DefenderScript1 : MonoBehaviour
             }
 
         }
-        else if (type ==8)
+        else if (type == 9)//white
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
@@ -203,20 +236,7 @@ public class DefenderScript1 : MonoBehaviour
             }
 
         }
-        else if (type == 9)
-        {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", true);
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
-            {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
-            }
-
-        }
-        else if (type == 10)
+        else if (type == 10)//knife
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
@@ -233,7 +253,7 @@ public class DefenderScript1 : MonoBehaviour
         Invoke(nameof(makemeshoot), weaponCDs[fixedActiveWeapon - 1]);
     }
 
-    private void SummonBulletWithSpread()
+    private void SummonBulletWithSpread()//pureRed
     {
         if (bullets[fixedActiveWeapon - 1] > 0)
         {
