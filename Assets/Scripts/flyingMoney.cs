@@ -9,8 +9,8 @@ public class flyingMoney : MonoBehaviour
 
     private void Start()
     {
-        transform.DOMove(GameObject.FindGameObjectWithTag("Defender").transform.position, 0.3f);
-        Invoke(nameof(Die), 0.35f);
+        transform.DOMove(GameObject.FindGameObjectWithTag("Defender").transform.position, 0.4f);
+        Invoke(nameof(Die), 0.45f);
     }
 
     private void Die()
