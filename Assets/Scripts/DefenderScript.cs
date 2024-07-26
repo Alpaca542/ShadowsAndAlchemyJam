@@ -99,7 +99,7 @@ public class DefenderScript1 : MonoBehaviour
 
     public void Shoot(int type)
     {
-        if (type == 1)
+        if (type == 1)//
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", true);

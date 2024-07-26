@@ -53,32 +53,32 @@ public class MixerScript : MonoBehaviour
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
                     {
                         redANDblue = true;
-                        requirerLL.gameObject.GetComponent<Image>().color = new Color32(0, 0, 255, 255);
+                        requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
 
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
                     {
                         pureRed = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
                     {
                         greenANDblue = true;
-                        requirerLLL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requirerLLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed")
                     {
                         Analyzed = true;
-                        requirerLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requirerLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
                     {
                         Graphed = true;
-                        requirerLLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        requirerLLLLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                 }

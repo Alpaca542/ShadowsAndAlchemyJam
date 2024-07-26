@@ -41,7 +41,7 @@ public class shrederSctipt : MonoBehaviour
 
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
             active = false;
-            AmIFULLIMAGE.color = new Color32(255, 0, 0, 255);
+            AmIFULLIMAGE.color = new Color32(255, 255, 255, 255);
             check = false;
             ClearAllPoints();
         }

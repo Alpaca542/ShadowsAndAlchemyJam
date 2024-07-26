@@ -67,7 +67,7 @@ public class analyzercript : MonoBehaviour
                     else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
                     {
                         redNum = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 0, 255, 255);
+                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     }
                 }

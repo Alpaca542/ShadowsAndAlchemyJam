@@ -164,7 +164,7 @@ public class grapherScript : MonoBehaviour
                     {
                         blueNum = true;
                         collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requirerLL.GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+                        requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
                     }
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
