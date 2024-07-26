@@ -39,6 +39,15 @@ public class DefenderScript1 : MonoBehaviour
 
     public int fixedActiveWeapon;
 
+    public GameObject red;
+    public GameObject green;
+    public GameObject blue;
+    public GameObject pureRed;
+    public GameObject redANDblue;
+    public GameObject greenANDblue;
+    public GameObject Analyzed;
+    public GameObject Graphed;
+
     public void GetItem(string whatItem)
     {
         if (whatItem == "heal")
