@@ -77,7 +77,7 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (GetComponent<PlayerScript>().selected)
         {
-            if (Input.GetMouseButton(0) && CanIShoot && (bullets[activeWeapon] > 0 || activeWeapon == 10))
+            if (Input.GetMouseButton(0) && CanIShoot && (bullets[activeWeapon - 1] > 0 || activeWeapon == 10))
             {
                 fixedActiveWeapon = activeWeapon;
                 Shoot(fixedActiveWeapon);
@@ -167,6 +167,16 @@ public class DefenderScript1 : MonoBehaviour
             }
 
         }
+        else if (type == 5)//greenANDblue
+        {
+            CanIShoot = false;
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+        }
         else if (type == 6)//greenANDblue
         {
             CanIShoot = false;
@@ -210,13 +220,6 @@ public class DefenderScript1 : MonoBehaviour
 
         else if (type == 10)//knife
         {
-            CanIShoot = false;
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
-            {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
-            }
         }
 
         Invoke(nameof(makemeshoot), weaponCDs[fixedActiveWeapon - 1]);
