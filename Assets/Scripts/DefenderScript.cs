@@ -41,7 +41,10 @@ public class DefenderScript1 : MonoBehaviour
 
     public void GetItem(string whatItem)
     {
-        //idk
+        if (whatItem == "heal")
+        {
+            TakeDamage(-100);
+        }
     }
 
     public void SetWeapon(int which)
@@ -235,7 +238,16 @@ public class DefenderScript1 : MonoBehaviour
             else
             {
                 health -= dmg;
-                healthBar.UpdateBar(health);
+                Mathf.Clamp(health, 0, 100);
+                if (dmg > 0)
+                {
+                    healthBar.UpdateBar(health, UpdateAnim.Damage);
+                }
+                else
+                {
+                    healthBar.UpdateBar(health, UpdateAnim.Heal);
+                }
+
             }
         }
     }

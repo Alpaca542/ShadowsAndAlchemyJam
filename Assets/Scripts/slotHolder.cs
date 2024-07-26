@@ -30,7 +30,7 @@ public class slotHolder : MonoBehaviour
         }
         else
         {
-            img.GetComponent<Image>().color = Color.white;
+            img.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             GetComponent<Image>().enabled = true;
             gameObject.GetComponent<Button>().interactable = true;
         }
@@ -73,19 +73,20 @@ public class slotHolder : MonoBehaviour
             {
                 myshop.collision.GetComponent<DefenderScript1>().GetItem(myName);
             }
-            myAmount--;
             txtAmount.text = myAmount.ToString();
+            MoneyManager.LoseMoney(myPrice);
+
+            myAmount--;
             if (myAmount <= 0)
             {
                 Destroy(gameObject);
             }
-            MoneyManager.LoseMoney(myPrice);
         }
     }
 
     public void Deactivate()
     {
-        img.GetComponent<Image>().color = Color.gray;
+        img.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
         GetComponent<Image>().enabled = false;
         gameObject.GetComponent<Button>().interactable = false;
     }

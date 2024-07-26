@@ -32,7 +32,6 @@ public class MainShop : MonoBehaviour
     private void Start()
     {
         howManySlots = Random.Range(howManySlotsMin, howManySlotsMax + 1);
-        Debug.Log(howManySlots);
         GenerteAssortiment();
     }
 

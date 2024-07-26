@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float radiusOfSeeing;
     public float attackingCD;
     public float health;
+    public int myValue;
 
     [Header("Fields")]
     public LayerMask playerLayer;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     public float meleeDamage;
     public GameObject bullet;
     public GameObject rocket;
+    public GameObject myMoney;
 
     [Header("Debug")]
     private Vector2 patrollingPoint;
@@ -185,8 +187,15 @@ public class Enemy : MonoBehaviour
         health -= dmg;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        GameObject newMoney = Instantiate(myMoney, transform.position, Quaternion.identity);
+        newMoney.GetComponent<flyingMoney>().myValue = myValue;
+        Destroy(gameObject);
     }
 
     bool CanAttack()

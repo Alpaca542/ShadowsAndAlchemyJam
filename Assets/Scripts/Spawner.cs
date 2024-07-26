@@ -51,6 +51,11 @@ public class Spawner : MonoBehaviour
                 InvokeRepeating(nameof(SpawnEnemy), 0, enemiesSpawningCD);
             }
         }
+        else
+        {
+            CancelInvoke(nameof(SpawnEnemy));
+            SpawningEnemies = false;
+        }
     }
 
     private void SpawnEnemy()
