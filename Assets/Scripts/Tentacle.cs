@@ -14,10 +14,10 @@ public class Tentacle : MonoBehaviour
     public float trailSpeed;
 
 
-    //public float wiggleSpeed;
-   // public float wiggleMagnitude;
- //   public Transform wiggleDir;
-    // Start is called before the first frame update
+    public float wiggleSpeed;
+    public float wiggleMagnitude;
+  public Transform wiggleDir;
+    //Start is called before the first frame update
     void Start()
     {
         lineRendl.positionCount = length;
@@ -28,12 +28,12 @@ public class Tentacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //wiggleDir.localRotation  =Quaternion.Euler(0,0,Mathf.Sin(Time.time*wiggleSpeed)*wiggleMagnitude);
+        wiggleDir.localRotation  =Quaternion.Euler(0,0,Mathf.Sin(Time.time*wiggleSpeed)*wiggleMagnitude);
 
         segmentPoses[0] = targetDir.position;
         for(int i = 1; i < segmentPoses.Length; i++)
         {
-            segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i-1]+targetDir.right*targetDist,ref segmentV[i],smoothSpeed);
+            segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i-1]+targetDir.right*targetDist,ref segmentV[i],smoothSpeed + i / trailSpeed);
         }
         lineRendl.SetPositions(segmentPoses);
     }
