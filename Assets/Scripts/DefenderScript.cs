@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using Microlight.MicroBar;
 using UnityEngine.Video;
 using Unity.VisualScripting;
+using System.Dynamic;
+using TMPro;
 
 public class DefenderScript1 : MonoBehaviour
 {
@@ -21,17 +23,41 @@ public class DefenderScript1 : MonoBehaviour
     private Rigidbody2D rb;
     public float meleeDamage;
 
+    public float[] bullets;
+    public float[] bulletsForUse;
+
     public GameObject myGun;
     public GameObject bullet;
     public GameObject rocket;
+
+    public GameObject[] indicators11;
+    public TMP_Text[] bulletAmounts;
 
     private bool CanIShoot = true;
 
     public Image WeaponShowcase;
 
+    public int fixedActiveWeapon;
+
     public void GetItem(string whatItem)
     {
         //idk
+    }
+
+    public void SetWeapon(int which)
+    {
+        activeWeapon = which;
+        for (int i = 0; i < indicators11.Length; i++)
+        {
+            if (i == which)
+            {
+                indicators11[i].SetActive(true);
+            }
+            else
+            {
+                indicators11[i].SetActive(false);
+            }
+        }
     }
 
     private void Update()
@@ -41,7 +67,8 @@ public class DefenderScript1 : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && CanIShoot)
             {
                 CanIShoot = false;
-                Shoot(activeWeapon);
+                fixedActiveWeapon = activeWeapon;
+                Shoot(fixedActiveWeapon);
             }
             else
             {
@@ -88,11 +115,17 @@ public class DefenderScript1 : MonoBehaviour
             for (int i = 0; i < 10; i++)
             {
                 GameObject newBullet = SummonBullet();
-                newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
-                newBullet.GetComponent<bulletScript>().damage = 2f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                if (newBullet != null)
+                {
+                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                    newBullet.GetComponent<bulletScript>().damage = 2f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
                 angle -= 8;
             }
+
+            // bullets[activeWeapon] -= bulletsForUse[activeWeapon];
+            // BulletTextUpdate(activeWeapon - 1);
         }
         else if (type == 3)
         {
@@ -101,34 +134,67 @@ public class DefenderScript1 : MonoBehaviour
             anim.SetBool("Hitting", false);
 
             GameObject newBullet = SummonRocket();
-            newBullet.GetComponent<bulletScript>().damage = 5f;
-            newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+
         }
         else if (type == 4)
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
             anim.SetBool("Hitting", true);
+
         }
 
-        Invoke(nameof(makemeshoot), weaponCDs[activeWeapon - 1]);
+        Invoke(nameof(makemeshoot), weaponCDs[fixedActiveWeapon - 1]);
     }
 
     private void SummonBulletWithSpread()
     {
-        GameObject newBullet = Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
-        newBullet.GetComponent<bulletScript>().damage = 2f;
-        newBullet.GetComponent<bulletScript>().fromEnemy = false;
+        if (bullets[fixedActiveWeapon - 1] > 0)
+        {
+            GameObject newBullet = Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
+            newBullet.GetComponent<bulletScript>().damage = 2f;
+            newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            bullets[fixedActiveWeapon - 1]--;
+            BulletTextUpdate(fixedActiveWeapon - 1);
+        }
+    }
+
+    private void BulletTextUpdate(int which)
+    {
+        bulletAmounts[which].text = bullets[which].ToString();
     }
 
     private GameObject SummonBullet()
     {
-        return Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+        if (bullets[fixedActiveWeapon - 1] > 0)
+        {
+            bullets[fixedActiveWeapon - 1]--;
+            BulletTextUpdate(fixedActiveWeapon - 1);
+            return Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private GameObject SummonRocket()
     {
-        return Instantiate(rocket, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+        if (bullets[fixedActiveWeapon - 1] > 0)
+        {
+            bullets[fixedActiveWeapon - 1]--;
+            BulletTextUpdate(fixedActiveWeapon - 1);
+            return Instantiate(rocket, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+        }
+        else
+        {
+            return null;
+        }
     }
 
     void stopshooting()
