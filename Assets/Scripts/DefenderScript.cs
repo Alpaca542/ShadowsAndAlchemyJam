@@ -40,6 +40,14 @@ public class DefenderScript1 : MonoBehaviour
     public int fixedActiveWeapon;
 
     public bool doIShoot;
+    public GameObject red;
+    public GameObject green;
+    public GameObject blue;
+    public GameObject pureRed;
+    public GameObject redANDblue;
+    public GameObject greenANDblue;
+    public GameObject Analyzed;
+    public GameObject Graphed;
 
     public void GetItem(string whatItem)
     {
@@ -107,7 +115,7 @@ public class DefenderScript1 : MonoBehaviour
 
     public void Shoot(int type)
     {
-        if (type == 1)
+        if (type == 1)//red
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -116,7 +124,7 @@ public class DefenderScript1 : MonoBehaviour
                 Invoke(nameof(stopshooting), 1f);
             }
         }
-        else if (type == 2)
+        else if (type == 2)//green
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -135,7 +143,7 @@ public class DefenderScript1 : MonoBehaviour
                 }
             }
         }
-        else if (type == 3)
+        else if (type == 3)//blue
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -148,10 +156,27 @@ public class DefenderScript1 : MonoBehaviour
                 }
             }
         }
-        else if (type == 4)
+        else if (type == 5)//redANDblue
         {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", true);
+            anim.SetBool("Hitting", false);
+
+            int angle = 40;
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject newBullet = SummonBullet();
+                if (newBullet != null)
+                {
+                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                    newBullet.GetComponent<bulletScript>().damage = 2f;
+                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                }
+                angle -= 8;
+            }
+
         }
-        else if (type == 5)
+        else if (type == 6)//greenANDblue
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -164,7 +189,7 @@ public class DefenderScript1 : MonoBehaviour
                 }
             }
         }
-        else if (type == 6)
+        else if (type == 7)//Analyzed
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -177,7 +202,7 @@ public class DefenderScript1 : MonoBehaviour
                 }
             }
         }
-        else if (type == 7)
+        else if (type == 8)//Graphed
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -190,7 +215,7 @@ public class DefenderScript1 : MonoBehaviour
                 }
             }
         }
-        else if (type == 8)
+        else if (type == 9)//white
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -203,20 +228,8 @@ public class DefenderScript1 : MonoBehaviour
                 }
             }
         }
-        else if (type == 9)
-        {
-            if (bullets[activeWeapon] > 0)
-            {
-                CanIShoot = false;
-                GameObject newBullet = SummonRocket();
-                if (newBullet != null)
-                {
-                    newBullet.GetComponent<bulletScript>().damage = 5f;
-                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
-                }
-            }
-        }
-        else if (type == 10)
+
+        else if (type == 10)//knife
         {
             if (bullets[activeWeapon] > 0)
             {
@@ -233,7 +246,7 @@ public class DefenderScript1 : MonoBehaviour
         Invoke(nameof(makemeshoot), weaponCDs[fixedActiveWeapon - 1]);
     }
 
-    private void SummonBulletWithSpread()
+    private void SummonBulletWithSpread()//pureRed
     {
         if (bullets[fixedActiveWeapon - 1] > 0)
         {
