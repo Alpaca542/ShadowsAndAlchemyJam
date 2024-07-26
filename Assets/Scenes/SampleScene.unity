@@ -8185,7 +8185,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 278273322}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: meleeDamage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: bullets.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponCDs.Array.size
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
@@ -8229,12 +8237,36 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponCDs.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponCDs.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponCDs.Array.data[6]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponCDs.Array.data[7]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponCDs.Array.data[8]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: bulletAmounts.Array.size
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: bulletsForUse.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponSprites.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: weaponNames.Array.data[4]
@@ -8253,6 +8285,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1439193575}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bulletAmounts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1439193575}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bulletAmounts.Array.data[4]
+      value: 
+      objectReference: {fileID: 1439193575}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bulletAmounts.Array.data[5]
+      value: 
+      objectReference: {fileID: 1439193575}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bulletAmounts.Array.data[6]
+      value: 
+      objectReference: {fileID: 1439193575}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bulletAmounts.Array.data[7]
+      value: 
+      objectReference: {fileID: 1439193575}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: bulletAmounts.Array.data[8]
+      value: 
+      objectReference: {fileID: 1439193575}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: bulletsForUse.Array.data[0]
       value: 10
       objectReference: {fileID: 0}
@@ -8264,6 +8320,26 @@ PrefabInstance:
       propertyPath: bulletsForUse.Array.data[2]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: weaponSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 8466076830414158507, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.7912508
@@ -8372,7 +8448,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 01ae789577c05f8459ef3195b1dc8479, type: 3}
   m_Color: {r: 0.3764706, g: 0.2, b: 0, a: 1}
   m_FlipX: 0
@@ -8448,7 +8524,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -33.04692, y: 6.226898}
+  m_Offset: {x: 0.19735718, y: 0.2320404}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8459,7 +8535,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 203.99011, y: 144.00558}
+  m_Size: {x: 540.7928, y: 373.99057}
   m_EdgeRadius: 0
 --- !u!1 &1780965736
 GameObject:
@@ -9339,6 +9415,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
       propertyPath: m_Name
       value: shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7793284723467295290, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
       propertyPath: m_IsActive
