@@ -6350,9 +6350,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3041455204051014311, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 740339185640556104, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830821357391993544, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138427471957371269, guid: 2d27a797b5fbaf14294b869461c1996a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6512,7 +6524,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 2
   m_Positions:
   - {x: -0.68084174, y: 22.163036, z: 1}
   - {x: 3.1034157, y: 22.747019, z: 0.44909716}
