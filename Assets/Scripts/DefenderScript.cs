@@ -16,7 +16,7 @@ public class DefenderScript1 : MonoBehaviour
     public Gradient healthGradient;
 
     public Sprite[] weaponSprites;
-    public string[] weaponNames;
+   // public string[] weaponNames;
     public float[] weaponCDs;
     public int activeWeapon;
     private Animator anim;
@@ -24,7 +24,7 @@ public class DefenderScript1 : MonoBehaviour
     public float meleeDamage;
 
     public float[] bullets;
-    public float[] bulletsForUse;
+    //public float[] bulletsForUse;
 
     public GameObject myGun;
     public GameObject bullet;
@@ -149,6 +149,84 @@ public class DefenderScript1 : MonoBehaviour
             anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
             anim.SetBool("Hitting", true);
+
+        }
+        else if (type == 5)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+
+        }
+        else if (type == 6)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+
+        }
+        else if (type == 7)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+
+        }
+        else if (type ==8)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+
+        }
+        else if (type == 9)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+
+        }
+        else if (type == 10)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Shooting", false);
+            anim.SetBool("Hitting", true);
+            GameObject newBullet = SummonRocket();
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
 
         }
 
