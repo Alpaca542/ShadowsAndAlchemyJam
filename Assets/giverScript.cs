@@ -44,28 +44,7 @@ public class giverScript : MonoBehaviour
     public TMP_Text graphedT;
     public TMP_Text analyzedT;
     public TMP_Text whiteT;
-    public void GetStarted()
-    {
-        CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (!AmIFilled)
-        {
-            if (blueNum > 0 && RedNum > 0 && !GameGoing)
-            {
-                Camera.main.GetComponent<playerFollow>().enabled = false;
-                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                Camera.main.DOOrthoSize(0.5f, 0.3f);
 
-                shrederUI.SetActive(true);
-                check = true;
-                GameGoing = true;
-
-                blue1 = (UnityEngine.Random.Range(90, 100)) / 100.0f;
-                blue2 = (UnityEngine.Random.Range(50, 100)) / 100.0f;
-                red = (UnityEngine.Random.Range(30, 100)) / 100.0f;
-                // Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
-            }
-        }
-    }
 
 
     public void GetLoot()
