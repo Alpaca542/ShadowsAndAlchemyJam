@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0504871e757b34d99a444b20edd38678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 15
   damage: 0
   fromEnemy: 0
   rocket: 1

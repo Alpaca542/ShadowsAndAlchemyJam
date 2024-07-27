@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
+    public float speed;
     public float damage;
     public bool fromEnemy;
     public bool rocket;
@@ -14,16 +15,12 @@ public class bulletScript : MonoBehaviour
     private void Start()
     {
         Invoke(nameof(DieInTime), 3f);
-        if (rocket)
-        {
-            GetComponent<Rigidbody2D>().AddForce(transform.up * 600);
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().AddForce(transform.up * 1000);
-        }
+        
     }
-
+    private void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().velocity = transform.up*speed;
+    }
     void DieInTime()
     {
         Destroy(gameObject);
