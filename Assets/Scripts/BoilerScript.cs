@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class BoilerScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BoilerScript : MonoBehaviour
     public GameObject indicator;
     public GameObject requirerLL;
     public GameObject requireL;
+    public TMP_Text requirerLLTxt;
+    public TMP_Text requireLTxt;
     public Image Indicator;
     public Slider requirer;
     public Slider requirer1;
@@ -28,6 +31,7 @@ public class BoilerScript : MonoBehaviour
     float blue1;
     float blue2;
     float red;
+    int CookedResult;
 
     bool check;
 
@@ -35,47 +39,55 @@ public class BoilerScript : MonoBehaviour
     public GameObject shrederUI;
     public GameObject collision;
 
-    bool blueNum = false;
-    bool RedNum = false;
+    int blueNum = 0;
+    int RedNum = 0;
+
+    bool GameGoing = false;
 
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue" && !blueNum) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed" && !RedNum)))
+        if (!AmIFilled)
         {
-            if (!AmIFilled)
+            if (blueNum > 0 && RedNum > 0 && !GameGoing)
             {
-                if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
-                {
-                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
-                    {
-                        blueNum = true;
-                        requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                Camera.main.GetComponent<playerFollow>().enabled = false;
+                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                Camera.main.DOOrthoSize(0.5f, 0.3f);
 
-                    }
-                    else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
-                    {
-                        RedNum = true;
-                        requireL.gameObject.GetComponent<Image>().color = Color.white;
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    }
+                shrederUI.SetActive(true);
+                check = true;
+                GameGoing = true;
+
+                blue1 = (UnityEngine.Random.Range(90, 100)) / 100.0f;
+                blue2 = (UnityEngine.Random.Range(50, 100)) / 100.0f;
+                red = (UnityEngine.Random.Range(30, 100)) / 100.0f;
+                // Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
+            }
+        }
+    }
+
+
+    public void GetLoot()
+    {
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")))
+        {
+            if (!AmIFilled && !GameGoing)
+            {
+                if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
+                {
+                    RedNum++;
+                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    requireL.GetComponent<Image>().color = Color.white;
+                    requireLTxt.text = RedNum.ToString();
                 }
-
-                if (blueNum && RedNum)
+                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
                 {
-                    Camera.main.GetComponent<playerFollow>().enabled = false;
-                    Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                    Camera.main.DOOrthoSize(0.5f, 0.3f);
-
-                    shrederUI.SetActive(true);
-                    check = true;
-
-
-                    blue1 = (UnityEngine.Random.Range(90, 100)) / 100.0f;
-                    blue2 = (UnityEngine.Random.Range(50, 100)) / 100.0f;
-                    red = (UnityEngine.Random.Range(30, 100)) / 100.0f;
-                    Debug.Log(blue1); Debug.Log(blue2); Debug.Log(red);
+                    blueNum++;
+                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    requirerLL.GetComponent<Image>().color = Color.white;
+                    requirerLLTxt.text = blueNum.ToString();
                 }
             }
         }
@@ -112,14 +124,36 @@ public class BoilerScript : MonoBehaviour
             indicator.GetComponent<Image>().color = Color.red;
             requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
-            RedNum = false;
-            blueNum = false;
-
+            if (RedNum > blueNum)
+            {
+                RedNum -= blueNum;
+                CookedResult = blueNum;
+                blueNum = 0;
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            else if (RedNum < blueNum)
+            {
+                blueNum -= RedNum;
+                CookedResult = RedNum;
+                RedNum = 0;
+                requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            else
+            {
+                CookedResult = blueNum;
+                RedNum = 0;
+                blueNum = 0;
+                requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            requirerLLTxt.text = RedNum.ToString();
+            requireLTxt.text = blueNum.ToString();
         }
     }
     void DestroyUI()
     {
         shrederUI.SetActive(false);
+        GameGoing = false;
         Camera.main.GetComponent<playerFollow>().enabled = false;
         Camera.main.DOOrthoSize(2f, 0.3f);
 
@@ -136,14 +170,15 @@ public class BoilerScript : MonoBehaviour
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
 
-            if (AmIFilled && (Input.GetKeyDown(KeyCode.E)))
+            if (AmIFilled && Input.GetKeyDown(KeyCode.E))
             {
-
+                for (int i = 0; i < CookedResult; i++)
+                {
+                    cook.GetItem("redANDblue");
+                }
+                CookedResult = 0;
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
-                cook.GetItem("redANDblue");
-                Debug.Log("AfterGive");
-
             }
         }
         if (check && (collision != null))

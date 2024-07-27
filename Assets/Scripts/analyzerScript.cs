@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class analyzercript : MonoBehaviour
 {
@@ -15,19 +16,19 @@ public class analyzercript : MonoBehaviour
     public BoilerScript boiler;
     private int totalAmount;
     private bool AmIFilled;
-    public bool blueNum;
-    public bool redNum;
+    public int blueNum;
+    public int redNum;
+    bool GameGoing;
+
+    float CookedResult;
 
     public GameObject requireL;
     public GameObject requireLL;
 
+    public TMP_Text requireLTxt;
+    public TMP_Text requireLLTxt;
+
     public GameObject indicator;
-
-
-    void turnTube()
-    {
-        Debug.Log("analyzerWin");
-    }
 
     bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
     {
@@ -39,9 +40,13 @@ public class analyzercript : MonoBehaviour
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
 
-            if (AmIFilled && (Input.GetKeyDown(KeyCode.E)))
+            if (AmIFilled && Input.GetKeyDown(KeyCode.E))
             {
-                cook.GetItem("Analyzed");
+                for (int i = 0; i < CookedResult; i++)
+                {
+                    cook.GetItem("Analyzed");
+                }
+                CookedResult = 0;
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
 
@@ -51,37 +56,43 @@ public class analyzercript : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue" && !blueNum) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed" && !redNum)))
+        if (!AmIFilled && !GameGoing)
         {
-            if (!AmIFilled)
+            if (blueNum > 0 && redNum > 0 && !GameGoing)
             {
-                if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
-                {
-                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
-                    {
-                        blueNum = true;
-                        requireLL.gameObject.GetComponent<Image>().color = Color.white;
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                GameGoing = true;
+                myUI.SetActive(true);
+                Camera.main.GetComponent<playerFollow>().enabled = false;
+                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                Camera.main.DOOrthoSize(0.5f, 0.3f);
+                cook.Freeze();
+                StartTask();
+                cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
 
-                    }
-                    else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
-                    {
-                        redNum = true;
-                        requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    }
+            }
+        }
+    }
+
+    public void GetLoot()
+    {
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")))
+        {
+            if (!AmIFilled && !GameGoing)
+            {
+                if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
+                {
+                    redNum++;
+                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    requireL.GetComponent<Image>().color = Color.white;
+                    requireLTxt.text = blueNum.ToString();
                 }
-
-                if (blueNum && redNum)
+                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
                 {
-                    myUI.SetActive(true);
-                    Camera.main.GetComponent<playerFollow>().enabled = false;
-                    Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                    Camera.main.DOOrthoSize(0.5f, 0.3f);
-                    cook.Freeze();
-                    StartTask();
-                    cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-
+                    blueNum++;
+                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    requireLL.GetComponent<Image>().color = Color.white;
+                    requireLLTxt.text = blueNum.ToString();
                 }
             }
         }
@@ -109,16 +120,42 @@ public class analyzercript : MonoBehaviour
         totalAmount--;
         found.tag = "Untagged";
         found.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-        if (totalAmount == 0)
+        if (totalAmount <= 0)
         {
             requireLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            if (redNum > blueNum)
+            {
+                redNum -= blueNum;
+                CookedResult = blueNum;
+                blueNum = 0;
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            else if (redNum < blueNum)
+            {
+                blueNum -= redNum;
+                CookedResult = redNum;
+                redNum = 0;
+                requireLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            else
+            {
+                CookedResult = blueNum;
+                redNum = 0;
+                blueNum = 0;
+                requireLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            requireLLTxt.text = redNum.ToString();
+            requireLTxt.text = blueNum.ToString();
+
             indicator.GetComponent<Image>().color = Color.red;
             myUI.SetActive(false);
             Camera.main.GetComponent<playerFollow>().enabled = false;
             Camera.main.DOOrthoSize(2f, 0.3f);
+
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            turnTube();
+            GameGoing = false;
         }
     }
 }

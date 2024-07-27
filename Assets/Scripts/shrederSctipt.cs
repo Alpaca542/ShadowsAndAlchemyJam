@@ -4,13 +4,17 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class shrederSctipt : MonoBehaviour
 {
-    public Image AmIFULLIMAGE;
+    public Image requireL;
+    public TMP_Text requireLTxt;
+    private float redNum;
+    private float CookedResult;
+    bool GameGoing;
     public bool AmIFilled = false;
     public GameObject shrederUI;
-    public int RedAmount;
     public GameObject[] spawnPoints;
     public GameObject collision;
     // public BoilerScript boiler;
@@ -32,7 +36,11 @@ public class shrederSctipt : MonoBehaviour
 
         if (k == 0)
         {
-
+            CookedResult = redNum;
+            requireLTxt.text = "0";
+            redNum = 0;
+            GameGoing = false;
+            requireL.color = new Color32(255, 255, 255, 150);
             AmIFilled = true;
             shrederUI.SetActive(false);
             // tube.GetComponent<SpriteRenderer>().color = Color.red;
@@ -42,7 +50,7 @@ public class shrederSctipt : MonoBehaviour
 
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
             active = false;
-            AmIFULLIMAGE.color = new Color32(255, 255, 255, 255);
+            requireL.color = new Color32(255, 255, 255, 255);
             check = false;
             ClearAllPoints();
         }
@@ -56,9 +64,12 @@ public class shrederSctipt : MonoBehaviour
 
             if (AmIFilled && Input.GetKeyDown(KeyCode.E))
             {
-                cook.GetItem("pureRed");
+                for (int i = 0; i < CookedResult; i++)
+                {
+                    cook.GetItem("pureRed");
+                }
                 AmIFilled = false;
-                AmIFULLIMAGE.color = new Color32(255, 255, 255, 150);
+                CookedResult = 0;
             }
             if (check) { Check(); }
         }
@@ -67,23 +78,41 @@ public class shrederSctipt : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (cook.ActiveSlot < cook.inventory.Count && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red" && !active)
+        if (!AmIFilled && !GameGoing)
         {
-            if (!AmIFilled)
-            {
-                Camera.main.GetComponent<playerFollow>().enabled = false;
-                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                Camera.main.DOOrthoSize(0.5f, 0.3f);
-                shrederUI.SetActive(true);
-                cook.Freeze();
-                ClearMePlease();
-                cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                check = true;
-                active = true;
+            GameGoing = true;
+            Camera.main.GetComponent<playerFollow>().enabled = false;
+            Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+            Camera.main.DOOrthoSize(0.5f, 0.3f);
+            shrederUI.SetActive(true);
+            cook.Freeze();
+            ClearMePlease();
+            check = true;
+            active = true;
 
+        }
+    }
+
+    public void GetLoot()
+    {
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
+        {
+            if (!AmIFilled && !GameGoing)
+            {
+                redNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                requireLTxt.text = redNum.ToString();
             }
         }
     }
+
+    bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
+    {
+        return slot < inv.Count;
+    }
+
     void ClearAllPoints()
     {
         foreach (var tr in shrederUI.transform.GetComponentsInChildren<Transform>())

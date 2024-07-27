@@ -72,7 +72,7 @@ public class Brewer : MonoBehaviour
                     if (myType == 0)
                     {
                         GetComponent<BoilerScript>().collision = connectedPlayer;
-                        GetComponent<BoilerScript>().GetStarted();
+                        GetComponent<BoilerScript>().GetLoot();
                     }
                     else if (myType == 1)
                     {
@@ -94,17 +94,17 @@ public class Brewer : MonoBehaviour
                     else if (myType == 4)
                     {
                         GetComponent<MerryGoRound>().collision = connectedPlayer;
-                        GetComponent<MerryGoRound>().GetStarted();
+                        GetComponent<MerryGoRound>().GetLoot();
                     }
                     else if (myType == 5)
                     {
                         GetComponent<analyzercript>().collision = connectedPlayer;
-                        GetComponent<analyzercript>().GetStarted();
+                        GetComponent<analyzercript>().GetLoot();
                     }
                     else if (myType == 6)
                     {
                         GetComponent<shrederSctipt>().collision = connectedPlayer;
-                        GetComponent<shrederSctipt>().GetStarted();
+                        GetComponent<shrederSctipt>().GetLoot();
                     }
                     else if (myType == 7)
                     {
@@ -141,10 +141,30 @@ public class Brewer : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) && (!active || !activatable))
                 {
+                    if (myType == 0)
+                    {
+                        GetComponent<BoilerScript>().collision = connectedPlayer;
+                        GetComponent<BoilerScript>().GetStarted();
+                    }
                     if (myType == 3)
                     {
                         GetComponent<grapherScript>().collision = connectedPlayer;
                         GetComponent<grapherScript>().GetStarted();
+                    }
+                    if (myType == 4)
+                    {
+                        GetComponent<MerryGoRound>().collision = connectedPlayer;
+                        GetComponent<MerryGoRound>().GetStarted();
+                    }
+                    if (myType == 5)
+                    {
+                        GetComponent<analyzercript>().collision = connectedPlayer;
+                        GetComponent<analyzercript>().GetStarted();
+                    }
+                    else if (myType == 6)
+                    {
+                        GetComponent<shrederSctipt>().collision = connectedPlayer;
+                        GetComponent<shrederSctipt>().GetStarted();
                     }
                 }
             }

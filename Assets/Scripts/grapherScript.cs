@@ -15,6 +15,7 @@ public class grapherScript : MonoBehaviour
     public Slider sliderA;
     public Slider sliderB;
     public Slider sliderC;
+    bool GameGoing;
     float rndA;
     float rndB;
     float rndC;
@@ -79,7 +80,7 @@ public class grapherScript : MonoBehaviour
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
         if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "green") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")))
         {
-            if (!AmIFilled)
+            if (!AmIFilled && !GameGoing)
             {
                 if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
                 {
@@ -97,7 +98,6 @@ public class grapherScript : MonoBehaviour
                 }
             }
         }
-
     }
 
     void Update()
@@ -170,6 +170,7 @@ public class grapherScript : MonoBehaviour
     void DestroyUI()
     {
         shrederUI.SetActive(false);
+        GameGoing = false;
         Camera.main.GetComponent<playerFollow>().enabled = false;
         Camera.main.DOOrthoSize(2f, 0.3f);
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
@@ -208,8 +209,9 @@ public class grapherScript : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (blueNum > 0 && redNum > 0)
+        if (blueNum > 0 && redNum > 0 && !GameGoing)
         {
+            GameGoing = true;
             rndA = UnityEngine.Random.Range(10, 100) / 100.0f;
             rndB = UnityEngine.Random.Range(-6, 6);
             rndC = UnityEngine.Random.Range(-100, -10);
