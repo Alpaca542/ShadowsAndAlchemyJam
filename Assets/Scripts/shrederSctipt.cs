@@ -10,6 +10,7 @@ public class shrederSctipt : MonoBehaviour
     public Image AmIFULLIMAGE;
     public bool AmIFilled = false;
     public GameObject shrederUI;
+    public int RedAmount;
     public GameObject[] spawnPoints;
     public GameObject collision;
     // public BoilerScript boiler;

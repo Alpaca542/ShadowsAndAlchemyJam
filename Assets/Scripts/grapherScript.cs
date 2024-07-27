@@ -5,10 +5,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class grapherScript : MonoBehaviour
 {
     bool AmIFilled;
+    private int CookedResult;
     public Image shower;
     public Slider sliderA;
     public Slider sliderB;
@@ -25,6 +27,9 @@ public class grapherScript : MonoBehaviour
     public GameObject indicator;
     public GameObject requirerLL;
     public GameObject requireL;
+
+    public TMP_Text requirerLLTxt;
+    public TMP_Text requireLTxt;
     public LineRenderer lineRenderer;
 
     public int resolution = 10; // ���������� ����� �� �������
@@ -55,8 +60,8 @@ public class grapherScript : MonoBehaviour
     public BoilerScript boiler;
     // bool check = false;
 
-    bool blueNum = false;
-    bool redNum = false;
+    int blueNum = 0;
+    int redNum = 0;
     private void Winner()
     {
         if (clickrate >= 5f)
@@ -68,15 +73,46 @@ public class grapherScript : MonoBehaviour
 
         }
     }
+
+    public void GetLoot()
+    {
+        CookScript cook = collision.gameObject.GetComponent<CookScript>();
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "green") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")))
+        {
+            if (!AmIFilled)
+            {
+                if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
+                {
+                    redNum++;
+                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    requireL.GetComponent<Image>().color = Color.white;
+                    requireLTxt.text = blueNum.ToString();
+                }
+                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+                {
+                    blueNum++;
+                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                    requirerLL.GetComponent<Image>().color = Color.white;
+                    requirerLLTxt.text = blueNum.ToString();
+                }
+            }
+        }
+
+    }
+
     void Update()
     {
         if (collision != null && collision.gameObject.tag == "Cook")
         {
             CookScript cook = collision.gameObject.GetComponent<CookScript>();
-
+            Debug.Log(123);
             if (AmIFilled && Input.GetKeyDown(KeyCode.E))
             {
-                cook.GetItem("Graphed");
+                for (int i = 0; i < CookedResult; i++)
+                {
+                    cook.GetItem("Graphed");
+                }
+                CookedResult = 0;
                 AmIFilled = false;
                 indicator.GetComponent<Image>().color = Color.white;
 
@@ -100,15 +136,34 @@ public class grapherScript : MonoBehaviour
         }
         if (CalculateAverage() < 10f)
         {
-
             check = false;
             Invoke(nameof(DestroyUI), 1f);
             indicator.gameObject.GetComponent<Image>().color = Color.red;
             shower.color = Color.green;
-            blueNum = false;
-            redNum = false;
-            requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
-            requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            if (redNum > blueNum)
+            {
+                redNum -= blueNum;
+                CookedResult = blueNum;
+                blueNum = 0;
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            else if (redNum < blueNum)
+            {
+                blueNum -= redNum;
+                CookedResult = redNum;
+                redNum = 0;
+                requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            else
+            {
+                CookedResult = blueNum;
+                redNum = 0;
+                blueNum = 0;
+                requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+                requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            }
+            requirerLLTxt.text = redNum.ToString();
+            requireLTxt.text = blueNum.ToString();
             AmIFilled = true;
         }
     }
@@ -153,50 +208,26 @@ public class grapherScript : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-
-        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "green" && !blueNum) || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue" && !redNum)))
+        if (blueNum > 0 && redNum > 0)
         {
-            if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
+            rndA = UnityEngine.Random.Range(10, 100) / 100.0f;
+            rndB = UnityEngine.Random.Range(-6, 6);
+            rndC = UnityEngine.Random.Range(-100, -10);
+            collision.gameObject.GetComponent<CookScript>().Freeze();
+            check = true;
+            lineRenderer.positionCount = resolution + 1; // +1 ��� ���������� �����
+
+            for (int i = 0; i <= resolution; i++)
             {
-                if (!AmIFilled)
-                {
-                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
-                    {
-                        blueNum = true;
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requirerLL.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-                    }
-                    if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
-                    {
-                        redNum = true;
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                        requireL.GetComponent<Image>().color = Color.white;
-
-                    }
-                }
+                float x = Mathf.Lerp(xMin, xMax, i / (float)resolution);
+                float y = f(x); // ���� �������
+                                // y = Mathf.Clamp(y, yMin, yMax);
+                lineRenderer.SetPosition(i, new Vector3(x / 100.0f, y / 100.0f, 0));
             }
-            if (blueNum && redNum)
-            {
-                rndA = UnityEngine.Random.Range(10, 100) / 100.0f;
-                rndB = UnityEngine.Random.Range(-6, 6);
-                rndC = UnityEngine.Random.Range(-100, -10);
-                collision.gameObject.GetComponent<CookScript>().Freeze();
-                check = true;
-                lineRenderer.positionCount = resolution + 1; // +1 ��� ���������� �����
-
-                for (int i = 0; i <= resolution; i++)
-                {
-                    float x = Mathf.Lerp(xMin, xMax, i / (float)resolution);
-                    float y = f(x); // ���� �������
-                                    // y = Mathf.Clamp(y, yMin, yMax);
-                    lineRenderer.SetPosition(i, new Vector3(x / 100.0f, y / 100.0f, 0));
-                }
-                shrederUI.SetActive(true);
-                Camera.main.GetComponent<playerFollow>().enabled = false;
-                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                Camera.main.DOOrthoSize(0.5f, 0.3f);
-            }
+            shrederUI.SetActive(true);
+            Camera.main.GetComponent<playerFollow>().enabled = false;
+            Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+            Camera.main.DOOrthoSize(0.5f, 0.3f);
         }
     }
 }

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class PedestalScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void SetBomb()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        gameObject.tag = "Untagged";
+        gameObject.GetComponent<Brewer>().myText.SetActive(false);
+        gameObject.GetComponent<Brewer>().enabled = false;
     }
 }

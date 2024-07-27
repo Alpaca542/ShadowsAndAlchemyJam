@@ -5,8 +5,9 @@ using UnityEngine.UI;
 using Microlight.MicroBar;
 using UnityEngine.Video;
 using Unity.VisualScripting;
-using System.Dynamic;
+using System;
 using TMPro;
+using System.Linq;
 
 public class DefenderScript1 : MonoBehaviour
 {
@@ -15,13 +16,17 @@ public class DefenderScript1 : MonoBehaviour
     public MicroBar healthBar;
     public Gradient healthGradient;
 
+    public GameObject myArrow;
+
     //public Sprite[] weaponSprites;
-    // public string[] weaponNames;
+    public string[] weaponNames;
     public float[] weaponCDs;
     public int activeWeapon;
     private Animator anim;
     private Rigidbody2D rb;
     public float meleeDamage;
+
+    public float AmountOfBombs;
 
     public float[] bullets;
     //public float[] bulletsForUse;
@@ -109,6 +114,31 @@ public class DefenderScript1 : MonoBehaviour
             {
                 AnimateMe();
             }
+
+            if (AmountOfBombs > 0)
+            {
+                myArrow.SetActive(true);
+            }
+            else
+            {
+                myArrow.SetActive(false);
+            }
+        }
+
+
+        foreach (string gmb in weaponNames)
+        {
+            int ind = Array.IndexOf(weaponNames, gmb);
+
+            if (GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory.Keys.Contains(gmb))
+            {
+                bullets[ind] = GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory[gmb];
+            }
+            else
+            {
+                bullets[ind] = 0;
+            }
+            BulletTextUpdate(ind);
         }
     }
     private void FixedUpdate()
@@ -245,7 +275,7 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (bullets[fixedActiveWeapon - 1] > 0)
         {
-            GameObject newBullet = Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
+            GameObject newBullet = Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + UnityEngine.Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
             newBullet.GetComponent<bulletScript>().damage = 2f;
             newBullet.GetComponent<bulletScript>().fromEnemy = false;
             bullets[fixedActiveWeapon - 1]--;

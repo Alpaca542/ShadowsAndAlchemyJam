@@ -23,6 +23,7 @@ TagManager:
   - Crystallimage
   - MoneyManager
   - Shop
+  - BombPoint
   layers:
   - Default
   - TransparentFX

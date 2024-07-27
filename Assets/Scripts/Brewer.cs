@@ -10,11 +10,11 @@ public class Brewer : MonoBehaviour
     public GameObject myText;
     private GameObject connectedPlayer;
     public bool forCookOnly;
-    public bool forDefenderOnly;
     public int myType;
     public carScript myCar;
     public bool StickToTheParent;
     public bool activatable;
+    public bool startable;
     private bool active;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -74,7 +74,7 @@ public class Brewer : MonoBehaviour
                         GetComponent<BoilerScript>().collision = connectedPlayer;
                         GetComponent<BoilerScript>().GetStarted();
                     }
-                    else if (myType == 1d)
+                    else if (myType == 1)
                     {
                         myCar.Sit(true);
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
@@ -89,7 +89,7 @@ public class Brewer : MonoBehaviour
                     else if (myType == 3)
                     {
                         GetComponent<grapherScript>().collision = connectedPlayer;
-                        GetComponent<grapherScript>().GetStarted();
+                        GetComponent<grapherScript>().GetLoot();
                     }
                     else if (myType == 4)
                     {
@@ -117,6 +117,10 @@ public class Brewer : MonoBehaviour
                         GetComponent<MainShop>().collision = connectedPlayer.gameObject;
                         GetComponent<MainShop>().Open();
                     }
+                    else if (myType == 9)
+                    {
+                        GetComponent<PedestalScript>().SetBomb();
+                    }
                 }
                 else if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && active) && activatable)// deactivate
                 {
@@ -133,6 +137,14 @@ public class Brewer : MonoBehaviour
                         myCar.Sit(false);
                         connectedPlayerScript.GetComponent<PlayerScript>().StopSitting();
                         myText.GetComponent<TMP_Text>().text = "<i><b>e</b> to sit</i>";
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Space) && (!active || !activatable))
+                {
+                    if (myType == 3)
+                    {
+                        GetComponent<grapherScript>().collision = connectedPlayer;
+                        GetComponent<grapherScript>().GetStarted();
                     }
                 }
             }

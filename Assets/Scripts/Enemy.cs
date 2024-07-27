@@ -115,7 +115,6 @@ public class Enemy : MonoBehaviour
                 anim.SetBool("Shooting", false);
             }
         }
-
     }
 
     public void Attack()
