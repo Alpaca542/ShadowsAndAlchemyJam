@@ -32,8 +32,8 @@ public class DefenderScript1 : MonoBehaviour
     //public float[] bulletsForUse;
 
     public GameObject myGun;
-   // public GameObject bullet;
-   // public GameObject rocket;
+    // public GameObject bullet;
+    // public GameObject rocket;
 
     public GameObject[] indicators11;
     public TMP_Text[] bulletAmounts;

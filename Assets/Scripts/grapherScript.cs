@@ -87,7 +87,7 @@ public class grapherScript : MonoBehaviour
                     redNum++;
                     collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                     requireL.GetComponent<Image>().color = Color.white;
-                    requireLTxt.text = blueNum.ToString();
+                    requireLTxt.text = redNum.ToString();
                 }
                 else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
                 {
