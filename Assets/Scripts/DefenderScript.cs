@@ -39,7 +39,7 @@ public class DefenderScript1 : MonoBehaviour
     public TMP_Text[] bulletAmounts;
 
     private bool CanIShoot = true;
-
+    public bool CanIShoot2 = true;
     public Image WeaponShowcase;
 
     public int fixedActiveWeapon;
@@ -159,110 +159,130 @@ public class DefenderScript1 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
         }
     }
-
+    
     public void Shoot(int type)
     {
         if (type == 1)//red
         {
-            CanIShoot = false;
-            InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
-            Invoke(nameof(stopshooting), 1f);
+           
+            GameObject newBullet = SummonCrystall(red);
+            if (newBullet != null)
+            {
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
+            }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
         else if (type == 2)//green
         {
-            CanIShoot = false;
-            int angle = 40;
-            for (int i = 0; i < 10; i++)
+            
+            GameObject newBullet = SummonCrystall(green);
+            if (newBullet != null)
             {
-                GameObject newBullet = SummonBullet();
-                if (newBullet != null)
-                {
-                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
-                    newBullet.GetComponent<bulletScript>().damage = 2f;
-                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
-                }
-                angle -= 8;
+                newBullet.GetComponent<bulletScript>().damage = 5f;
+                newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
         else if (type == 3)//blue
         {
-            CanIShoot = false;
-            GameObject newBullet = SummonRocket();
+            
+            GameObject newBullet = SummonCrystall(blue); ;
             if (newBullet != null)
             {
                 newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
+        }
+        else if (type == 4)//pureRed
+        {
+
+            CanIShoot = false;
+            InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
+            Invoke(nameof(stopshooting), 1f);
+
+
+
         }
         else if (type == 5)//redANDblue
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Shooting", true);
-            anim.SetBool("Hitting", false);
-
-            int angle = 40;
-            for (int i = 0; i < 10; i++)
+            if (CanIShoot2)
             {
-                GameObject newBullet = SummonBullet();
-                if (newBullet != null)
+                anim.SetBool("Walking", false);
+                anim.SetBool("Shooting", true);
+                anim.SetBool("Hitting", false);
+
+                int angle = 40;
+                for (int i = 0; i < 10; i++)
                 {
-                    newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
-                    newBullet.GetComponent<bulletScript>().damage = 2f;
-                    newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                    GameObject newBullet = SummonBullet();
+                    if (newBullet != null)
+                    {
+                        newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
+                        newBullet.GetComponent<bulletScript>().damage = 2f;
+                        newBullet.GetComponent<bulletScript>().fromEnemy = false;
+                    }
+                    angle -= 8;
                 }
-                angle -= 8;
             }
-
-        }
-        else if (type == 5)//greenANDblue
-        {
-            CanIShoot = false;
-            GameObject newBullet = SummonRocket();
-            if (newBullet != null)
-            {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
-                newBullet.GetComponent<bulletScript>().fromEnemy = false;
-            }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
         else if (type == 6)//greenANDblue
         {
-            CanIShoot = false;
+            // CanIShoot = false;
+            
             GameObject newBullet = SummonRocket();
             if (newBullet != null)
             {
                 newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
-        else if (type == 7)//Analyzed
+        else if (type == 7)//graphed
         {
-            CanIShoot = false;
-            GameObject newBullet = SummonRocket();
+            //CanIShoot = false;
+            
+            GameObject newBullet = SummonCrystall(Graphed);
             if (newBullet != null)
             {
                 newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
-        else if (type == 8)//Graphed
+        else if (type == 8)//Analyzed
         {
-            CanIShoot = false;
-            GameObject newBullet = SummonRocket();
+            
+            //CanIShoot = false;
+            GameObject newBullet = SummonCrystall(Analyzed);
             if (newBullet != null)
             {
                 newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
         else if (type == 9)//white
         {
-            CanIShoot = false;
-            GameObject newBullet = SummonRocket();
+            
+            //CanIShoot = false;
+            GameObject newBullet = SummonCrystall(white);
             if (newBullet != null)
             {
                 newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
+            CanIShoot2 = false;
+            Invoke(nameof(makemeshoot2), 1f);
         }
 
         else if (type == 10)//knife
@@ -302,19 +322,49 @@ public class DefenderScript1 : MonoBehaviour
             return null;
         }
     }
-
-    private GameObject SummonRocket()
+    private GameObject SummonCrystall(GameObject crystall)
     {
-        if (bullets[fixedActiveWeapon - 1] > 0)
+        if (CanIShoot2)
         {
-            bullets[fixedActiveWeapon - 1]--;
-            BulletTextUpdate(fixedActiveWeapon - 1);
-            return Instantiate(greenANDblue, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+
+
+
+            if (bullets[fixedActiveWeapon - 1] > 0)
+            {
+                bullets[fixedActiveWeapon - 1]--;
+                BulletTextUpdate(fixedActiveWeapon - 1);
+                return Instantiate(crystall, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+            }
+            else
+            {
+                return null;
+            }
         }
         else
         {
             return null;
         }
+    }
+    private GameObject SummonRocket()
+    {
+        if (CanIShoot2)
+        {
+            if (bullets[fixedActiveWeapon - 1] > 0)
+            {
+                bullets[fixedActiveWeapon - 1]--;
+                BulletTextUpdate(fixedActiveWeapon - 1);
+                return Instantiate(greenANDblue, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     void stopshooting()
@@ -327,7 +377,11 @@ public class DefenderScript1 : MonoBehaviour
     {
         CanIShoot = true;
     }
-
+    public void makemeshoot2()
+    {
+        CancelInvoke(nameof(makemeshoot2));
+        CanIShoot2 = true;
+    }
     private void AnimateMe()
     {
         if (doIShoot)

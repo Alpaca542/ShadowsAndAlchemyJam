@@ -217,7 +217,9 @@ MonoBehaviour:
   damage: 0
   fromEnemy: 0
   rocket: 1
+  Push: 0
   myDeathParticles: {fileID: 9085568598567956780, guid: 7f590e06acf8b431cb92922465419ebf, type: 3}
+  MyType: 5
 --- !u!61 &5786752976026092571
 BoxCollider2D:
   m_ObjectHideFlags: 0
