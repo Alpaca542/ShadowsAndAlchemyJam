@@ -32,8 +32,8 @@ public class DefenderScript1 : MonoBehaviour
     //public float[] bulletsForUse;
 
     public GameObject myGun;
-    public GameObject bullet;
-    public GameObject rocket;
+   // public GameObject bullet;
+   // public GameObject rocket;
 
     public GameObject[] indicators11;
     public TMP_Text[] bulletAmounts;
@@ -53,6 +53,7 @@ public class DefenderScript1 : MonoBehaviour
     public GameObject greenANDblue;
     public GameObject Analyzed;
     public GameObject Graphed;
+    public GameObject white;
 
     public void GetItem(string whatItem)
     {
@@ -275,7 +276,7 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (bullets[fixedActiveWeapon - 1] > 0)
         {
-            GameObject newBullet = Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + UnityEngine.Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
+            GameObject newBullet = Instantiate(pureRed, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z + UnityEngine.Random.Range(-0.3f, 0.3f), myGun.transform.rotation.w));
             newBullet.GetComponent<bulletScript>().damage = 2f;
             newBullet.GetComponent<bulletScript>().fromEnemy = false;
             bullets[fixedActiveWeapon - 1]--;
@@ -294,7 +295,7 @@ public class DefenderScript1 : MonoBehaviour
         {
             bullets[fixedActiveWeapon - 1]--;
             BulletTextUpdate(fixedActiveWeapon - 1);
-            return Instantiate(bullet, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+            return Instantiate(redANDblue, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
         }
         else
         {
@@ -308,7 +309,7 @@ public class DefenderScript1 : MonoBehaviour
         {
             bullets[fixedActiveWeapon - 1]--;
             BulletTextUpdate(fixedActiveWeapon - 1);
-            return Instantiate(rocket, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
+            return Instantiate(greenANDblue, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
         }
         else
         {
