@@ -121,6 +121,18 @@ public class Brewer : MonoBehaviour
                     {
                         GetComponent<PedestalScript>().SetBomb();
                     }
+                    else if (myType == 10)
+                    {
+                        GetComponent<giverScript>().collision = connectedPlayer;
+                        if(connectedPlayer.GetComponent<CookScript>()!=null)
+                        {
+                            GetComponent<giverScript>().GetLoot();
+                        }
+                        else
+                        {
+                            GetComponent<giverScript>().GiveLoot();
+                        }
+                    }
                 }
                 else if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && active) && activatable)// deactivate
                 {

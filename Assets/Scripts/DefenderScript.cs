@@ -304,7 +304,7 @@ public class DefenderScript1 : MonoBehaviour
         }
     }
 
-    private void BulletTextUpdate(int which)
+    public void BulletTextUpdate(int which)
     {
         bulletAmounts[which].text = bullets[which].ToString();
     }
