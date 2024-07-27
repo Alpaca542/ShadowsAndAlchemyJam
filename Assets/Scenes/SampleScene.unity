@@ -10629,13 +10629,49 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: red
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: 4d5ba8c8c540343679415d72b5b2ec28, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: blue
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: 806e4fccb43bbb1488ab2c77bac4b807, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: green
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: 30c6854cea092ed4d82a86efd2e3f17d, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: white
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: f3dac8082d075fd42917aebf12b3e8a7, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: Graphed
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: e58fff8405e75b047a47c8c956b5b90f, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: pureRed
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: f43eaa32b76984841a24bac1558e52fb, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: Analyzed
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: 8600cfd322d072d469845f7b0318d638, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 278273322}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: redANDblue
+      value: 
+      objectReference: {fileID: 4375127278496256120, guid: b155dc10d187eec40be68e59dc95c404, type: 3}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: meleeDamage
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
+      propertyPath: greenANDblue
+      value: 
+      objectReference: {fileID: 2733071860470294366, guid: c35f733c0ecfd4894b3e0104ada8b956, type: 3}
     - target: {fileID: 1641764813256376065, guid: 123d307532225427bbeba1e5fa0c8231, type: 3}
       propertyPath: bullets.Array.size
       value: 9
@@ -28567,8 +28603,8 @@ MonoBehaviour:
   indicator: {fileID: 7658331582596261407}
   requirerLL: {fileID: 6802819175361325253}
   requireL: {fileID: 9121288634531827754}
-  requirerLLTxt: {fileID: 340460356}
-  requireLTxt: {fileID: 1190539375}
+  requirerLLTxt: {fileID: 0}
+  requireLTxt: {fileID: 0}
   lineRenderer: {fileID: 1358271506291896813}
   resolution: 100
   xMin: -160
