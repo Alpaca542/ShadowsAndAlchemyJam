@@ -8,6 +8,7 @@ using TMPro;
 
 public class shrederSctipt : MonoBehaviour
 {
+    public Image indicator;
     public Image requireL;
     public TMP_Text requireLTxt;
     private float redNum;
@@ -42,6 +43,7 @@ public class shrederSctipt : MonoBehaviour
             GameGoing = false;
             requireL.color = new Color32(255, 255, 255, 150);
             AmIFilled = true;
+            indicator.color = Color.red;
             shrederUI.SetActive(false);
             // tube.GetComponent<SpriteRenderer>().color = Color.red;
 
@@ -69,6 +71,7 @@ public class shrederSctipt : MonoBehaviour
                     cook.GetItem("pureRed");
                 }
                 AmIFilled = false;
+                indicator.color = Color.white;
                 CookedResult = 0;
             }
             if (check) { Check(); }
