@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +18,7 @@ public class MenuManager : MonoBehaviour
     }
     public void InvokeOpenLevel()
     {
-        SceneManager.LoadScene("GameScene1");
+        SceneManager.LoadScene("SampleScene");
     }
     private void Start()
     {
