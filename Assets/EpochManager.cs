@@ -38,7 +38,7 @@ public class EpochManager : MonoBehaviour
         {
             CancelInvoke(nameof(countDown));
             StartEpoch();
-            
+            countDown.text = (countDownTime / 60).ToString() + ":" + (countDownTime - ((countDownTime / 60) * 60)).ToString();
         }
     }
     void StartEpoch()

@@ -71,6 +71,10 @@ public class bulletScript : MonoBehaviour
                 {
                     other.GetComponent<Enemy>().TakeDamage(damage);
                 }
+                else if (other.tag == "BombPoint" && !fromEnemy)
+                {
+                    other.GetComponent<PedestalScript>().TakeDamage(damage);
+                }
             }
             else if (MyType == 1)
             {
@@ -157,6 +161,7 @@ public class bulletScript : MonoBehaviour
                         {
                             gmb.GetComponent<Enemy>().TakeDamage(damage);
                         }
+
                     }
                 }
             }
