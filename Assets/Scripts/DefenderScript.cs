@@ -59,6 +59,11 @@ public class DefenderScript1 : MonoBehaviour
         {
             TakeDamage(-100);
         }
+        else
+        {
+            int indx = Array.IndexOf(weaponNames, whatItem);
+            bullets[indx]++;
+        }
     }
 
     public void SetWeapon(int which)

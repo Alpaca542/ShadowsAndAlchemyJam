@@ -44,6 +44,7 @@ public class carScript : MonoBehaviour
         if (other.tag == "Cook")
         {
             Camera.main.GetComponent<playerFollow>().player = transform;
+            Camera.main.transform.parent.GetComponent<playerFollow>().player = transform;
             animMover.clip = animClips[0];
             animMover.Play();
             CookInMe = true;
@@ -57,6 +58,7 @@ public class carScript : MonoBehaviour
         if (other.tag == "Cook")
         {
             Camera.main.GetComponent<playerFollow>().player = other.transform;
+            Camera.main.transform.parent.GetComponent<playerFollow>().player = other.transform;
             animMover.clip = animClips[1];
             animMover.Play();
             CookInMe = false;
