@@ -1041,9 +1041,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 14d73f131aea5b24cb7de1dcb47bfda0, type: 3}
   - {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
   - {fileID: 21300000, guid: 2612f93053d42374c9f24a99e16c3454, type: 3}
-  EverythingIBuyPrices: 64000000640000006400000064000000
+  EverythingIBuyPrices: 6400000064000000640000006400000064000000
   howManySlotsMin: 2
-  howManySlotsMax: 8
+  howManySlotsMax: 6
   maxAmount: 10
   slots:
   - {fileID: 2141906434385123092}
