@@ -141,8 +141,8 @@ public class giverScript : MonoBehaviour
         defender.bullets[6] += graphedNum;
         defender.bullets[7] += analyzedNum;
         defender.bullets[8] += whiteNum;
-        
 
+        RedNum = 0;
         greenNum =0;
          blueNum=0;
         pureRedNum=0;
