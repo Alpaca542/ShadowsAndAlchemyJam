@@ -53,6 +53,7 @@ public class DialogueScript : MonoBehaviour
     public IEnumerator Type(string WhatToType, Sprite WhatToShow, bool ShouldIStopAfter)
     {
         //PLAYSOUND
+        Time.timeScale = 0f;
         ShouldIStopAfterpb = ShouldIStopAfter;
         Stringpb = WhatToType;
 
@@ -80,15 +81,15 @@ public class DialogueScript : MonoBehaviour
             Display.text += letter1;
             if (letter1 == ".".ToCharArray()[0] || letter1 == "!".ToCharArray()[0] || letter1 == "?".ToCharArray()[0])
             {
-                yield return new WaitForSeconds(0.1f / (1 / Time.timeScale));
+                yield return new WaitForSecondsRealtime(0.1f);
             }
             else if (letter1 == " ".ToCharArray()[0])
             {
-                yield return new WaitForSeconds(0.05f / (1 / Time.timeScale));
+                yield return new WaitForSecondsRealtime(0.05f);
             }
             else
             {
-                yield return new WaitForSeconds(typingspeed / (1 / Time.timeScale));
+                yield return new WaitForSecondsRealtime(typingspeed);
             }
         }
         //gameObject.GetComponent<soundManager>().sound.loop = false;
