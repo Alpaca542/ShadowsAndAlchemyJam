@@ -52,7 +52,7 @@ public class BoilerScript : MonoBehaviour
             if (blueNum > 0 && RedNum > 0 && !GameGoing)
             {
                 Camera.main.GetComponent<playerFollow>().enabled = false;
-                Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
                 Camera.main.DOOrthoSize(0.5f, 0.3f);
 
                 shrederUI.SetActive(true);
