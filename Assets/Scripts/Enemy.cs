@@ -208,7 +208,11 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(myDeathParticles, transform.position, Quaternion.identity);
     }
-
+    private void OnDestroy()
+    {
+        if(health<=0)
+        GameObject.FindWithTag("EpochManager").GetComponent<EpochManager>().killedShadows += 1;
+    }
     bool CanAttack()
     {
         switch (MyType)
