@@ -11,7 +11,7 @@ public class giverScript : MonoBehaviour
     // Start is called before the first frame update
 
     public bool AmIFilled;
-  
+
     float blue1;
     float blue2;
     float red;
@@ -52,81 +52,73 @@ public class giverScript : MonoBehaviour
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
         if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "red") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "renANDblue") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "white")))
         {
-           
-                if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
-                {
-                    pureRedNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                   // requireL.GetComponent<Image>().color = Color.white;
-                    pureRedT.text = pureRedNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
-                {
-                    blueNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                   // requirerLL.GetComponent<Image>().color = Color.white;
-                    blueT.text = blueNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
-                {
-                    RedNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                   // requirerLL.GetComponent<Image>().color = Color.white;
-                    redT.text = RedNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
-                {
-                    greenNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    //requirerLL.GetComponent<Image>().color = Color.white;
-                    greenT.text =greenNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
-                {
-                    redAndblueNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                   // requirerLL.GetComponent<Image>().color = Color.white;
-                    redAndblueT.text = redAndblueNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
-                {
-                    greenAndblueNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                   // requirerLL.GetComponent<Image>().color = Color.white;
-                    greenAndblueT.text = greenAndblueNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed")
-                {
-                    analyzedNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    //requirerLL.GetComponent<Image>().color = Color.white;
-                    analyzedT.text = analyzedNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
-                {
-                    graphedNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                    //requirerLL.GetComponent<Image>().color = Color.white;
-                    graphedT.text = graphedNum.ToString();
-                }
-                else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "white")
-                {
-                    whiteNum++;
-                    collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-                   // requirerLL.GetComponent<Image>().color = Color.white;
-                    whiteT.text = whiteNum.ToString();
-                }
-            
+
+            if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
+            {
+                pureRedNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                // requireL.GetComponent<Image>().color = Color.white;
+                pureRedT.text = pureRedNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue")
+            {
+                blueNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                // requirerLL.GetComponent<Image>().color = Color.white;
+                blueT.text = blueNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "red")
+            {
+                RedNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                // requirerLL.GetComponent<Image>().color = Color.white;
+                redT.text = RedNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green")
+            {
+                greenNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                //requirerLL.GetComponent<Image>().color = Color.white;
+                greenT.text = greenNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
+            {
+                redAndblueNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                // requirerLL.GetComponent<Image>().color = Color.white;
+                redAndblueT.text = redAndblueNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")
+            {
+                greenAndblueNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                // requirerLL.GetComponent<Image>().color = Color.white;
+                greenAndblueT.text = greenAndblueNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed")
+            {
+                analyzedNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                //requirerLL.GetComponent<Image>().color = Color.white;
+                analyzedT.text = analyzedNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed")
+            {
+                graphedNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                //requirerLL.GetComponent<Image>().color = Color.white;
+                graphedT.text = graphedNum.ToString();
+            }
+            else if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "white")
+            {
+                whiteNum++;
+                collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
+                // requirerLL.GetComponent<Image>().color = Color.white;
+                whiteT.text = whiteNum.ToString();
+            }
+
         }
     }
-
-
-
-
-
-
-
-
 
     public void GiveLoot()
     {
@@ -143,73 +135,35 @@ public class giverScript : MonoBehaviour
         defender.bullets[8] += whiteNum;
 
         RedNum = 0;
-        greenNum =0;
-         blueNum=0;
-        pureRedNum=0;
-        redAndblueNum=0;
-        greenAndblueNum=0;
-       graphedNum=0;
-        analyzedNum=0;
-       whiteNum=0;
-        for (int i = 0;i<9;i++)
+        greenNum = 0;
+        blueNum = 0;
+        pureRedNum = 0;
+        redAndblueNum = 0;
+        greenAndblueNum = 0;
+        graphedNum = 0;
+        analyzedNum = 0;
+        whiteNum = 0;
+        for (int i = 0; i < 9; i++)
         {
-            
-
             defender.BulletTextUpdate(i);
         }
     }
 
     private void Update()
-    {   
-    redT.text = Convert.ToString(RedNum);
-    greenT.text = Convert.ToString(greenNum);                     
-    blueT.text = Convert.ToString(blueNum);
-    pureRedT.text = Convert.ToString(pureRedNum);
-    redAndblueT.text = Convert.ToString(redAndblueNum);
-    greenAndblueT.text = Convert.ToString(greenAndblueNum);
-    graphedT.text = Convert.ToString(graphedNum);
-    analyzedT.text = Convert.ToString(analyzedNum);
-    whiteT.text = Convert.ToString(whiteNum);
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    void DestroyUI()
     {
-        shrederUI.SetActive(false);
-        GameGoing = false;
-        Camera.main.GetComponent<playerFollow>().enabled = false;
-        Camera.main.DOOrthoSize(2f, 0.3f);
-
-        collision.gameObject.GetComponent<CookScript>().UnFreeze();
+        redT.text = Convert.ToString(RedNum);
+        greenT.text = Convert.ToString(greenNum);
+        blueT.text = Convert.ToString(blueNum);
+        pureRedT.text = Convert.ToString(pureRedNum);
+        redAndblueT.text = Convert.ToString(redAndblueNum);
+        greenAndblueT.text = Convert.ToString(greenAndblueNum);
+        graphedT.text = Convert.ToString(graphedNum);
+        analyzedT.text = Convert.ToString(analyzedNum);
+        whiteT.text = Convert.ToString(whiteNum);
     }
 
     bool checkIfSlotIsFull(Dictionary<string, int> inv, int slot)
     {
         return slot < inv.Count;
     }
-
 }

@@ -127,20 +127,20 @@ public class DefenderScript1 : MonoBehaviour
         }
 
 
-        foreach (string gmb in weaponNames)
-        {
-            int ind = Array.IndexOf(weaponNames, gmb);
+        // foreach (string gmb in weaponNames)
+        // {
+        //     int ind = Array.IndexOf(weaponNames, gmb);
 
-            if (GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory.Keys.Contains(gmb))
-            {
-                bullets[ind] = GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory[gmb];
-            }
-            else
-            {
-                bullets[ind] = 0;
-            }
-            BulletTextUpdate(ind);
-        }
+        //     if (GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory.Keys.Contains(gmb))
+        //     {
+        //         bullets[ind] = GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory[gmb];
+        //     }
+        //     else
+        //     {
+        //         bullets[ind] = 0;
+        //     }
+        //     BulletTextUpdate(ind);
+        // }
     }
     private void FixedUpdate()
     {
@@ -159,12 +159,12 @@ public class DefenderScript1 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
         }
     }
-    
+
     public void Shoot(int type)
     {
         if (type == 1)//red
         {
-           
+
             GameObject newBullet = SummonCrystall(red);
             if (newBullet != null)
             {
@@ -176,7 +176,7 @@ public class DefenderScript1 : MonoBehaviour
         }
         else if (type == 2)//green
         {
-            
+
             GameObject newBullet = SummonCrystall(green);
             if (newBullet != null)
             {
@@ -188,7 +188,7 @@ public class DefenderScript1 : MonoBehaviour
         }
         else if (type == 3)//blue
         {
-            
+
             GameObject newBullet = SummonCrystall(blue); ;
             if (newBullet != null)
             {
@@ -235,7 +235,7 @@ public class DefenderScript1 : MonoBehaviour
         else if (type == 6)//greenANDblue
         {
             // CanIShoot = false;
-            
+
             GameObject newBullet = SummonRocket();
             if (newBullet != null)
             {
@@ -248,7 +248,7 @@ public class DefenderScript1 : MonoBehaviour
         else if (type == 7)//graphed
         {
             //CanIShoot = false;
-            
+
             GameObject newBullet = SummonCrystall(Graphed);
             if (newBullet != null)
             {
@@ -260,7 +260,7 @@ public class DefenderScript1 : MonoBehaviour
         }
         else if (type == 8)//Analyzed
         {
-            
+
             //CanIShoot = false;
             GameObject newBullet = SummonCrystall(Analyzed);
             if (newBullet != null)
@@ -273,7 +273,7 @@ public class DefenderScript1 : MonoBehaviour
         }
         else if (type == 9)//white
         {
-            
+
             //CanIShoot = false;
             GameObject newBullet = SummonCrystall(white);
             if (newBullet != null)

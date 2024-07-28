@@ -124,7 +124,7 @@ public class Brewer : MonoBehaviour
                     else if (myType == 10)
                     {
                         GetComponent<giverScript>().collision = connectedPlayer;
-                        if(connectedPlayer.GetComponent<CookScript>()!=null)
+                        if (connectedPlayer.GetComponent<CookScript>() != null)
                         {
                             GetComponent<giverScript>().GetLoot();
                         }
