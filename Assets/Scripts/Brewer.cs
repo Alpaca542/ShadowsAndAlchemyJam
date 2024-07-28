@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Brewer : MonoBehaviour
 {
@@ -51,6 +52,11 @@ public class Brewer : MonoBehaviour
             }
             else if (other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender")
             {
+                if (myType == 8)
+                {
+                    Camera.main.GetComponent<playerFollow>().enabled = true;
+                    Camera.main.DOOrthoSize(5f, 0.3f);
+                }
                 connectedPlayer = null;
                 myText.SetActive(false);
             }
@@ -116,6 +122,9 @@ public class Brewer : MonoBehaviour
                         GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
                         GetComponent<MainShop>().collision = connectedPlayer.gameObject;
                         GetComponent<MainShop>().Open();
+                        Camera.main.GetComponent<playerFollow>().enabled = false;
+                        Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                        Camera.main.DOOrthoSize(1f, 0.3f);
                     }
                     else if (myType == 9)
                     {

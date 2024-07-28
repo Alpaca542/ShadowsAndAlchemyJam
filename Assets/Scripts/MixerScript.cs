@@ -125,7 +125,7 @@ public class MixerScript : MonoBehaviour
     void DestroyUI()
     {
         shrederUI.SetActive(false);
-        Camera.main.GetComponent<playerFollow>().enabled = false;
+        Camera.main.GetComponent<playerFollow>().enabled = true;
         Camera.main.DOOrthoSize(2f, 0.3f);
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
     }
