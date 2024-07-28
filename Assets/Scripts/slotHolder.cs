@@ -65,7 +65,7 @@ public class slotHolder : MonoBehaviour
         }
         if (MoneyManager.MyMoney >= myPrice)
         {
-            if (myshop.isCookHere)
+            if (myshop.isCookHere && myName != "Heal")
             {
                 myshop.collision.GetComponent<CookScript>().GetItem(myName);
             }
