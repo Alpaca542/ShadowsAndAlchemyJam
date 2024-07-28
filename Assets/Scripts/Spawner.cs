@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
             if (HowManyEnemiesKilled >= 10)
             {
                 //shake camera idk
-                CameraShaker.Instance.ShakeOnce(20f, 5f, 0.5f, 20f);
+                CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
                 arrow.SetActive(true);
                 HowManyEnemiesKilled = 0;
                 shadowGates[gateCnt].SetActive(true);
