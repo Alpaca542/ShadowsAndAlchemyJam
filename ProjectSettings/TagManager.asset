@@ -25,6 +25,7 @@ TagManager:
   - Shop
   - BombPoint
   - Spawner
+  - EpochManager
   layers:
   - Default
   - TransparentFX

@@ -37,27 +37,7 @@ public class Spawner : MonoBehaviour
        // SpawnEnemies();
     }
 
-    public void enemyKilled()
-    {
-        if (GameObject.FindGameObjectsWithTag("BombPoint").Length == 0)
-        {
-            HowManyEnemiesKilled++;
-            if (HowManyEnemiesKilled >= 10)
-            {
-                //shake camera idk
-                CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
-                arrow.SetActive(true);
-                HowManyEnemiesKilled = 0;
-                shadowGates[gateCnt].SetActive(true);
-                gateCnt++;
-                arrow.SetActive(true);
-                if (gateCnt == 5)
-                {
-                    Win();
-                }
-            }
-        }
-    }
+    
     private void Win()
     {
         CameraShaker.Instance.ShakeOnce(100f, 100f, 100f, 100f);
