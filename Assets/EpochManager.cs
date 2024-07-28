@@ -98,6 +98,9 @@ public class EpochManager : MonoBehaviour
     {
         WaitingGate = false;
         FinishEpoch();
+        Spawner spawner = GameObject.FindWithTag("Spawner").GetComponent<Spawner>();
+        CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
+        spawner.arrow.SetActive(false);
         killedShadows = 0;
     }
 }
