@@ -34,10 +34,10 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         //SpawnShops();
-       // SpawnEnemies();
+        // SpawnEnemies();
     }
 
-    
+
     private void Win()
     {
         CameraShaker.Instance.ShakeOnce(100f, 100f, 100f, 100f);
@@ -46,10 +46,14 @@ public class Spawner : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Shop").Length < amountOfShops)
         {
-            GameObject newShop = Instantiate(shop, new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0), Quaternion.identity);
-            foreach (Canvas cnv in newShop.GetComponentsInChildren<Canvas>())
+            Vector3 newPos = new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0);
+            if (Vector3.Distance(newPos, car.transform.position) > 2)
             {
-                cnv.worldCamera = Camera.main;
+                GameObject newShop = Instantiate(shop, newPos, Quaternion.identity);
+                foreach (Canvas cnv in newShop.GetComponentsInChildren<Canvas>())
+                {
+                    cnv.worldCamera = Camera.main;
+                }
             }
         }
     }

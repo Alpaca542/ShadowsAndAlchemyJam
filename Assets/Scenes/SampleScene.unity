@@ -2181,7 +2181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1563424571}
-  type: 2
+  type: 1
 --- !u!4 &244487163
 Transform:
   m_ObjectHideFlags: 0
@@ -19225,8 +19225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3768658d15b4d32a7d21cf4ba3a706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 0}
-  type: 1
+  volume: {fileID: 1563424571}
+  type: 2
 --- !u!4 &1749036729
 Transform:
   m_ObjectHideFlags: 0
