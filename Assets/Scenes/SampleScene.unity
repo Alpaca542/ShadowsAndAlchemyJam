@@ -5674,7 +5674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &682574433
 Transform:
   m_ObjectHideFlags: 0
@@ -21215,7 +21215,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -21554,7 +21554,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -34738,8 +34738,8 @@ MonoBehaviour:
   indicator: {fileID: 7658331582596261407}
   requirerLL: {fileID: 6802819175361325253}
   requireL: {fileID: 9121288634531827754}
-  requirerLLTxt: {fileID: 0}
-  requireLTxt: {fileID: 0}
+  requirerLLTxt: {fileID: 340460356}
+  requireLTxt: {fileID: 1190539375}
   lineRenderer: {fileID: 1358271506291896813}
   resolution: 100
   xMin: -160
