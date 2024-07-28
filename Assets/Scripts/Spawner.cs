@@ -21,6 +21,9 @@ public class Spawner : MonoBehaviour
     public CookScript cook;
     public GameObject[] enemies;
 
+    [Header("Debug")]
+    public int HowManyEnemiesKilled;
+
     private bool SpawningEnemies;
 
     private void Update()

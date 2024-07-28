@@ -5719,6 +5719,7 @@ MonoBehaviour:
   - {fileID: 6532874581744815342, guid: 49cf3cd1f311746d09afdf05eaf8b14f, type: 3}
   - {fileID: 9041373001001816225, guid: 89c1ac1c977c04f06887c741c70a2998, type: 3}
   - {fileID: 2986659136773235100, guid: c1d426624075a4aebbbfe5284d25498b, type: 3}
+  HowManyEnemiesKilled: 0
 --- !u!1 &708128523
 GameObject:
   m_ObjectHideFlags: 0
@@ -9461,6 +9462,7 @@ MonoBehaviour:
   - {fileID: 6532874581744815342, guid: 49cf3cd1f311746d09afdf05eaf8b14f, type: 3}
   - {fileID: 9041373001001816225, guid: 89c1ac1c977c04f06887c741c70a2998, type: 3}
   - {fileID: 2986659136773235100, guid: c1d426624075a4aebbbfe5284d25498b, type: 3}
+  HowManyEnemiesKilled: 0
 --- !u!1 &1147824958
 GameObject:
   m_ObjectHideFlags: 0
@@ -19496,8 +19498,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.047, y: 0.523}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.047, y: 0.8719}
+  m_SizeDelta: {x: 1, y: 0.3022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &247493956194945818
 SpriteRenderer:
@@ -28815,8 +28817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.703}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 1.0339}
+  m_SizeDelta: {x: 1, y: 0.3383}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4754409084197002111
 MonoBehaviour:
