@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour
     {
         SpawnShops();
         SpawnEnemies();
+
     }
 
     private void SpawnShops()
