@@ -21,7 +21,7 @@ public class MagnifyingGlassScript : MonoBehaviour, IDragHandler, IEndDragHandle
     {
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         newPos.z = 0;
-        if (Physics2D.OverlapCircle(newPos, 1f, UIlayer))
+        if (Physics2D.OverlapCircle(newPos, 0.1f, UIlayer))
         {
             transform.position = newPos;
         }
