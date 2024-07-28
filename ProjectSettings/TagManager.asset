@@ -24,6 +24,7 @@ TagManager:
   - MoneyManager
   - Shop
   - BombPoint
+  - Spawner
   layers:
   - Default
   - TransparentFX

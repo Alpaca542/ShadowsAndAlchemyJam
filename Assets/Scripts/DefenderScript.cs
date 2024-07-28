@@ -16,8 +16,6 @@ public class DefenderScript1 : MonoBehaviour
     public MicroBar healthBar;
     public Gradient healthGradient;
 
-    public GameObject myArrow;
-
     //public Sprite[] weaponSprites;
     public string[] weaponNames;
     public float[] weaponCDs;
@@ -114,15 +112,6 @@ public class DefenderScript1 : MonoBehaviour
             else
             {
                 AnimateMe();
-            }
-
-            if (AmountOfBombs > 0)
-            {
-                myArrow.SetActive(true);
-            }
-            else
-            {
-                myArrow.SetActive(false);
             }
         }
 

@@ -128,7 +128,11 @@ public class Brewer : MonoBehaviour
                     }
                     else if (myType == 9)
                     {
-                        GetComponent<PedestalScript>().SetBomb();
+                        Debug.Log(connectedPlayer.GetComponent<DefenderScript1>().bullets[8]);
+                        if (connectedPlayer.GetComponent<DefenderScript1>().bullets[8] > 0)
+                        {
+                            GetComponent<PedestalScript>().SetBomb();
+                        }
                     }
                     else if (myType == 10)
                     {

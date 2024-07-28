@@ -68,6 +68,7 @@ public class CameraSwaper : MonoBehaviour
     void SwapPlayers(GameObject player1, GameObject player2)
     {
         Camera.main.GetComponent<playerFollow>().player = player2.transform;
+        Camera.main.transform.parent.GetComponent<playerFollow>().player = player2.transform;
         inactiveCamera.GetComponent<playerFollow>().player = player1.transform;
     }
 

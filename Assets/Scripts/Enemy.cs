@@ -194,6 +194,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         SpawnMoney();
+        GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().enemyKilled();
         Destroy(gameObject);
     }
 
