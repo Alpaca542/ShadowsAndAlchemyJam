@@ -332,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedGate: {fileID: 0}
   arrow: {fileID: 0}
+  HP: 10
 --- !u!1 &5578706842620344324
 GameObject:
   m_ObjectHideFlags: 0
