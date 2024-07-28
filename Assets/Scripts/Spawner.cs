@@ -33,8 +33,8 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        SpawnShops();
-        SpawnEnemies();
+        //SpawnShops();
+       // SpawnEnemies();
     }
 
     public void enemyKilled()
@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
     {
         CameraShaker.Instance.ShakeOnce(100f, 100f, 100f, 100f);
     }
-    private void SpawnShops()
+    public void SpawnShops()
     {
         if (GameObject.FindGameObjectsWithTag("Shop").Length < amountOfShops)
         {
@@ -74,7 +74,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemies()
+    public void SpawnEnemies()
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Length < amountOfEnemies)
         {
