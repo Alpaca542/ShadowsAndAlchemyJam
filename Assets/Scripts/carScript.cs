@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Scripting.APIUpdating;
+using System.Data.Common;
 
 public class carScript : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class carScript : MonoBehaviour
     public float health;
 
     public bool CookInMe;
+
+    public Sprite defSprite;
 
     void Start()
     {
@@ -56,6 +59,11 @@ public class carScript : MonoBehaviour
             CookInMe = true;
             other.transform.DOMove(transform.position, 0.5f);
             other.GetComponent<CookScript>().InCar = true;
+        }
+        else if (other.tag == "Defender")
+        {
+            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely("I don't think going there is a good idea...", defSprite, true, Camera.main.orthographicSize);
+            other.transform.DOMove(other.transform.position + (other.transform.position - transform.position), 0.5f);
         }
     }
 

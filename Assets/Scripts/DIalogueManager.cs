@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class DialogueScript : MonoBehaviour
 {
     private float savedOrthoSize;
-    public Text Display;
+    public TMP_Text Display;
     public Image Display2;
     public string[] sentences;
     public bool ShouldIStopAfterpb;
@@ -79,7 +80,7 @@ public class DialogueScript : MonoBehaviour
         }
         else
         {
-            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(221.65f, 0);
         }
         Display2.sprite = WhatToShow;
         foreach (char letter1 in WhatToType.ToCharArray())
