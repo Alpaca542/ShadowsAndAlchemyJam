@@ -59,7 +59,8 @@ public class DialogueScript : MonoBehaviour
     }
     public IEnumerator Type(string WhatToType, Sprite WhatToShow, bool ShouldIStopAfter)
     {
-        //PLAYSOUND
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().Play();
         if (StopTime)
         {
             Time.timeScale = 0f;
@@ -105,7 +106,8 @@ public class DialogueScript : MonoBehaviour
                 yield return new WaitForSecondsRealtime(typingspeed);
             }
         }
-        //gameObject.GetComponent<soundManager>().sound.loop = false;
+        GetComponent<AudioSource>().loop = false;
+
         if (ShouldIStopAfter)
         {
             btnContinueFake.SetActive(true);
@@ -114,7 +116,6 @@ public class DialogueScript : MonoBehaviour
         {
             btnContinue.SetActive(true);
         }
-        //GetComponent<AudioSource>().Stop();
     }
     public void StartMainLine(float orthosize)
     {
