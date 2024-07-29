@@ -12,7 +12,6 @@ public class slotHolder : MonoBehaviour
     public TMP_Text txt;
     public TMP_Text txtAmount;
     public MainShop myshop;
-    public bool forCookOnly;
     public int myPrice;
     public string myName;
 
@@ -20,19 +19,15 @@ public class slotHolder : MonoBehaviour
 
     public void Start()
     {
-        if (!myshop.isCookHere && forCookOnly)
-        {
-            Deactivate();
-        }
-        else if (myshop.isCookHere && !forCookOnly)
-        {
-            Deactivate();
-        }
-        else
+        if (!(myName == "heal" && myshop.isCookHere) && !(myPrice < 0 && !myshop.isCookHere))
         {
             img.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             GetComponent<Image>().enabled = true;
             gameObject.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            Deactivate();
         }
 
         txtAmount.text = myAmount.ToString();

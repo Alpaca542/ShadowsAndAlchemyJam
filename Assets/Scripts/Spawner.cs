@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Shop").Length < amountOfShops)
         {
             Vector3 newPos = new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0);
-            if (Vector3.Distance(newPos, car.transform.position) > 2)
+            if (Vector3.Distance(newPos, car.transform.position) > 5)
             {
                 GameObject newShop = Instantiate(shop, newPos, Quaternion.identity);
                 foreach (Canvas cnv in newShop.GetComponentsInChildren<Canvas>())

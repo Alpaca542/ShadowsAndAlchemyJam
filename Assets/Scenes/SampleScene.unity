@@ -6720,7 +6720,7 @@ MonoBehaviour:
   - {fileID: 130135621}
   - {fileID: 804116391}
   - {fileID: 1873892572}
-  car: {fileID: 2456466720905863614}
+  car: {fileID: 674821942997982431}
   defender: {fileID: 1747932609}
   arrow: {fileID: 904982581}
   HowManyEnemiesKilled: 0
@@ -12978,8 +12978,8 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiiii
 --- !u!50 &1240216411
 Rigidbody2D:
   serializedVersion: 4
@@ -17920,7 +17920,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 500
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -28807,8 +28807,8 @@ MonoBehaviour:
   StickToTheParent: 1
   activatable: 1
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiii
 --- !u!1 &3087608563397822629
 GameObject:
   m_ObjectHideFlags: 0
@@ -29723,8 +29723,8 @@ MonoBehaviour:
   StickToTheParent: 1
   activatable: 1
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiii
 --- !u!1 &3568070554678711923
 GameObject:
   m_ObjectHideFlags: 0
@@ -30679,8 +30679,8 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiii
 --- !u!224 &4019431817345423677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34434,8 +34434,8 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiiii
 --- !u!114 &5899625803263364284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36323,8 +36323,8 @@ MonoBehaviour:
   StickToTheParent: 1
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiiii
 --- !u!1 &6689604292568120297
 GameObject:
   m_ObjectHideFlags: 0
@@ -36362,8 +36362,8 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiiii
 --- !u!1 &6697774978509863523
 GameObject:
   m_ObjectHideFlags: 0
@@ -37236,7 +37236,7 @@ MonoBehaviour:
   activatable: 0
   startable: 0
   HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiiii
+  HelperText: Hiiiii
 --- !u!1 &7072744175188031065
 GameObject:
   m_ObjectHideFlags: 0
@@ -39791,8 +39791,8 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
+  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
+  HelperText: Hiiiii
 --- !u!224 &8185477657982662484
 RectTransform:
   m_ObjectHideFlags: 0

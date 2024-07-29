@@ -50,7 +50,6 @@ public class MainShop : MonoBehaviour
             slots[chosenSlot].GetComponent<slotHolder>().myPrice = setPrice;
             slots[chosenSlot].GetComponent<slotHolder>().myAmount = chosenAmount;
             slots[chosenSlot].GetComponent<slotHolder>().myName = EverythingISell[chosenObject].name;
-            slots[chosenSlot].GetComponent<slotHolder>().forCookOnly = EverythingISellForCookBools[chosenObject];
             slots.RemoveAt(chosenSlot);
         }
 
@@ -65,7 +64,6 @@ public class MainShop : MonoBehaviour
             slotForSale[i].GetComponent<slotHolder>().myPrice = -setPrice;
             slotForSale[i].GetComponent<slotHolder>().myAmount = chosenAmount;
             slotForSale[i].GetComponent<slotHolder>().myName = EverythingIBuy[chosenObject].name;
-            slotForSale[i].GetComponent<slotHolder>().forCookOnly = true;
         }
 
     }
