@@ -60,7 +60,7 @@ public class slotHolder : MonoBehaviour
         }
         if (MoneyManager.MyMoney >= myPrice)
         {
-            transform.parent.GetComponent<soundManager>().PlaySound(1, 0.7f, 1.3f);
+            transform.root.GetComponent<soundManager>().PlaySound(1, 0.7f, 1.3f);
             if (myshop.isCookHere && myName != "Heal")
             {
                 myshop.collision.GetComponent<CookScript>().GetItem(myName);

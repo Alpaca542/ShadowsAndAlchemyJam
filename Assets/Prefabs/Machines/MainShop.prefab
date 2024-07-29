@@ -1186,7 +1186,7 @@ MonoBehaviour:
   shouldILoop: 0
   amIPlaying: 0
   shouldIPlayOnStart: 0
-  audioHandler: {fileID: 0}
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
 --- !u!1 &1387557169416270122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4978,7 +4978,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4625206035140509477
 MonoBehaviour:
