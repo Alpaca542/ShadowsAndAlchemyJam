@@ -9,6 +9,7 @@ using TMPro;
 
 public class DialogueScript : MonoBehaviour
 {
+    public bool StopTime;
     private float savedOrthoSize;
     public TMP_Text Display;
     public Image Display2;
@@ -57,7 +58,10 @@ public class DialogueScript : MonoBehaviour
     public IEnumerator Type(string WhatToType, Sprite WhatToShow, bool ShouldIStopAfter)
     {
         //PLAYSOUND
-        Time.timeScale = 0f;
+        if (StopTime)
+        {
+            Time.timeScale = 0f;
+        }
         ShouldIStopAfterpb = ShouldIStopAfter;
         Stringpb = WhatToType;
         if (!noPlayer)
@@ -128,7 +132,10 @@ public class DialogueScript : MonoBehaviour
             }
             else
             {
-                Time.timeScale = 1f;
+                if (StopTime)
+                {
+                    Time.timeScale = 0f;
+                }
                 cnvInGame.SetActive(true);
                 cnvInGame2.SetActive(true);
                 btnContinue.SetActive(false);
@@ -144,7 +151,10 @@ public class DialogueScript : MonoBehaviour
 
     public void StopTyping()
     {
-        Time.timeScale = 1f;
+        if (StopTime)
+        {
+            Time.timeScale = 0f;
+        }
         cnvInGame.SetActive(true);
         cnvInGame2.SetActive(true);
         btnContinue.SetActive(false);
