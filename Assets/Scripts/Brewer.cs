@@ -291,13 +291,11 @@ public class Brewer : MonoBehaviour
                 {
                     if (myType == 0)
                     {
-                        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
                         GetComponent<BoilerScript>().collision = connectedPlayer;
                         GetComponent<BoilerScript>().GetStarted();
                     }
                     if (myType == 3)
                     {
-                        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
                         GetComponent<grapherScript>().collision = connectedPlayer;
                         GetComponent<grapherScript>().GetStarted();
                     }
@@ -313,7 +311,6 @@ public class Brewer : MonoBehaviour
                     }
                     else if (myType == 6)
                     {
-                        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
                         GetComponent<shrederSctipt>().collision = connectedPlayer;
                         GetComponent<shrederSctipt>().GetStarted();
                     }
