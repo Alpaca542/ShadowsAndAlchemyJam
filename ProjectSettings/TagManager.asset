@@ -26,6 +26,7 @@ TagManager:
   - BombPoint
   - Spawner
   - EpochManager
+  - DialogueMng
   layers:
   - Default
   - TransparentFX

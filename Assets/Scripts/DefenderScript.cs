@@ -119,22 +119,6 @@ public class DefenderScript1 : MonoBehaviour
                 AnimateMe();
             }
         }
-
-
-        // foreach (string gmb in weaponNames)
-        // {
-        //     int ind = Array.IndexOf(weaponNames, gmb);
-
-        //     if (GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory.Keys.Contains(gmb))
-        //     {
-        //         bullets[ind] = GameObject.FindGameObjectWithTag("Cook").GetComponent<CookScript>().inventory[gmb];
-        //     }
-        //     else
-        //     {
-        //         bullets[ind] = 0;
-        //     }
-        //     BulletTextUpdate(ind);
-        // }
     }
     private void FixedUpdate()
     {
@@ -158,7 +142,6 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (type == 1)//red
         {
-
             GameObject newBullet = SummonCrystall(red);
             if (newBullet != null)
             {

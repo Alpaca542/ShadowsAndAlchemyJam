@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DialogueScript : MonoBehaviour
 {
+    private float savedOrthoSize;
     public Text Display;
     public Image Display2;
     public string[] sentences;
@@ -41,8 +43,9 @@ public class DialogueScript : MonoBehaviour
             IndexInMain = stopindexes[0];
         }
     }
-    public void StartCrtnRemotely(string WhatToType, Sprite WhatToShow, bool ShouldIStopAfter)
+    public void StartCrtnRemotely(string WhatToType, Sprite WhatToShow, bool ShouldIStopAfter, float savedOrthoSize1)
     {
+        savedOrthoSize = savedOrthoSize1;
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -103,8 +106,9 @@ public class DialogueScript : MonoBehaviour
         }
         //GetComponent<AudioSource>().Stop();
     }
-    public void StartMainLine()
+    public void StartMainLine(float orthosize)
     {
+        savedOrthoSize = orthosize;
         coroutine = Type(sentences[IndexInMain], faces[IndexInMain], false);
         StartCoroutine(coroutine);
     }
@@ -125,6 +129,7 @@ public class DialogueScript : MonoBehaviour
                 cnvInGame2.SetActive(true);
                 btnContinue.SetActive(false);
                 cnv.SetActive(false);
+                savedOrthoSize = 0;
                 if (IndexInMain == stopindexes[0])
                 {
                     //
@@ -140,6 +145,8 @@ public class DialogueScript : MonoBehaviour
         cnvInGame2.SetActive(true);
         btnContinue.SetActive(false);
         cnv.SetActive(false);
+        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
+        Camera.main.DOOrthoSize(savedOrthoSize, 0.5f).SetUpdate(true);
     }
     private void Update()
     {

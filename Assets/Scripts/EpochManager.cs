@@ -9,13 +9,13 @@ public class EpochManager : MonoBehaviour
     public GameObject gate;
     public TMP_Text countDown;
     public TMP_Text killNum;
-     int countDownTime;
+    int countDownTime;
     public Transform corner1;
     public Transform corner2;
     public int killedShadows = 0;
     public int NeedToKill = 0;
-    public int seconds =90;
-    public int CurrentEpoch=0;
+    public int seconds = 90;
+    public int CurrentEpoch = 0;
 
     bool EpochIsGoing = false;
     public bool WaitingGate = false;
@@ -28,7 +28,7 @@ public class EpochManager : MonoBehaviour
     public void SetTimer()
     {
         countDownTime = seconds;
-        InvokeRepeating(nameof(countDownOne), 1f,1f);
+        InvokeRepeating(nameof(countDownOne), 1f, 1f);
         killedShadows = 0;
     }
     void countDownOne()
@@ -85,8 +85,8 @@ public class EpochManager : MonoBehaviour
             //spawner.HowManyEnemiesKilled = 0;
             //GateInstance
 
-           // spawner.arrow.SetActive(true);
-           
+            // spawner.arrow.SetActive(true);
+
 
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();

@@ -5,6 +5,7 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class Brewer : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Brewer : MonoBehaviour
     public bool activatable;
     public bool startable;
     private bool active;
+
+    public Sprite HelperFace;
+    public string HelperText;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -78,48 +83,120 @@ public class Brewer : MonoBehaviour
 
                     if (myType == 0)
                     {
+                        if (!PlayerPrefs.HasKey("0"))
+                        {
+                            PlayerPrefs.SetInt("0", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<BoilerScript>().collision = connectedPlayer;
                         GetComponent<BoilerScript>().GetLoot();
                     }
                     else if (myType == 1)
                     {
+                        if (!PlayerPrefs.HasKey("1"))
+                        {
+                            PlayerPrefs.SetInt("1", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         myCar.Sit(true);
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                         myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
                     }
                     else if (myType == 2)
                     {
+                        if (!PlayerPrefs.HasKey("1"))
+                        {
+                            PlayerPrefs.SetInt("1", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         myCar.Stand(false);
                         connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                         myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
                     }
                     else if (myType == 3)
                     {
+                        if (!PlayerPrefs.HasKey("2"))
+                        {
+                            PlayerPrefs.SetInt("2", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<grapherScript>().collision = connectedPlayer;
                         GetComponent<grapherScript>().GetLoot();
                     }
                     else if (myType == 4)
                     {
+                        if (!PlayerPrefs.HasKey("3"))
+                        {
+                            PlayerPrefs.SetInt("3", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<MerryGoRound>().collision = connectedPlayer;
                         GetComponent<MerryGoRound>().GetLoot();
                     }
                     else if (myType == 5)
                     {
+                        if (!PlayerPrefs.HasKey("4"))
+                        {
+                            PlayerPrefs.SetInt("4", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<analyzercript>().collision = connectedPlayer;
                         GetComponent<analyzercript>().GetLoot();
                     }
                     else if (myType == 6)
                     {
+                        if (!PlayerPrefs.HasKey("5"))
+                        {
+                            PlayerPrefs.SetInt("5", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<shrederSctipt>().collision = connectedPlayer;
                         GetComponent<shrederSctipt>().GetLoot();
                     }
                     else if (myType == 7)
                     {
+                        if (!PlayerPrefs.HasKey("6"))
+                        {
+                            PlayerPrefs.SetInt("6", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<MixerScript>().collision = connectedPlayer;
                         GetComponent<MixerScript>().GetStarted();
                     }
                     else if (myType == 8)
                     {
+                        if (!PlayerPrefs.HasKey("7"))
+                        {
+                            PlayerPrefs.SetInt("7", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
                         GetComponent<MainShop>().collision = connectedPlayer.gameObject;
                         GetComponent<MainShop>().Open();
@@ -129,7 +206,14 @@ public class Brewer : MonoBehaviour
                     }
                     else if (myType == 9)
                     {
-                        Debug.Log(connectedPlayer.GetComponent<DefenderScript1>().bullets[8]);
+                        if (!PlayerPrefs.HasKey("8"))
+                        {
+                            PlayerPrefs.SetInt("8", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         if (connectedPlayer.GetComponent<DefenderScript1>().bullets[8] > 0)
                         {
                             GetComponent<PedestalScript>().SetBomb();
@@ -137,6 +221,14 @@ public class Brewer : MonoBehaviour
                     }
                     else if (myType == 10)
                     {
+                        if (!PlayerPrefs.HasKey("9"))
+                        {
+                            PlayerPrefs.SetInt("9", 1);
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            GameObject.FindGameObjectWithTag("DialogueMng").GetComponent<DialogueScript>().StartCrtnRemotely(HelperText, HelperFace, true, Camera.main.orthographicSize);
+                            Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
+                        }
                         GetComponent<giverScript>().collision = connectedPlayer;
                         if (connectedPlayer.GetComponent<CookScript>() != null)
                         {
