@@ -67,8 +67,6 @@ public class analyzercript : MonoBehaviour
                 Camera.main.DOOrthoSize(0.5f, 0.3f);
                 cook.Freeze();
                 StartTask();
-                cook.RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
-
             }
         }
     }

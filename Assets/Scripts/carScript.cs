@@ -19,8 +19,12 @@ public class carScript : MonoBehaviour
     public float health;
 
     public bool CookInMe;
+    public AudioSource myEngine;
 
     public Sprite defSprite;
+
+    private bool forwardPlaying;
+    private bool enginePlaying;
 
     void Start()
     {
@@ -38,14 +42,38 @@ public class carScript : MonoBehaviour
     {
         if (Moveable)
         {
+            if (!enginePlaying)
+            {
+                enginePlaying = true;
+                DOTween.To(() => myEngine.volume, x => myEngine.volume = x, 1, 2);
+            }
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             if (Mathf.Abs(vertical) > 0.1)
             {
+                if (horizontal > 0.2f)
+                {
+                    if (!forwardPlaying)
+                    {
+                        forwardPlaying = true;
+                        // GetComponent<AudioSource>().loop = true;
+                        // GetComponent<AudioSource>().Play();
+                    }
+                }
+                else
+                {
+                    forwardPlaying = false;
+                }
                 rb.velocity = transform.right * speed * Mathf.Sign(vertical);
                 float RotKoef = rb.velocity.magnitude * 0.6f;
                 rb.angularVelocity = -horizontal * AngularSpeed * RotKoef;
             }
+        }
+        else
+        {
+            DOTween.To(() => myEngine.volume, x => myEngine.volume = x, 0, 1);
+            enginePlaying = false;
+            myEngine.loop = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
