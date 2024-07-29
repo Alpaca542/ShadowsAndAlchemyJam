@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 4860181327925600868}
   - component: {fileID: 3521416314581736012}
   - component: {fileID: -1015933533250820177}
+  - component: {fileID: 6994092664710246578}
   m_Layer: 0
   m_Name: MainShop
   m_TagString: Shop
@@ -1167,6 +1168,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time_: 30
+--- !u!114 &6994092664710246578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232904842643713582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: f0adf1d84ed99405f91fc5e186e5c99b, type: 3}
+  - {fileID: 8300000, guid: d75252abdbdda4a128ff60b847b7224f, type: 3}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 0}
 --- !u!1 &1387557169416270122
 GameObject:
   m_ObjectHideFlags: 0

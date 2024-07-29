@@ -44,7 +44,7 @@ public class slotHolder : MonoBehaviour
             CookScript cook = myshop.collision.GetComponent<CookScript>();
             if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && (cook.inventory.ElementAt(cook.ActiveSlot).Key == myName))
             {
-                Debug.Log(123);
+                transform.parent.GetComponent<soundManager>().PlaySound(0, 0.7f, 1.3f);
                 myshop.collision.GetComponent<CookScript>().RemoveItem(myName);
                 myAmount--;
                 txtAmount.text = myAmount.ToString();
@@ -60,6 +60,7 @@ public class slotHolder : MonoBehaviour
         }
         if (MoneyManager.MyMoney >= myPrice)
         {
+            transform.parent.GetComponent<soundManager>().PlaySound(1, 0.7f, 1.3f);
             if (myshop.isCookHere && myName != "Heal")
             {
                 myshop.collision.GetComponent<CookScript>().GetItem(myName);
