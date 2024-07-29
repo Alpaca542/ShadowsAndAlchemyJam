@@ -5196,7 +5196,7 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
+        time: 0.99765015
         value: 0
         inSlope: 0
         outSlope: 0
