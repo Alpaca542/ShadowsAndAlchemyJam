@@ -41,8 +41,6 @@ public class CameraSwaper : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = false;
         }
-
-
     }
 
     void SwapSizes()

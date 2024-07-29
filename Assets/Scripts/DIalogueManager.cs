@@ -13,6 +13,7 @@ public class DialogueScript : MonoBehaviour
     public Image Display2;
     public string[] sentences;
     public bool ShouldIStopAfterpb;
+    public bool noPlayer;
     public Sprite[] faces;
     public int[] stopindexes = { 7 };
     public int IndexInMain;
@@ -28,9 +29,8 @@ public class DialogueScript : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        if (startImmediately && !PlayerPrefs.HasKey("Storyline"))
+        if (startImmediately)
         {
-            PlayerPrefs.SetInt("Storyline", 1);
             coroutine = Type(sentences[IndexInMain], faces[IndexInMain], false);
             StartCoroutine(coroutine);
         }
@@ -59,11 +59,14 @@ public class DialogueScript : MonoBehaviour
         Time.timeScale = 0f;
         ShouldIStopAfterpb = ShouldIStopAfter;
         Stringpb = WhatToType;
-
-        if (Camera.main.GetComponent<playerFollow>().player.tag == "Player" && !startImmediately)
+        if (!noPlayer)
         {
-            Camera.main.GetComponent<playerFollow>().player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            if (Camera.main.GetComponent<playerFollow>().player.tag == "Player" && !startImmediately)
+            {
+                Camera.main.GetComponent<playerFollow>().player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
         }
+
         cnv.SetActive(true);
         cnvInGame.SetActive(false);
         cnvInGame2.SetActive(false);

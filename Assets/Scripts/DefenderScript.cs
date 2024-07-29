@@ -62,7 +62,7 @@ public class DefenderScript1 : MonoBehaviour
         else
         {
             int indx = Array.IndexOf(weaponNames, whatItem);
-            bullets[indx]++;
+            bullets[indx] += 10;
         }
     }
 
