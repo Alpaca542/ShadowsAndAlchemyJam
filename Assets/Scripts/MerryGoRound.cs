@@ -91,7 +91,7 @@ public class MerryGoRound : MonoBehaviour
             requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             indicator.GetComponent<Image>().color = Color.red;
             shrederUI.SetActive(false);
-            Camera.main.GetComponent<playerFollow>().enabled = true;
+            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
             Camera.main.DOOrthoSize(2f, 0.3f);
             collision.gameObject.GetComponent<CookScript>().UnFreeze();
             //indicator.GetComponent<Image>().color = Color.red;
@@ -202,7 +202,7 @@ public class MerryGoRound : MonoBehaviour
                 GameGoing = true;
                 check = true;
                 shrederUI.SetActive(true);
-                Camera.main.GetComponent<playerFollow>().enabled = false;
+                Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
                 Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
                 Camera.main.DOOrthoSize(0.5f, 0.3f);
                 collision.gameObject.GetComponent<CookScript>().Freeze();

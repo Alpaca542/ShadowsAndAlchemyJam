@@ -51,7 +51,7 @@ public class BoilerScript : MonoBehaviour
         {
             if (blueNum > 0 && RedNum > 0 && !GameGoing)
             {
-                Camera.main.GetComponent<playerFollow>().enabled = false;
+                Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
                 Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
                 Camera.main.DOOrthoSize(0.5f, 0.3f);
 
@@ -154,7 +154,7 @@ public class BoilerScript : MonoBehaviour
     {
         shrederUI.SetActive(false);
         GameGoing = false;
-        Camera.main.GetComponent<playerFollow>().enabled = true;
+        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
         Camera.main.DOOrthoSize(2f, 0.3f);
 
         collision.gameObject.GetComponent<CookScript>().UnFreeze();
