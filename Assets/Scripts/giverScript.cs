@@ -50,9 +50,8 @@ public class giverScript : MonoBehaviour
     public void GetLoot()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "blue") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "red") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "green") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "renANDblue") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Analyzed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "Graphed") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "white")))
+        if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key != "white")
         {
-
             if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
             {
                 pureRedNum += 10;

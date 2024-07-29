@@ -1023,7 +1023,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EverythingISell:
   - {fileID: 21300000, guid: e3deb4d7323f74152a030e6033c039e2, type: 3}
+  - {fileID: 21300000, guid: e3deb4d7323f74152a030e6033c039e2, type: 3}
   - {fileID: 21300000, guid: 7b81471c0c6754ea28b76c86fdace021, type: 3}
+  - {fileID: 21300000, guid: 7b81471c0c6754ea28b76c86fdace021, type: 3}
+  - {fileID: 21300000, guid: c623494c3f3154d9db0c477e73ba0264, type: 3}
   - {fileID: 21300000, guid: c623494c3f3154d9db0c477e73ba0264, type: 3}
   - {fileID: 21300000, guid: 2612f93053d42374c9f24a99e16c3454, type: 3}
   - {fileID: 21300000, guid: 14d73f131aea5b24cb7de1dcb47bfda0, type: 3}
@@ -1032,15 +1035,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
   - {fileID: 21300000, guid: d0f8c0421e0dc4cbe9d8a116fe171af2, type: 3}
   - {fileID: 21300000, guid: d0f8c0421e0dc4cbe9d8a116fe171af2, type: 3}
-  EverythingISellPrices: 1400000014000000140000001e0000001e000000230000002d000000320000001e0000001e000000
-  EverythingISellForCookBools: 00000000000000000000
+  EverythingISellPrices: 0b0000000b0000000b0000000b0000000b0000000b000000320000003c00000046000000500000001e0000001e000000
+  EverythingISellForCookBools: 000000000000000000000000
   EverythingIBuy:
-  - {fileID: 21300000, guid: 5bbb99e9c4b10214493f09e6d3269eb4, type: 3}
+  - {fileID: 21300000, guid: 2612f93053d42374c9f24a99e16c3454, type: 3}
   - {fileID: 21300000, guid: e17fb498aeec63341b00b733582ba3f4, type: 3}
   - {fileID: 21300000, guid: 14d73f131aea5b24cb7de1dcb47bfda0, type: 3}
+  - {fileID: 21300000, guid: 5bbb99e9c4b10214493f09e6d3269eb4, type: 3}
   - {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  - {fileID: 21300000, guid: 2612f93053d42374c9f24a99e16c3454, type: 3}
-  EverythingIBuyPrices: 6400000064000000640000006400000064000000
+  EverythingIBuyPrices: 2d00000037000000410000004b00000055000000
   howManySlotsMin: 2
   howManySlotsMax: 6
   maxAmount: 10
@@ -1053,7 +1056,7 @@ MonoBehaviour:
   - {fileID: 4344189999659357427}
   slotForSale:
   - {fileID: 2186514115816325092}
-  priceSpread: 20
+  priceSpread: 10
   myUI: {fileID: 8107834559517011536}
   isCookHere: 0
   collision: {fileID: 0}
