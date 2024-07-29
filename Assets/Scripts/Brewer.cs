@@ -91,8 +91,11 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<BoilerScript>().collision = connectedPlayer;
-                        GetComponent<BoilerScript>().GetLoot();
+                        else
+                        {
+                            GetComponent<BoilerScript>().collision = connectedPlayer;
+                            GetComponent<BoilerScript>().GetLoot();
+                        }
                     }
                     else if (myType == 1)
                     {
@@ -104,9 +107,12 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        myCar.Sit(true);
-                        connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
-                        myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
+                        else
+                        {
+                            myCar.Sit(true);
+                            connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
+                            myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
+                        }
                     }
                     else if (myType == 2)
                     {
@@ -118,9 +124,12 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        myCar.Stand(false);
-                        connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
-                        myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
+                        else
+                        {
+                            myCar.Stand(false);
+                            connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
+                            myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
+                        }
                     }
                     else if (myType == 3)
                     {
@@ -132,8 +141,11 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<grapherScript>().collision = connectedPlayer;
-                        GetComponent<grapherScript>().GetLoot();
+                        else
+                        {
+                            GetComponent<grapherScript>().collision = connectedPlayer;
+                            GetComponent<grapherScript>().GetLoot();
+                        }
                     }
                     else if (myType == 4)
                     {
@@ -145,8 +157,11 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<MerryGoRound>().collision = connectedPlayer;
-                        GetComponent<MerryGoRound>().GetLoot();
+                        else
+                        {
+                            GetComponent<MerryGoRound>().collision = connectedPlayer;
+                            GetComponent<MerryGoRound>().GetLoot();
+                        }
                     }
                     else if (myType == 5)
                     {
@@ -158,8 +173,11 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<analyzercript>().collision = connectedPlayer;
-                        GetComponent<analyzercript>().GetLoot();
+                        else
+                        {
+                            GetComponent<analyzercript>().collision = connectedPlayer;
+                            GetComponent<analyzercript>().GetLoot();
+                        }
                     }
                     else if (myType == 6)
                     {
@@ -171,8 +189,11 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<shrederSctipt>().collision = connectedPlayer;
-                        GetComponent<shrederSctipt>().GetLoot();
+                        else
+                        {
+                            GetComponent<shrederSctipt>().collision = connectedPlayer;
+                            GetComponent<shrederSctipt>().GetLoot();
+                        }
                     }
                     else if (myType == 7)
                     {
@@ -184,8 +205,11 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<MixerScript>().collision = connectedPlayer;
-                        GetComponent<MixerScript>().GetStarted();
+                        else
+                        {
+                            GetComponent<MixerScript>().collision = connectedPlayer;
+                            GetComponent<MixerScript>().GetStarted();
+                        }
                     }
                     else if (myType == 8)
                     {
@@ -197,12 +221,15 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
-                        GetComponent<MainShop>().collision = connectedPlayer.gameObject;
-                        GetComponent<MainShop>().Open();
-                        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
-                        Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                        Camera.main.DOOrthoSize(1f, 0.3f);
+                        else
+                        {
+                            GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
+                            GetComponent<MainShop>().collision = connectedPlayer.gameObject;
+                            GetComponent<MainShop>().Open();
+                            Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
+                            Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
+                            Camera.main.DOOrthoSize(1f, 0.3f);
+                        }
                     }
                     else if (myType == 9)
                     {
@@ -214,7 +241,7 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        if (connectedPlayer.GetComponent<DefenderScript1>().bullets[8] > 0)
+                        else if (connectedPlayer.GetComponent<DefenderScript1>().bullets[8] > 0)
                         {
                             GetComponent<PedestalScript>().SetBomb();
                         }
@@ -229,14 +256,17 @@ public class Brewer : MonoBehaviour
                             Camera.main.DOOrthoSize(0.5f, 0.5f).SetUpdate(true);
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.5f).SetUpdate(true);
                         }
-                        GetComponent<giverScript>().collision = connectedPlayer;
-                        if (connectedPlayer.GetComponent<CookScript>() != null)
-                        {
-                            GetComponent<giverScript>().GetLoot();
-                        }
                         else
                         {
-                            GetComponent<giverScript>().GiveLoot();
+                            GetComponent<giverScript>().collision = connectedPlayer;
+                            if (connectedPlayer.GetComponent<CookScript>() != null)
+                            {
+                                GetComponent<giverScript>().GetLoot();
+                            }
+                            else
+                            {
+                                GetComponent<giverScript>().GiveLoot();
+                            }
                         }
                     }
                 }
