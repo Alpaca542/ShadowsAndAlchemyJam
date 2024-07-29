@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float attackingCD;
     public float health;
     public int myValue;
+    public AudioClip myCipDmg;
 
     [Header("Fields")]
     public LayerMask playerLayer;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     public GameObject rocket;
     public GameObject myMoney;
     public GameObject myDeathParticles;
+    public GameObject audioHandler;
 
     [Header("Debug")]
     private Vector2 patrollingPoint;
@@ -184,6 +186,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        GetComponent<soundManager>().PlaySound(0, 0.9f, 1.3f);
+
         health -= dmg;
         if (health <= 0)
         {
@@ -210,8 +214,8 @@ public class Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if(health<=0)
-        GameObject.FindWithTag("EpochManager").GetComponent<EpochManager>().killedShadows += 1;
+        if (health <= 0)
+            GameObject.FindWithTag("EpochManager").GetComponent<EpochManager>().killedShadows += 1;
     }
     bool CanAttack()
     {

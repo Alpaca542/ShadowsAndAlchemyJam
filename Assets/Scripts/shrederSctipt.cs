@@ -45,6 +45,7 @@ public class shrederSctipt : MonoBehaviour
             AmIFilled = true;
             indicator.color = Color.red;
             shrederUI.SetActive(false);
+            GetComponent<soundManager>().PlaySound(0, 0.9f, 1.1f);
             // tube.GetComponent<SpriteRenderer>().color = Color.red;
 
             Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;

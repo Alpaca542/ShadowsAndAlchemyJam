@@ -37,6 +37,7 @@ public class redMatterStorage : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && matter > 0)
                 {
+                    GetComponent<soundManager>().PlaySound(0, 0.9f, 1.1f);
                     matter -= 1;
                     collision.gameObject.GetComponent<CookScript>().GetItem(whichMatter);
                 }

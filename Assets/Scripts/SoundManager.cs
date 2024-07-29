@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class soundManager : MonoBehaviour
 {
     private AudioSource sound;
@@ -10,33 +9,18 @@ public class soundManager : MonoBehaviour
     public bool shouldILoop = false;
     public bool amIPlaying = false;
     public bool shouldIPlayOnStart = false;
+    public GameObject audioHandler;
 
-    void Awake()
+    public void PlaySound(int whichsound, float pitchrangeDOWN, float pitchrangeUP)
     {
-        sound = GetComponent<AudioSource>();
-        if (shouldIPlayOnStart)
-        { PlaySound(0, shouldILoop); }
-    }
-
-    public void PlaySound(int whichsound, bool Loop)
-    {
-        if (!sound.isPlaying && PlayerPrefs.GetString("sfx") == "True")
-        {
-            sound.clip = soundslist[whichsound];
-            sound.volume = PlayerPrefs.GetFloat("volume");
-            sound.Play();
-            sound.loop = Loop;
-        }
-
+        GameObject gmb = Instantiate(audioHandler, transform.position, Quaternion.identity);
+        gmb.GetComponent<AudioSource>().clip = soundslist[whichsound];
+        gmb.GetComponent<AudioSource>().pitch = Random.Range(pitchrangeDOWN, pitchrangeUP);
+        gmb.GetComponent<AudioSource>().Play();
     }
 
     public void StopPlaying()
     {
         sound.loop = false;
-    }
-
-    public void letmeplay()
-    {
-        amIPlaying = false;
     }
 }

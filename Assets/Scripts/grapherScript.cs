@@ -63,17 +63,6 @@ public class grapherScript : MonoBehaviour
 
     int blueNum = 0;
     int redNum = 0;
-    private void Winner()
-    {
-        if (clickrate >= 5f)
-        {
-            check = false;
-            collision.gameObject.GetComponent<CookScript>().UnFreeze();
-            Invoke(nameof(DestroyUI), 2f);
-            boiler.enabled = true;
-
-        }
-    }
 
     public void GetLoot()
     {
@@ -138,6 +127,7 @@ public class grapherScript : MonoBehaviour
         {
             check = false;
             Invoke(nameof(DestroyUI), 1f);
+            GetComponent<soundManager>().PlaySound(0, 0.9f, 1.1f);
             indicator.gameObject.GetComponent<Image>().color = Color.red;
             shower.color = Color.green;
             if (redNum > blueNum)

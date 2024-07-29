@@ -38,6 +38,7 @@ public class MerryGoRound : MonoBehaviour
 
     public void BtnClick()
     {
+        GetComponent<soundManager>().PlaySound(0, 0.8f, 1.2f);
         clickCount += 1;
     }
     void StopClick()
@@ -87,6 +88,7 @@ public class MerryGoRound : MonoBehaviour
         {
             check = false;
             GameGoing = false;
+            GetComponent<soundManager>().PlaySound(1, 0.9f, 1.1f);
             requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             requireL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             indicator.GetComponent<Image>().color = Color.red;

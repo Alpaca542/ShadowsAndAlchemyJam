@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 457707010463682848}
   - component: {fileID: 5025447744903242449}
   - component: {fileID: -3972332745587326495}
+  - component: {fileID: 4497994121905437948}
   m_Layer: 0
   m_Name: RedMat (1)
   m_TagString: RedBTN
@@ -145,3 +146,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa95b50f7ac07b49953d95a92468925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4497994121905437948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314054720823826887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: c635f5897262c4758a32f2c270533c36, type: 3}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}

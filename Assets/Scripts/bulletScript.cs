@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class bulletScript : MonoBehaviour
@@ -11,7 +10,10 @@ public class bulletScript : MonoBehaviour
     public bool rocket;
     public float Push;
     public GameObject myDeathParticles;
-
+    public AudioClip myClip;
+    public bool PlayHit;
+    public AudioClip myClipHit;
+    public GameObject audioHandler;
 
     public int MyType;
     /* 
@@ -28,6 +30,7 @@ public class bulletScript : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<soundManager>().PlaySound(0, 0.7f, 1.3f);
         Invoke(nameof(DieInTime), 3f);
     }
     private void FixedUpdate()
@@ -43,57 +46,11 @@ public class bulletScript : MonoBehaviour
     {
         if (other.tag != "bg" && other.tag != "bullet")
         {
-            if (MyType == 5)
+            if (!(other.tag == "Defender" && !fromEnemy) && !(other.tag == "Enemy" && fromEnemy))
             {
-                foreach (Collider2D gmb in Physics2D.OverlapCircleAll(transform.position, 3))
+                if (MyType == 5)
                 {
-                    if (gmb.tag == "Defender" && fromEnemy)
-                    {
-                        gmb.GetComponent<DefenderScript1>().TakeDamage(damage);
-                    }
-                    if (gmb.tag == "carTrigger" && fromEnemy)
-                    {
-                        gmb.transform.parent.GetComponent<carScript>().TakeDamage(damage);
-                    }
-                    if (gmb.tag == "Enemy" && !fromEnemy)
-                    {
-                        gmb.GetComponent<Enemy>().TakeDamage(damage);
-                    }
-                    else if (gmb.tag == "BombPoint" && !fromEnemy)
-                    {
-                        gmb.GetComponent<PedestalScript>().TakeDamage(damage);
-                    }
-                }
-            }
-            else if (MyType == 7)//
-            {
-                if (other.tag == "Defender" && fromEnemy)
-                {
-                    other.GetComponent<DefenderScript1>().TakeDamage(damage);
-                }
-                else if (other.tag == "carTrigger" && fromEnemy)
-                {
-                    other.transform.parent.GetComponent<carScript>().TakeDamage(damage);
-                }
-                else if (other.tag == "Enemy" && !fromEnemy)
-                {
-                    other.GetComponent<Enemy>().TakeDamage(damage);
-                    other.GetComponent<Rigidbody2D>().AddForce(transform.up * Push);
-                }
-                else if (other.tag == "BombPoint" && !fromEnemy)
-                {
-                    other.GetComponent<PedestalScript>().TakeDamage(damage);
-                }
-            }
-            else if (MyType == 8)
-            {
-                if (other.tag == "Defender" && fromEnemy)
-                {
-                    other.GetComponent<DefenderScript1>().TakeDamage(damage);
-                }
-                else if (other.tag == "Enemy" && !fromEnemy)
-                {
-                    foreach (Collider2D gmb in Physics2D.OverlapCircleAll(transform.position, 5))
+                    foreach (Collider2D gmb in Physics2D.OverlapCircleAll(transform.position, 3))
                     {
                         if (gmb.tag == "Defender" && fromEnemy)
                         {
@@ -113,32 +70,81 @@ public class bulletScript : MonoBehaviour
                         }
                     }
                 }
-            }
-            else
-            {
-                if (other.tag == "Defender" && fromEnemy)
+                else if (MyType == 7)//
                 {
-                    other.GetComponent<DefenderScript1>().TakeDamage(damage);
+                    if (other.tag == "Defender" && fromEnemy)
+                    {
+                        other.GetComponent<DefenderScript1>().TakeDamage(damage);
+                    }
+                    else if (other.tag == "carTrigger" && fromEnemy)
+                    {
+                        other.transform.parent.GetComponent<carScript>().TakeDamage(damage);
+                    }
+                    else if (other.tag == "Enemy" && !fromEnemy)
+                    {
+                        other.GetComponent<Enemy>().TakeDamage(damage);
+                        other.GetComponent<Rigidbody2D>().AddForce(transform.up * Push);
+                    }
+                    else if (other.tag == "BombPoint" && !fromEnemy)
+                    {
+                        other.GetComponent<PedestalScript>().TakeDamage(damage);
+                    }
                 }
-                else if (other.tag == "Enemy" && !fromEnemy)
+                else if (MyType == 8)
                 {
-                    other.GetComponent<Enemy>().TakeDamage(damage);
+                    if (other.tag == "Defender" && fromEnemy)
+                    {
+                        other.GetComponent<DefenderScript1>().TakeDamage(damage);
+                    }
+                    else if (other.tag == "Enemy" && !fromEnemy)
+                    {
+                        foreach (Collider2D gmb in Physics2D.OverlapCircleAll(transform.position, 5))
+                        {
+                            if (gmb.tag == "Defender" && fromEnemy)
+                            {
+                                gmb.GetComponent<DefenderScript1>().TakeDamage(damage);
+                            }
+                            if (gmb.tag == "carTrigger" && fromEnemy)
+                            {
+                                gmb.transform.parent.GetComponent<carScript>().TakeDamage(damage);
+                            }
+                            if (gmb.tag == "Enemy" && !fromEnemy)
+                            {
+                                gmb.GetComponent<Enemy>().TakeDamage(damage);
+                            }
+                            else if (gmb.tag == "BombPoint" && !fromEnemy)
+                            {
+                                gmb.GetComponent<PedestalScript>().TakeDamage(damage);
+                            }
+                        }
+                    }
                 }
-                if (other.tag == "carTrigger" && fromEnemy)
+                else
                 {
-                    other.transform.parent.GetComponent<carScript>().TakeDamage(damage);
+                    if (other.tag == "Defender" && fromEnemy)
+                    {
+                        other.GetComponent<DefenderScript1>().TakeDamage(damage);
+                    }
+                    else if (other.tag == "Enemy" && !fromEnemy)
+                    {
+                        other.GetComponent<Enemy>().TakeDamage(damage);
+                    }
+                    if (other.tag == "carTrigger" && fromEnemy)
+                    {
+                        other.transform.parent.GetComponent<carScript>().TakeDamage(damage);
+                    }
+                    else if (other.tag == "BombPoint" && !fromEnemy)
+                    {
+                        other.GetComponent<PedestalScript>().TakeDamage(damage);
+                    }
                 }
-                else if (other.tag == "BombPoint" && !fromEnemy)
-                {
-                    other.GetComponent<PedestalScript>().TakeDamage(damage);
-                }
-            }
 
-
-            if (!(other.tag == "Defender" && !fromEnemy) && !(other.tag == "Enemy" && fromEnemy))
-            {
                 if (MyType != 6)
                 {
+                    if (PlayHit)
+                    {
+                        GetComponent<soundManager>().PlaySound(1, 0.7f, 1.3f);
+                    }
                     Instantiate(myDeathParticles, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }

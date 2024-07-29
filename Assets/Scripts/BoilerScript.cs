@@ -120,6 +120,7 @@ public class BoilerScript : MonoBehaviour
 
             // check = false;
             Invoke(nameof(DestroyUI), 2f);
+            GetComponent<soundManager>().PlaySound(0, 0.9f, 1.1f);
             AmIFilled = true;
             indicator.GetComponent<Image>().color = Color.red;
             requirerLL.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 150);

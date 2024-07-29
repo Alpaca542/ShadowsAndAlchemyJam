@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 1867448801309731572}
   - component: {fileID: -1198662722121063710}
   - component: {fileID: 5951679921354550218}
+  - component: {fileID: 1459582957581063076}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -305,6 +306,7 @@ MonoBehaviour:
   attackingCD: 0.25
   health: 20
   myValue: 10
+  myCipDmg: {fileID: 8300000, guid: da32115589d134650bf7324a8d9375ef, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -314,6 +316,7 @@ MonoBehaviour:
   rocket: {fileID: 2733071860470294366, guid: c35f733c0ecfd4894b3e0104ada8b956, type: 3}
   myMoney: {fileID: 7658443547693386958, guid: e2b5fc2428bfb4cf49a2c48d700f88d9, type: 3}
   myDeathParticles: {fileID: 0}
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
 --- !u!50 &5570643593612273580
 Rigidbody2D:
   serializedVersion: 4
@@ -458,6 +461,24 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1459582957581063076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054476815910095659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: da32115589d134650bf7324a8d9375ef, type: 3}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
 --- !u!1001 &1254819665421693677
 PrefabInstance:
   m_ObjectHideFlags: 0

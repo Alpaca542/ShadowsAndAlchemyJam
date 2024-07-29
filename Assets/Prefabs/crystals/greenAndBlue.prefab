@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 2084928933785893949}
   - component: {fileID: 4324187352025797828}
   - component: {fileID: 5786752976026092571}
+  - component: {fileID: 2946739548453794780}
   m_Layer: 0
   m_Name: greenAndBlue
   m_TagString: bullet
@@ -219,6 +220,10 @@ MonoBehaviour:
   rocket: 1
   Push: 0
   myDeathParticles: {fileID: 9085568598567956780, guid: 7f590e06acf8b431cb92922465419ebf, type: 3}
+  myClip: {fileID: 0}
+  PlayHit: 0
+  myClipHit: {fileID: 0}
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
   MyType: 5
 --- !u!61 &5786752976026092571
 BoxCollider2D:
@@ -265,6 +270,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.916017, y: 18.681282}
   m_EdgeRadius: 0
+--- !u!114 &2946739548453794780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733071860470294366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: dc55edb85a99c4588a042e733eb55f9b, type: 3}
+  - {fileID: 0}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
 --- !u!1 &3505547253952936602
 GameObject:
   m_ObjectHideFlags: 0
