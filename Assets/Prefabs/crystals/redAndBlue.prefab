@@ -331,7 +331,7 @@ MonoBehaviour:
   fromEnemy: 0
   rocket: 0
   Push: 0
-  myDeathParticles: {fileID: 187457445789427331, guid: 8ca78893377704b98b21636505eb2ecf, type: 3}
+  myDeathParticles: {fileID: 6672969365150373141, guid: 71659250b437c76498dfc6e422344109, type: 3}
   MyType: 4
 --- !u!58 &1214378086999418699
 CircleCollider2D:
