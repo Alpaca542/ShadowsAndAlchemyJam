@@ -15,7 +15,7 @@ public class carScript : MonoBehaviour
     public Animation animMover;
     private Rigidbody2D rb;
     public bool Moveable = false;
-
+    public float health;
 
     public bool CookInMe;
 
@@ -23,8 +23,14 @@ public class carScript : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        if (health <= 0)
+        {
+            //Lose
+        }
+    }
     void FixedUpdate()
     {
         if (Moveable)
