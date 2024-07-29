@@ -16,6 +16,8 @@ public class DialogueScript : MonoBehaviour
     public string[] sentences;
     public bool ShouldIStopAfterpb;
     public bool noPlayer;
+    public Animation startAnim;
+    public AnimationClip startAnim2;
     public Sprite[] faces;
     public int[] stopindexes = { 7 };
     public int IndexInMain;
@@ -132,18 +134,27 @@ public class DialogueScript : MonoBehaviour
             }
             else
             {
-                if (StopTime)
+                if (noPlayer)
                 {
-                    Time.timeScale = 0f;
+                    startAnim.clip = startAnim2;
+                    startAnim.Play();
                 }
-                cnvInGame.SetActive(true);
-                cnvInGame2.SetActive(true);
-                btnContinue.SetActive(false);
-                cnv.SetActive(false);
-                savedOrthoSize = 0;
-                if (IndexInMain == stopindexes[0])
+                else
                 {
-                    //
+                    if (StopTime)
+                    {
+                        Time.timeScale = 0f;
+                    }
+                    cnvInGame.SetActive(true);
+                    cnvInGame2.SetActive(true);
+                    btnContinue.SetActive(false);
+                    cnv.SetActive(false);
+                    savedOrthoSize = 0;
+
+                    if (IndexInMain == stopindexes[0])
+                    {
+                        //
+                    }
                 }
             }
         }
