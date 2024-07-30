@@ -9,6 +9,7 @@ public class EpochManager : MonoBehaviour
     public GameObject gate;
     public TMP_Text countDown;
     public TMP_Text killNum;
+    public TMP_Text textHelper;
     int countDownTime;
     public Transform corner1;
     public Transform corner2;
@@ -57,6 +58,9 @@ public class EpochManager : MonoBehaviour
         if (!EpochIsGoing && !WaitingGate)
         {
             countDown.text = (countDownTime / 60).ToString() + ":" + (countDownTime - ((countDownTime / 60) * 60)).ToString();
+            textHelper.text = "Shadows are coming! Cook or buy crystals!";
+            killNum.color = new Color(0,0,0,0);
+            countDown.color = Color.white;
         }
         else if (EpochIsGoing && !WaitingGate)
         {
@@ -72,7 +76,9 @@ public class EpochManager : MonoBehaviour
                 Instantiate(gate, new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0), Quaternion.identity);
 
             }
-
+            killNum.color = Color.white;
+            countDown.color = new Color(0, 0, 0, 0);
+            textHelper.text = "Defend the track!";
 
         }
         else if (EpochIsGoing && WaitingGate)
@@ -87,9 +93,11 @@ public class EpochManager : MonoBehaviour
 
             // spawner.arrow.SetActive(true);
 
-
+            countDown.color = new Color(0, 0, 0, 0);
+           killNum.color = new Color(0, 0, 0, 0);
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
+            textHelper.text = "Destroy the gate!";
         }
 
 
