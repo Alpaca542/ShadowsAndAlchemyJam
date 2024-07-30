@@ -164,7 +164,7 @@ public class DialogueScript : MonoBehaviour
                 {
                     if (StopTime)
                     {
-                        Time.timeScale = 0f;
+                        Time.timeScale = 1f;
                     }
                     cnvInGame.SetActive(true);
                     cnvInGame2.SetActive(true);
@@ -185,7 +185,7 @@ public class DialogueScript : MonoBehaviour
     {
         if (StopTime)
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 1f;
         }
         cnvInGame.SetActive(true);
         cnvInGame2.SetActive(true);
