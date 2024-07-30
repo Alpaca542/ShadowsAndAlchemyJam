@@ -9,9 +9,9 @@ public class cutsceneTransition : MonoBehaviour
     private void OnEnable()
     {
         vignetterZoomer.SetActive(true);
-        Invoke(nameof(toTHeGame), 1f);
+        Invoke(nameof(toTheGame), 1f);
     }
-    private void toTHeGame()
+    private void toTheGame()
     {
         SceneManager.LoadScene("GameScene");
     }
