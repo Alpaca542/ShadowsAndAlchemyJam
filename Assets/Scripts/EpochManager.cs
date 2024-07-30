@@ -57,8 +57,8 @@ public class EpochManager : MonoBehaviour
         {
             countDown.text = (countDownTime / 60).ToString() + ":" + (countDownTime - ((countDownTime / 60) * 60)).ToString();
             textHelper.text = "Shadows are coming! Cook or buy crystals!";
-            killNum.color = new Color(0, 0, 0, 0);
-            countDown.color = Color.white;
+            killNum.color = new Color32(0, 0, 0, 0);
+            countDown.color = new Color32(255, 255, 255, 255);
         }
         else if (EpochIsGoing && !WaitingGate)
         {
@@ -75,26 +75,16 @@ public class EpochManager : MonoBehaviour
                 Instantiate(gate, new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0), Quaternion.identity);
 
             }
-            killNum.color = Color.white;
-            countDown.color = new Color(0, 0, 0, 0);
+            killNum.color = new Color32(255, 255, 255, 255);
+            countDown.color = new Color32(0, 0, 0, 0);
             textHelper.text = "Defend the truck!";
 
         }
         else if (EpochIsGoing && WaitingGate)
         {
-
-
-
-
-
-            //spawner.HowManyEnemiesKilled = 0;
-            //GateInstance
-
-            // spawner.arrow.SetActive(true);
-
-            countDown.color = new Color(0, 0, 0, 0);
-            killNum.color = new Color(0, 0, 0, 0);
-           // GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
+            countDown.color = new Color32(0, 0, 0, 0);
+            killNum.color = new Color32(0, 0, 0, 0);
+            // GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             textHelper.text = "Destroy the gate with your truck";
         }

@@ -144,6 +144,8 @@ public class analyzercript : MonoBehaviour
                 requireLL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
                 requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
             }
+            AmIFilled = true;
+
             requireLLTxt.text = redNum.ToString();
             requireLTxt.text = blueNum.ToString();
 

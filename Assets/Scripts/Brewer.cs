@@ -228,7 +228,7 @@ public class Brewer : MonoBehaviour
                             GetComponent<MainShop>().Open();
                             Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
                             Camera.main.transform.parent.DOMove(new Vector3(transform.position.x, transform.position.y, -10), 0.3f);
-                            Camera.main.DOOrthoSize(1f, 0.3f);
+                            Camera.main.DOOrthoSize(0.7f, 0.3f);
                         }
                     }
                     else if (myType == 9)
