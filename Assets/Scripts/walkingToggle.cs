@@ -29,6 +29,6 @@ public class walkingToggle : MonoBehaviour
     public void StartTheCar()
     {
         car.enabled = true;
-        DOTween.To(() => car.volume, x => car.volume = x, 1, 0.5f);
+        DOTween.To(() => car.volume, x => car.volume = x, 1, 1f);
     }
 }
