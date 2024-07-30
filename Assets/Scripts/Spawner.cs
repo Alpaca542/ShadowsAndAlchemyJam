@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     public Transform corner1;
     public Transform corner2;
 
-    [Header("Prefabs")]
+    [Header("Fields")]
     public GameObject shop;
     public CookScript cook;
     public GameObject[] enemies;
@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
     public GameObject car;
     public GameObject defender;
     public GameObject arrow;
+    public LayerMask shopLayer;
 
     [Header("Debug")]
     public int HowManyEnemiesKilled;
@@ -47,7 +48,7 @@ public class Spawner : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Shop").Length < amountOfShops)
         {
             Vector3 newPos = new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0);
-            if (Vector3.Distance(newPos, car.transform.position) > 5)
+            if (Vector3.Distance(newPos, car.transform.position) > 5 && !Physics2D.OverlapCircle(newPos, 2, shopLayer))
             {
                 GameObject newShop = Instantiate(shop, newPos, Quaternion.identity);
                 foreach (Canvas cnv in newShop.GetComponentsInChildren<Canvas>())

@@ -9804,6 +9804,9 @@ MonoBehaviour:
   car: {fileID: 674821942997982431}
   defender: {fileID: 1747932609}
   arrow: {fileID: 904982581}
+  shopLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   HowManyEnemiesKilled: 0
 --- !u!1 &695758076
 GameObject:
@@ -15209,6 +15212,9 @@ MonoBehaviour:
   car: {fileID: 0}
   defender: {fileID: 0}
   arrow: {fileID: 0}
+  shopLayer:
+    serializedVersion: 2
+    m_Bits: 0
   HowManyEnemiesKilled: 0
 --- !u!1 &1147824958
 GameObject:
@@ -31999,7 +32005,7 @@ Transform:
   m_GameObject: {fileID: 1358420941179858834}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6502905, y: -0.3761649, z: -0.015334838}
+  m_LocalPosition: {x: 0.752, y: -0.3761649, z: -0.015334838}
   m_LocalScale: {x: 0.24084249, y: 0.24084246, z: 0.31442365}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36044,7 +36050,7 @@ Transform:
   m_GameObject: {fileID: 593182560414223295}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.068, y: 0.4, z: -0.015334838}
+  m_LocalPosition: {x: -0.971, y: 0.4, z: -0.015334838}
   m_LocalScale: {x: 0.19219695, y: 0.19219692, z: 0.25091612}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41060,7 +41066,7 @@ Transform:
   m_GameObject: {fileID: 6883728985206098238}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.51911855, y: 0.434, z: -0.015334838}
+  m_LocalPosition: {x: 0.618, y: 0.434, z: -0.015334838}
   m_LocalScale: {x: 0.22032288, y: 0.22032285, z: 0.28763497}
   m_ConstrainProportionsScale: 0
   m_Children:

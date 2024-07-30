@@ -617,8 +617,10 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: It's a shop lol
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: It's a shop. You can buy crystals here by clicking them if you have
+    enough money. Some shops can buy items from you as well, use the red slot for
+    it
 --- !u!61 &4860181327925600868
 BoxCollider2D:
   m_ObjectHideFlags: 0
