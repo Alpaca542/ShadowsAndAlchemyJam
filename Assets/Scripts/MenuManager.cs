@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
     }
     public void InvokeOpenLevel()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("StartScene");
     }
     private void Start()
     {

@@ -19,6 +19,7 @@ public class DialogueScript : MonoBehaviour
     public Animation startAnim;
     public AnimationClip startAnim2;
     public AnimationClip startAnim3;
+    public AnimationClip startAnim4;
     public Sprite[] faces;
     public int[] stopindexes = { 7 };
     public int IndexInMain;
@@ -146,6 +147,11 @@ public class DialogueScript : MonoBehaviour
                     else if (IndexInMain == stopindexes[1])
                     {
                         startAnim.clip = startAnim3;
+                        startAnim.Play();
+                    }
+                    else if (IndexInMain == stopindexes[2])
+                    {
+                        startAnim.clip = startAnim4;
                         startAnim.Play();
                     }
                     cnvInGame.SetActive(true);
