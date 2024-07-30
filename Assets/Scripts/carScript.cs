@@ -114,7 +114,10 @@ public class carScript : MonoBehaviour
             Moveable = true;
         animMover.clip = animClips[2];
         animMover.Play();
-        CookInMe = false;
+        if (shouldBeMoved)
+        {
+            CookInMe = false;
+        }
     }
 
     public void Stand(bool shouldBeMoved)
@@ -123,6 +126,9 @@ public class carScript : MonoBehaviour
             Moveable = false;
         animMover.clip = animClips[3];
         animMover.Play();
-        CookInMe = true;
+        if (shouldBeMoved)
+        {
+            CookInMe = true;
+        }
     }
 }

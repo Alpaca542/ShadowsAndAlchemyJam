@@ -243,7 +243,7 @@ public class Brewer : MonoBehaviour
                         }
                         else if (connectedPlayer.GetComponent<DefenderScript1>().bullets[8] > 0)
                         {
-                           // GetComponent<PedestalScript>().SetBomb();
+                            // GetComponent<PedestalScript>().SetBomb();
                         }
                     }
                     else if (myType == 10)

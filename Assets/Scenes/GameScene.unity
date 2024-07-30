@@ -7056,6 +7056,7 @@ MonoBehaviour:
   player: {fileID: 879383872}
   myUI: {fileID: 1149588303}
   speed: 0
+  angSpeed: 5
 --- !u!1 &531123567
 GameObject:
   m_ObjectHideFlags: 0
@@ -11524,6 +11525,7 @@ MonoBehaviour:
   player: {fileID: 1175342745}
   myUI: {fileID: 1337193232}
   speed: 10
+  angSpeed: 0
 --- !u!1 &847712554
 GameObject:
   m_ObjectHideFlags: 0
@@ -23993,6 +23995,7 @@ MonoBehaviour:
   player: {fileID: 879383872}
   myUI: {fileID: 1149588303}
   speed: 10
+  angSpeed: 5
 --- !u!1 &1780965736
 GameObject:
   m_ObjectHideFlags: 0

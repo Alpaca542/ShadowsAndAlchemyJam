@@ -17,29 +17,20 @@ public class CameraSwaper : MonoBehaviour
         GameObject player1 = Camera.main.GetComponent<playerFollow>().player.gameObject;
         GameObject player2 = inactiveCamera.GetComponent<playerFollow>().player.gameObject;
 
-        if (player1.tag == "Car")
-        {
-            player1 = GameObject.FindGameObjectWithTag("Cook");
-        }
-
-        if (player2.tag == "Car")
-        {
-            player2 = GameObject.FindGameObjectWithTag("Cook");
-        }
-
         SwapSizes();
         SwapPlayers(player1, player2);
         SwapSelections(player1, player2);
 
         inactiveCamera.transform.position = player1.transform.position;
 
-        if (player2.GetComponent<PlayerScript>().sit && player2.GetComponent<PlayerScript>().mySeat.GetComponent<Brewer>().myType == 1)
+        if (player2.tag == "Car")
         {
-            GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = true;
+            player2.GetComponent<carScript>().Moveable = true;
         }
-        else
+
+        if (player1.tag == "Car")
         {
-            GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable = false;
+            player1.GetComponent<carScript>().Moveable = false;
         }
     }
 
@@ -72,7 +63,22 @@ public class CameraSwaper : MonoBehaviour
 
     void SwapSelections(GameObject player1, GameObject player2)
     {
-        player1.GetComponent<PlayerScript>().selected = false;
-        player2.GetComponent<PlayerScript>().selected = true;
+        if (player1.tag == "Car")
+        {
+            GameObject.FindGameObjectWithTag("Cook").GetComponent<PlayerScript>().selected = false;
+        }
+        else
+        {
+            player1.GetComponent<PlayerScript>().selected = false;
+        }
+
+        if (player2.tag == "Car")
+        {
+            GameObject.FindGameObjectWithTag("Cook").GetComponent<PlayerScript>().selected = true;
+        }
+        else
+        {
+            player2.GetComponent<PlayerScript>().selected = true;
+        }
     }
 }
