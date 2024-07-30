@@ -16848,8 +16848,9 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: Put ammo here so I could take it, every crystall you put here break
+    to 10 bullets. Be careful, you can't take them back
 --- !u!50 &1240216411
 Rigidbody2D:
   serializedVersion: 4
@@ -34182,8 +34183,8 @@ MonoBehaviour:
   StickToTheParent: 1
   activatable: 1
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: Press E to sit here and drive the car!
 --- !u!1 &3087608563397822629
 GameObject:
   m_ObjectHideFlags: 0
@@ -35098,8 +35099,8 @@ MonoBehaviour:
   StickToTheParent: 1
   activatable: 1
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: Press E to sit here and drive the car!
 --- !u!1 &3568070554678711923
 GameObject:
   m_ObjectHideFlags: 0
@@ -36056,8 +36057,9 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: There is something wrong with this crystal... try cleaning it up by
+    removing the rotten peaces
 --- !u!224 &4019431817345423677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39878,8 +39880,9 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: You need the substace to be the same as on the scheme... Try matching
+    their graphs
 --- !u!114 &5899625803263364284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41771,8 +41774,8 @@ MonoBehaviour:
   StickToTheParent: 1
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: Mix all the crystals here. What for? No idea, but it's so fun
 --- !u!114 &6679219671415559736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41828,8 +41831,9 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: You need to speed up the substance. Your CPS should stay more then
+    6 for at least 5 seconds
 --- !u!1 &6697774978509863523
 GameObject:
   m_ObjectHideFlags: 0
@@ -42750,8 +42754,9 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: You need to loose as less liquid as possible. Every slider's loss shouldn't
+    be more than ten
 --- !u!1 &7072744175188031065
 GameObject:
   m_ObjectHideFlags: 0
@@ -45436,8 +45441,9 @@ MonoBehaviour:
   StickToTheParent: 0
   activatable: 0
   startable: 0
-  HelperFace: {fileID: 21300000, guid: 7cca6366b8320354382ab464a8ce7377, type: 3}
-  HelperText: Hiiiii
+  HelperFace: {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
+  HelperText: Looks like the crystal is breaking... Try to find the problem's source
+    with your microscope
 --- !u!114 &8185454626885193771
 MonoBehaviour:
   m_ObjectHideFlags: 0
