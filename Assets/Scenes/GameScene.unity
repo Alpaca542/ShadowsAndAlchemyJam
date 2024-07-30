@@ -11088,7 +11088,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -12539,14 +12539,14 @@ RectTransform:
   m_GameObject: {fileID: 960931222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.42548, y: 0.42548, z: 0.42548}
+  m_LocalScale: {x: 0.75267416, y: 0.75267416, z: 0.75267416}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1008565020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.699997, y: -132.79999}
+  m_AnchoredPosition: {x: 8.699997, y: -138}
   m_SizeDelta: {x: 256.64, y: 51.949997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960931224
@@ -20126,7 +20126,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -23223,6 +23223,7 @@ MonoBehaviour:
   startAnim: {fileID: 0}
   startAnim2: {fileID: 0}
   startAnim3: {fileID: 0}
+  startAnim4: {fileID: 0}
   faces:
   - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
