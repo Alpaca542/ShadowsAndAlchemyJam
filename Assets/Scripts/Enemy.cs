@@ -200,6 +200,7 @@ public class Enemy : MonoBehaviour
         SpawnMoney();
         //GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().enemyKilled();
         Destroy(gameObject);
+        gameObject.GetComponent<soundManager>().PlaySound(1, 0.3f, 1f);
     }
 
     public void SpawnMoney()
