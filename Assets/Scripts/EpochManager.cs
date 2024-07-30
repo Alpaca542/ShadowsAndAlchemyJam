@@ -10,6 +10,7 @@ public class EpochManager : MonoBehaviour
     public TMP_Text countDown;
     public TMP_Text killNum;
     public TMP_Text textHelper;
+    public TMP_Text EpochCounter;
     int countDownTime;
     public Transform corner1;
     public Transform corner2;
@@ -98,7 +99,7 @@ public class EpochManager : MonoBehaviour
             textHelper.text = "Destroy the gate with your truck";
         }
         GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
-
+        EpochCounter.text = CurrentEpoch + "/10 gates left";
     }
     public void CloseGate()
     {
