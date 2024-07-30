@@ -73,7 +73,6 @@ public class carScript : MonoBehaviour
         {
             DOTween.To(() => myEngine.volume, x => myEngine.volume = x, 0, 1);
             enginePlaying = false;
-            myEngine.loop = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

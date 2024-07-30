@@ -149,7 +149,7 @@ public class analyzercript : MonoBehaviour
 
             indicator.GetComponent<Image>().color = Color.red;
             myUI.SetActive(false);
-            GetComponent<soundManager>().PlaySound(1, 0.7f, 1.3f);
+            GetComponent<soundManager>().PlaySound(0, 0.7f, 1.3f);
             Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
             Camera.main.DOOrthoSize(2f, 0.3f);
 
