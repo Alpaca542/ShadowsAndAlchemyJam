@@ -15,7 +15,7 @@ namespace AirFishLab.ScrollingList
     /// Manage and control the circular scrolling list
     /// </summary>
     public class CircularScrollingList : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IScrollHandler
+        IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         #region Enum Definitions
 
@@ -269,7 +269,8 @@ namespace AirFishLab.ScrollingList
 #endif
 
             var curNumOfBoxes = ReassignListBoxes(_listBoxes, rootTransform, numOfBoxes);
-            for (var i = curNumOfBoxes; i < numOfBoxes; ++i) {
+            for (var i = curNumOfBoxes; i < numOfBoxes; ++i)
+            {
                 var box = GenerateListBox(prefab, rootTransform, i);
 #if UNITY_EDITOR
                 Undo.RegisterCreatedObjectUndo(
@@ -293,7 +294,8 @@ namespace AirFishLab.ScrollingList
         {
             var existingBoxes = new List<ListBox>();
 
-            foreach (Transform child in rootTransform) {
+            foreach (Transform child in rootTransform)
+            {
                 if (!child.TryGetComponent<ListBox>(out var box))
                     continue;
                 existingBoxes.Add(box);
@@ -306,7 +308,8 @@ namespace AirFishLab.ScrollingList
 
             var numOfBoxes = Mathf.Min(numOfExistingBoxes, desiredNumOfBoxes);
             listBoxes.Clear();
-            for (var i = 0; i < numOfBoxes; ++i) {
+            for (var i = 0; i < numOfBoxes; ++i)
+            {
                 listBoxes.Add(existingBoxes[i]);
             }
 
@@ -328,7 +331,8 @@ namespace AirFishLab.ScrollingList
             ListBox box;
 
 #if UNITY_EDITOR
-            if (!Application.isPlaying && PrefabUtility.IsPartOfAnyPrefab(prefab)) {
+            if (!Application.isPlaying && PrefabUtility.IsPartOfAnyPrefab(prefab))
+            {
                 // If it is the prefab instance, get the source prefab asset
                 if (PrefabUtility.IsPartOfPrefabInstance(prefab))
                     prefab = PrefabUtility.GetCorrespondingObjectFromSource(prefab);
@@ -477,7 +481,7 @@ namespace AirFishLab.ScrollingList
             SetMovement(eventData, InputPhase.Ended);
         }
 
-        public void OnScroll(PointerEventData eventData)
+        public void OnScrolll(PointerEventData eventData)
         {
             if (!_controlMode.HasFlag(ControlMode.MouseWheel))
                 return;
@@ -489,6 +493,14 @@ namespace AirFishLab.ScrollingList
 
         private void Update()
         {
+            if (Mathf.Abs(Input.mouseScrollDelta.y) > 0)
+            {
+                PointerEventData pntd = new PointerEventData(EventSystem.current);
+                pntd.scrollDelta = -Input.mouseScrollDelta;
+                pntd.position = Input.mousePosition;
+                OnScrolll(pntd);
+            }
+
             if (!_isInitialized || !_isMoving)
                 return;
 
