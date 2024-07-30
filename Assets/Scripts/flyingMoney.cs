@@ -18,6 +18,7 @@ public class flyingMoney : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("MoneyManager").GetComponent<moneyManager>().GetMoney(myValue);
             Destroy(gameObject);
+            gameObject.GetComponent<soundManager>().PlaySound(0, 1, 1f);
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5985155657577964473}
   - component: {fileID: -6476033737937446612}
   - component: {fileID: -7824041734810155762}
+  - component: {fileID: 5304709810783565012}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -162,3 +163,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5304709810783565012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658443547693386958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: f2192dd4860dfcb48bd778ddd6a4ead5, type: 3}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}

@@ -412,9 +412,11 @@ public class DefenderScript1 : MonoBehaviour
                 {
                     healthBar.UpdateBar(health, UpdateAnim.Heal);
                 }
+                
 
             }
         }
+        gameObject.GetComponent<soundManager>().PlaySound(0, 1, 1.1f);
     }
 
     private void Die()
