@@ -27,7 +27,7 @@ public class vignetteTweener : MonoBehaviour
             }
             else if (type == 3)
             {
-                DOTween.To(() => vgn.intensity.value, x => vgn.intensity.value = x, 0.453f, 1f);
+                DOTween.To(() => vgn.intensity.value, x => vgn.intensity.value = x, 0.3f, 1f);
             }
         }
     }
