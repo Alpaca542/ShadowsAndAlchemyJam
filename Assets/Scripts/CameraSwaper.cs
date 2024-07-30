@@ -8,6 +8,8 @@ public class CameraSwaper : MonoBehaviour
     public Animation canvasAnimation;
     public GameObject activeUI;
     public GameObject inactiveUI;
+
+    public bool MoveSave = false;
     public void Swap()
     {
         SwapUI();
@@ -25,13 +27,14 @@ public class CameraSwaper : MonoBehaviour
 
         if (player2.tag == "Car")
         {
-            player2.GetComponent<carScript>().Moveable = true;
+            player2.GetComponent<carScript>().Moveable = MoveSave;
         }
 
         if (player1.tag == "Car")
         {
             player1.GetComponent<carScript>().Moveable = false;
         }
+        MoveSave = GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable;
     }
 
     void SwapSizes()

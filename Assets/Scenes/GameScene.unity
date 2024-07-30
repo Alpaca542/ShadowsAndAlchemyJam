@@ -788,10 +788,10 @@ MonoBehaviour:
   corner2: {fileID: 695758077}
   killedShadows: 0
   NeedToKill: 0
-  seconds: 10
+  seconds: 90
   CurrentEpoch: 0
   WaitingGate: 0
-  killsPerEpoch: 02000000020000000200000002000000020000000200000002000000020000000200000002000000
+  killsPerEpoch: 02000000030000000400000005000000060000000700000008000000090000000a0000000b000000
 --- !u!4 &72013973
 Transform:
   m_ObjectHideFlags: 0
@@ -19638,7 +19638,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384726277}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -22697,6 +22697,7 @@ MonoBehaviour:
   canvasAnimation: {fileID: 1149588308}
   activeUI: {fileID: 1149588303}
   inactiveUI: {fileID: 1337193232}
+  MoveSave: 0
 --- !u!4 &1660508345
 Transform:
   m_ObjectHideFlags: 0
@@ -23493,7 +23494,7 @@ MonoBehaviour:
   Display: {fileID: 41909229}
   Display2: {fileID: 1725474631}
   sentences:
-  - We don't have much itme left, you ned to hury
+  - We don't have much time left, you need to hurry
   - There are crystals in the car's storage, make me some bullets with them
   - You can control me by clicking a preview window
   - You can use... why am I explaining you that? It's obvious. Just look down at

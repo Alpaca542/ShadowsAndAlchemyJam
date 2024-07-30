@@ -31,22 +31,25 @@ public class redMatterStorage : MonoBehaviour
     void Update()
     {
         MatterText.text = whichMatter + ": " + Convert.ToString(matter);
-        if (collision != null && collision.gameObject.tag == "Cook")
+        if (collision != null)
         {
-            if (interact)
+            if (collision.gameObject.tag == "Cook")
             {
-                if (Input.GetKeyDown(KeyCode.E) && matter > 0)
+                if (interact)
                 {
-                    GetComponent<soundManager>().PlaySound(0, 0.9f, 1.1f);
-                    matter -= 1;
-                    collision.gameObject.GetComponent<CookScript>().GetItem(whichMatter);
-                }
-                else if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    if (collision.gameObject.GetComponent<CookScript>().inventory.ContainsKey(whichMatter) && collision.gameObject.GetComponent<CookScript>().inventory[whichMatter] > 0)
+                    if (Input.GetKeyDown(KeyCode.E) && matter > 0)
                     {
-                        matter += 1;
-                        collision.gameObject.GetComponent<CookScript>().RemoveItem(whichMatter);
+                        GetComponent<soundManager>().PlaySound(0, 0.9f, 1.1f);
+                        matter -= 1;
+                        collision.gameObject.GetComponent<CookScript>().GetItem(whichMatter);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (collision.gameObject.GetComponent<CookScript>().inventory.ContainsKey(whichMatter) && collision.gameObject.GetComponent<CookScript>().inventory[whichMatter] > 0)
+                        {
+                            matter += 1;
+                            collision.gameObject.GetComponent<CookScript>().RemoveItem(whichMatter);
+                        }
                     }
                 }
             }
