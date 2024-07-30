@@ -23522,7 +23522,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
   - {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
   - {fileID: 21300000, guid: 975c6443855964ee8a7c1b1dae74cbed, type: 3}
-  stopindexes: 0a000000
+  stopindexes: 09000000
   IndexInMain: 0
   Stringpb: 
   btnContinue: {fileID: 1715054093}
