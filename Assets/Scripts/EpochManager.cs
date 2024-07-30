@@ -25,7 +25,7 @@ public class EpochManager : MonoBehaviour
     private void Start()
     {
         SetTimer();
-        Invoke(nameof(StartEpoch),seconds);
+        Invoke(nameof(StartEpoch), seconds);
     }
     public void SetTimer()
     {
@@ -36,7 +36,7 @@ public class EpochManager : MonoBehaviour
     void countDownOne()
     {
         countDownTime -= 1;
-        
+
     }
     void StartEpoch()
     {
@@ -56,7 +56,7 @@ public class EpochManager : MonoBehaviour
         {
             countDown.text = (countDownTime / 60).ToString() + ":" + (countDownTime - ((countDownTime / 60) * 60)).ToString();
             textHelper.text = "Shadows are coming! Cook or buy crystals!";
-            killNum.color = new Color(0,0,0,0);
+            killNum.color = new Color(0, 0, 0, 0);
             countDown.color = Color.white;
         }
         else if (EpochIsGoing && !WaitingGate)
@@ -66,7 +66,7 @@ public class EpochManager : MonoBehaviour
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             if (killedShadows >= NeedToKill)
             {
-                
+
                 WaitingGate = true;
                 Spawner spawner = GameObject.FindWithTag("Spawner").GetComponent<Spawner>();
                 CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
@@ -76,7 +76,7 @@ public class EpochManager : MonoBehaviour
             }
             killNum.color = Color.white;
             countDown.color = new Color(0, 0, 0, 0);
-            textHelper.text = "Defend the track!";
+            textHelper.text = "Defend the truck!";
 
         }
         else if (EpochIsGoing && WaitingGate)
@@ -92,10 +92,10 @@ public class EpochManager : MonoBehaviour
             // spawner.arrow.SetActive(true);
 
             countDown.color = new Color(0, 0, 0, 0);
-           killNum.color = new Color(0, 0, 0, 0);
+            killNum.color = new Color(0, 0, 0, 0);
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
-            textHelper.text = "Destroy the gate!";
+            textHelper.text = "Destroy the gate with your truck";
         }
         GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
 
