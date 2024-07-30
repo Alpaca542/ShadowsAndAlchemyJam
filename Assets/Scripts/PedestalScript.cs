@@ -22,29 +22,28 @@ public class PedestalScript : MonoBehaviour
     }
     public void TakeDamage(float dmg)
     {
-        
-            if (HP <= 0)
-            {
-                
-                Invoke(nameof(Die), 1f);
+        if (HP <= 0)
+        {
+
+            Invoke(nameof(Die), 1f);
 
             gameObject.GetComponent<soundManager>().PlaySound(1, 0.3f, 1f);
         }
+        else
+        {
+            HP -= dmg;
+            Mathf.Clamp(HP, 0, 100);
+            if (dmg > 0)
+            {
+                // healthBar.UpdateBar(HP, UpdateAnim.Damage);
+            }
             else
             {
-                HP -= dmg;
-                Mathf.Clamp(HP, 0, 100);
-                if (dmg > 0)
-                {
-                   // healthBar.UpdateBar(HP, UpdateAnim.Damage);
-                }
-                else
-                {
-                    //healthBar.UpdateBar(HP, UpdateAnim.Heal);
-                }
-
+                //healthBar.UpdateBar(HP, UpdateAnim.Heal);
             }
-        
+
+        }
+
     }
     public void SetBomb()
     {
