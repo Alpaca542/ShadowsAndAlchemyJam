@@ -27,7 +27,9 @@ public class PedestalScript : MonoBehaviour
             {
                 
                 Invoke(nameof(Die), 1f);
-            }
+
+            gameObject.GetComponent<soundManager>().PlaySound(1, 0.3f, 1f);
+        }
             else
             {
                 HP -= dmg;

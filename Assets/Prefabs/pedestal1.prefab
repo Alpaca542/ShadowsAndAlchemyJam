@@ -907,6 +907,7 @@ GameObject:
   - component: {fileID: 6837558401232192080}
   - component: {fileID: 3556973495153681422}
   - component: {fileID: 1668142849947354083}
+  - component: {fileID: 4303453771276294965}
   m_Layer: 0
   m_Name: pedestal1
   m_TagString: BombPoint
@@ -1134,7 +1135,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedGate: {fileID: 0}
   arrow: {fileID: 0}
-  HP: 10
+  HP: 1001
+--- !u!114 &4303453771276294965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586650089294731514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: 1890121b11539d04ca8e6e7588b63383, type: 3}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 0}
 --- !u!1 &3620826214569754315
 GameObject:
   m_ObjectHideFlags: 0

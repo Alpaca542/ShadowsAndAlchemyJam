@@ -144,7 +144,7 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(red);
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+                //newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
@@ -156,11 +156,11 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(green);
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+                //newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
-            Invoke(nameof(makemeshoot2), 1f);
+            Invoke(nameof(makemeshoot2), 0.25f);
         }
         else if (type == 3)//blue
         {
@@ -168,11 +168,11 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(blue); ;
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+                //newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
-            Invoke(nameof(makemeshoot2), 1f);
+            Invoke(nameof(makemeshoot2), 0.5f);
         }
         else if (type == 4)//pureRed
         {
@@ -191,7 +191,7 @@ public class DefenderScript1 : MonoBehaviour
                     if (newBullet != null)
                     {
                         newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
-                        newBullet.GetComponent<bulletScript>().damage = 2f;
+                       // newBullet.GetComponent<bulletScript>().damage = 2f;
                         newBullet.GetComponent<bulletScript>().fromEnemy = false;
                     }
                     angle -= 8;
@@ -207,7 +207,7 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonRocket();
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+                //newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
@@ -220,11 +220,11 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(Graphed);
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+               // newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
-            Invoke(nameof(makemeshoot2), 1f);
+            Invoke(nameof(makemeshoot2), 0.5f);
         }
         else if (type == 8)//Analyzed
         {
@@ -233,11 +233,11 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(Analyzed);
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+               // newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
-            Invoke(nameof(makemeshoot2), 1f);
+            Invoke(nameof(makemeshoot2), 0.3f);
         }
         else if (type == 9)//white
         {
@@ -246,7 +246,7 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(white);
             if (newBullet != null)
             {
-                newBullet.GetComponent<bulletScript>().damage = 5f;
+                //newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
