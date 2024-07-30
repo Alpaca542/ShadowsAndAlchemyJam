@@ -43,6 +43,7 @@ public class PedestalScript : MonoBehaviour
         {
             KeepParent = true;
             parent = collision.transform.gameObject;
+            gameObject.GetComponent<soundManager>().PlaySound(1, 1, 1);
             Invoke("Die",2f);
         }
     }
