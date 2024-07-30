@@ -25,6 +25,7 @@ public class EpochManager : MonoBehaviour
     private void Start()
     {
         SetTimer();
+        Invoke(nameof(StartEpoch),seconds);
     }
     public void SetTimer()
     {
@@ -35,12 +36,7 @@ public class EpochManager : MonoBehaviour
     void countDownOne()
     {
         countDownTime -= 1;
-        if (countDownTime == 0)
-        {
-            CancelInvoke(nameof(countDown));
-            StartEpoch();
-            countDown.text = (countDownTime / 60).ToString() + ":" + (countDownTime - ((countDownTime / 60) * 60)).ToString();
-        }
+        
     }
     void StartEpoch()
     {
@@ -51,7 +47,8 @@ public class EpochManager : MonoBehaviour
     void FinishEpoch()
     {
         EpochIsGoing = false;
-        SetTimer();
+        countDownTime = seconds;
+        //SetTimer();
     }
     void Update()
     {
@@ -69,6 +66,7 @@ public class EpochManager : MonoBehaviour
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             if (killedShadows >= NeedToKill)
             {
+                
                 WaitingGate = true;
                 Spawner spawner = GameObject.FindWithTag("Spawner").GetComponent<Spawner>();
                 CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
@@ -99,16 +97,22 @@ public class EpochManager : MonoBehaviour
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             textHelper.text = "Destroy the gate!";
         }
-
+        GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
 
     }
     public void CloseGate()
     {
         WaitingGate = false;
+        foreach (var i in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(i.gameObject);
+        }
         FinishEpoch();
         Spawner spawner = GameObject.FindWithTag("Spawner").GetComponent<Spawner>();
         CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
         spawner.arrow.SetActive(false);
         killedShadows = 0;
+        countDownTime = seconds;
+        Invoke(nameof(StartEpoch), seconds);
     }
 }
