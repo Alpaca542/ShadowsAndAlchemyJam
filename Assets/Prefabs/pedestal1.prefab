@@ -5812,7 +5812,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 88
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_FlipX: 0
@@ -5968,6 +5968,7 @@ MonoBehaviour:
   arrow: {fileID: 0}
   dieParticles: {fileID: 1150927562641329890, guid: 79e7f198ef8900042b93735d9788706e, type: 3}
   HP: 1001
+  parent: {fileID: 0}
 --- !u!114 &4303453771276294965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5982,6 +5983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundslist:
   - {fileID: 8300000, guid: 1890121b11539d04ca8e6e7588b63383, type: 3}
+  - {fileID: 8300000, guid: 85bea70a02afca642800e38199c7ebcc, type: 3}
   shouldILoop: 0
   amIPlaying: 0
   shouldIPlayOnStart: 0
