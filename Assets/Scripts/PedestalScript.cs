@@ -2,47 +2,32 @@ using Microlight.MicroBar;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.XR;
 using UnityEngine;
 
 public class PedestalScript : MonoBehaviour
 {
     public GameObject activatedGate;
     public GameObject arrow;
-
+    public GameObject dieParticles;
     public float HP;
-
+    bool KeepParent=  false;
+    public GameObject parent;
     private void Start()
     {
         InvokeRepeating(nameof(SpawnEnemy), 0.5f, 2f);
     }
     private void Die()
     {
+        Instantiate(dieParticles, transform.position, Quaternion.identity);
+        gameObject.GetComponent<soundManager>().PlaySound(0,1,1);
         Destroy(gameObject);
         GameObject.FindWithTag("EpochManager").GetComponent<EpochManager>().CloseGate();
+       
     }
     public void TakeDamage(float dmg)
     {
-        if (HP <= 0)
-        {
-
-            Invoke(nameof(Die), 1f);
-
-            gameObject.GetComponent<soundManager>().PlaySound(1, 0.3f, 1f);
-        }
-        else
-        {
-            HP -= dmg;
-            Mathf.Clamp(HP, 0, 100);
-            if (dmg > 0)
-            {
-                // healthBar.UpdateBar(HP, UpdateAnim.Damage);
-            }
-            else
-            {
-                //healthBar.UpdateBar(HP, UpdateAnim.Heal);
-            }
-
-        }
+        //nothing XD
 
     }
     public void SetBomb()
@@ -52,9 +37,24 @@ public class PedestalScript : MonoBehaviour
         arrow.SetActive(false);
         Destroy(gameObject);
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("gatebreaker"))
+        {
+            KeepParent = true;
+            parent = collision.transform.gameObject;
+            Invoke("Die",2f);
+        }
+    }
     void SpawnEnemy()
     {
         GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().SpawnEnemyAtPoint(transform.position);
+    }
+    private void Update()
+    {
+        if (KeepParent)
+        {
+            transform.position = parent.transform.position;
+        }
     }
 }

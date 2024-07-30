@@ -28,6 +28,7 @@ TagManager:
   - EpochManager
   - DialogueMng
   - carTrigger
+  - gatebreaker
   layers:
   - Default
   - TransparentFX
