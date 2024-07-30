@@ -94,7 +94,7 @@ public class EpochManager : MonoBehaviour
 
             countDown.color = new Color(0, 0, 0, 0);
             killNum.color = new Color(0, 0, 0, 0);
-            GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
+           // GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             textHelper.text = "Destroy the gate with your truck";
         }
