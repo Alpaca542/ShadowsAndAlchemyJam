@@ -18,6 +18,7 @@ public class DialogueScript : MonoBehaviour
     public bool noPlayer;
     public Animation startAnim;
     public AnimationClip startAnim2;
+    public AnimationClip startAnim3;
     public Sprite[] faces;
     public int[] stopindexes = { 7 };
     public int IndexInMain;
@@ -137,8 +138,21 @@ public class DialogueScript : MonoBehaviour
             {
                 if (noPlayer)
                 {
-                    startAnim.clip = startAnim2;
-                    startAnim.Play();
+                    if (IndexInMain == stopindexes[0])
+                    {
+                        startAnim.clip = startAnim2;
+                        startAnim.Play();
+                    }
+                    else if (IndexInMain == stopindexes[1])
+                    {
+                        startAnim.clip = startAnim2;
+                        startAnim.Play();
+                    }
+                    cnvInGame.SetActive(true);
+                    cnvInGame2.SetActive(true);
+                    btnContinue.SetActive(false);
+                    cnv.SetActive(false);
+                    savedOrthoSize = 0;
                 }
                 else
                 {
@@ -181,6 +195,7 @@ public class DialogueScript : MonoBehaviour
             //gameObject.GetComponent<soundManager>().sound.loop = false;
             //GetComponent<AudioSource>().Stop();
             StopCoroutine(coroutine);
+            GetComponent<AudioSource>().loop = false;
             if (Display.text == Stringpb)
             {
                 if (ShouldIStopAfterpb)
