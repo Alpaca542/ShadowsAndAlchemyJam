@@ -16,6 +16,7 @@ public class MainShop : MonoBehaviour
     public int howManySlotsMin;
     public int howManySlotsMax;
     private int howManySlots;
+    public GameObject myCrystals;
 
     public int maxAmount;
 
@@ -70,6 +71,7 @@ public class MainShop : MonoBehaviour
 
     public void Open()
     {
+        myCrystals.SetActive(false);
         GetComponent<dieInTIme>().Start();
         foreach (Transform slot in grid.transform)
         {
@@ -83,6 +85,7 @@ public class MainShop : MonoBehaviour
 
     public void Close()
     {
+        myCrystals.SetActive(true);
         myUI.SetActive(false);
     }
 
