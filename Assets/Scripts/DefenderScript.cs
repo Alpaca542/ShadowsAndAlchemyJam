@@ -36,7 +36,6 @@ public class DefenderScript1 : MonoBehaviour
     public GameObject[] indicators11;
     public TMP_Text[] bulletAmounts;
 
-    private bool CanIShoot = true;
     public bool CanIShoot2 = true;
     public Image WeaponShowcase;
 
@@ -102,14 +101,14 @@ public class DefenderScript1 : MonoBehaviour
     {
         if (GetComponent<PlayerScript>().selected)
         {
-            if (Input.GetMouseButton(0) && CanIShoot && AmountIsOK())
+            if (Input.GetMouseButton(0) && CanIShoot2 && AmountIsOK())
             {
                 fixedActiveWeapon = activeWeapon;
                 Shoot(fixedActiveWeapon);
                 doIShoot = true;
                 AnimateMe();
             }
-            else if (activeWeapon != 1)
+            else if (activeWeapon != 4)
             {
                 doIShoot = false;
                 AnimateMe();
@@ -177,22 +176,14 @@ public class DefenderScript1 : MonoBehaviour
         }
         else if (type == 4)//pureRed
         {
-
-            CanIShoot = false;
+            CanIShoot2 = false;
             InvokeRepeating(nameof(SummonBulletWithSpread), 0.1f, 0.1f);
             Invoke(nameof(stopshooting), 1f);
-
-
-
         }
         else if (type == 5)//redANDblue
         {
             if (CanIShoot2)
             {
-                anim.SetBool("Walking", false);
-                anim.SetBool("Shooting", true);
-                anim.SetBool("Hitting", false);
-
                 int angle = 40;
                 for (int i = 0; i < 10; i++)
                 {
@@ -301,21 +292,11 @@ public class DefenderScript1 : MonoBehaviour
     }
     private GameObject SummonCrystall(GameObject crystall)
     {
-        if (CanIShoot2)
+        if (bullets[fixedActiveWeapon - 1] > 0)
         {
-
-
-
-            if (bullets[fixedActiveWeapon - 1] > 0)
-            {
-                bullets[fixedActiveWeapon - 1]--;
-                BulletTextUpdate(fixedActiveWeapon - 1);
-                return Instantiate(crystall, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
-            }
-            else
-            {
-                return null;
-            }
+            bullets[fixedActiveWeapon - 1]--;
+            BulletTextUpdate(fixedActiveWeapon - 1);
+            return Instantiate(crystall, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
         }
         else
         {
@@ -324,18 +305,11 @@ public class DefenderScript1 : MonoBehaviour
     }
     private GameObject SummonRocket()
     {
-        if (CanIShoot2)
+        if (bullets[fixedActiveWeapon - 1] > 0)
         {
-            if (bullets[fixedActiveWeapon - 1] > 0)
-            {
-                bullets[fixedActiveWeapon - 1]--;
-                BulletTextUpdate(fixedActiveWeapon - 1);
-                return Instantiate(greenANDblue, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
-            }
-            else
-            {
-                return null;
-            }
+            bullets[fixedActiveWeapon - 1]--;
+            BulletTextUpdate(fixedActiveWeapon - 1);
+            return Instantiate(greenANDblue, myGun.transform.position, new Quaternion(myGun.transform.rotation.x, myGun.transform.rotation.y, myGun.transform.rotation.z, myGun.transform.rotation.w));
         }
         else
         {
@@ -352,7 +326,7 @@ public class DefenderScript1 : MonoBehaviour
 
     public void makemeshoot()
     {
-        CanIShoot = true;
+        CanIShoot2 = true;
     }
     public void makemeshoot2()
     {
@@ -365,27 +339,18 @@ public class DefenderScript1 : MonoBehaviour
         {
             if (activeWeapon == 10)
             {
-                anim.SetBool("Walking", false);
                 anim.SetBool("Shooting", false);
                 anim.SetBool("Hitting", true);
             }
             else
             {
-                anim.SetBool("Walking", false);
                 anim.SetBool("Shooting", true);
                 anim.SetBool("Hitting", false);
             }
 
         }
-        else if (rb.velocity.magnitude >= 0.2f)
-        {
-            anim.SetBool("Walking", true);
-            anim.SetBool("Shooting", false);
-            anim.SetBool("Hitting", false);
-        }
         else
         {
-            anim.SetBool("Walking", false);
             anim.SetBool("Shooting", false);
             anim.SetBool("Hitting", false);
         }
@@ -412,7 +377,7 @@ public class DefenderScript1 : MonoBehaviour
                 {
                     healthBar.UpdateBar(health, UpdateAnim.Heal);
                 }
-                
+
 
             }
         }
@@ -426,7 +391,7 @@ public class DefenderScript1 : MonoBehaviour
 
     private void Start()
     {
-        CanIShoot = true;
+        CanIShoot2 = true;
         healthBar.Initialize(health);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();

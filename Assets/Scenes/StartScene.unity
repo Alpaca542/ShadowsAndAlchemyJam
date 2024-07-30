@@ -553,7 +553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &353185770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +585,7 @@ MonoBehaviour:
   noPlayer: 1
   startAnim: {fileID: 1311886007}
   startAnim2: {fileID: 7400000, guid: a4df4c54bb0714c7f83919c63acfec5e, type: 2}
-  startAnim3: {fileID: 0}
+  startAnim3: {fileID: 7400000, guid: 3db40c8bd1472439fb73c6eebaf8658f, type: 2}
   faces:
   - {fileID: 21300000, guid: 6f71fda57f02a46379e456fb90d9851d, type: 3}
   - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}

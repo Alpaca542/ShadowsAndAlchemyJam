@@ -145,7 +145,7 @@ public class DialogueScript : MonoBehaviour
                     }
                     else if (IndexInMain == stopindexes[1])
                     {
-                        startAnim.clip = startAnim2;
+                        startAnim.clip = startAnim3;
                         startAnim.Play();
                     }
                     cnvInGame.SetActive(true);
