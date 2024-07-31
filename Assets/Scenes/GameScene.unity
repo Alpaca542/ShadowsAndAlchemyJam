@@ -29512,6 +29512,7 @@ GameObject:
   - component: {fileID: 2629043758628401616}
   - component: {fileID: 2176881519310601913}
   - component: {fileID: 3047646237122890259}
+  - component: {fileID: 3047646237122890260}
   m_Layer: 0
   m_Name: Car
   m_TagString: Car
@@ -32238,6 +32239,8 @@ MonoBehaviour:
   CookInMe: 0
   myEngine: {fileID: 325514690}
   defSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  damageParticle: {fileID: 6465116585832287062, guid: e782332376ab1b54a9f6ded5564d1871, type: 3}
+  dieParticle: {fileID: 8385160974620243589, guid: 6f4461e98dcaa25429e87a971ca9587c, type: 3}
 --- !u!1 &2186712192938625972
 GameObject:
   m_ObjectHideFlags: 0
@@ -34603,6 +34606,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8280945, y: 1.042144}
   m_EdgeRadius: 0
+--- !u!114 &3047646237122890260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674821942997982431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2362f2dea8fcd4cd7b2068304f4e9ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundslist:
+  - {fileID: 8300000, guid: 851431aae4b18ab47a19b8a4ded0d462, type: 3}
+  - {fileID: 8300000, guid: 7074d169caf36f24d94c864811b0b694, type: 3}
+  shouldILoop: 0
+  amIPlaying: 0
+  shouldIPlayOnStart: 0
+  audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
 --- !u!1 &3058381901494346577
 GameObject:
   m_ObjectHideFlags: 0

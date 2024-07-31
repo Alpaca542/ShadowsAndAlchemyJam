@@ -27,6 +27,11 @@ public class carScript : MonoBehaviour
     private bool forwardPlaying;
     private bool enginePlaying;
 
+
+
+    public GameObject damageParticle;
+    public GameObject dieParticle;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -34,9 +39,14 @@ public class carScript : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         health -= dmg;
+        gameObject.GetComponent<soundManager>().PlaySound(0, 1f, 1f);
+        Instantiate(damageParticle, transform.position, Quaternion.identity);
         if (health <= 0)
         {
+            Instantiate(dieParticle, transform.position, Quaternion.identity);
+            gameObject.GetComponent<soundManager>().PlaySound(1, 1f, 1f);
             GameObject.FindWithTag("loser").GetComponent<loser>().lose();
+            
         }
     }
     
