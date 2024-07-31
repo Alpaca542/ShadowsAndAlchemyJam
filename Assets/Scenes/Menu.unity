@@ -10609,7 +10609,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bill the Alchemic
+  m_text: 'Bill the Alchemist
 
     against shadows'
   m_isRightToLeft: 0
