@@ -9,6 +9,8 @@ using TMPro;
 
 public class MerryGoRound : MonoBehaviour
 {
+
+    public GameObject particle;
     public GameObject lp;
     public Transform[] randomPoint;
     public Image glass;
@@ -20,7 +22,6 @@ public class MerryGoRound : MonoBehaviour
     public Slider requirer;
     public Slider requirer1;
     public Slider requirer2;
-    public Rigidbody2D[] points;
     bool check;
     float clickCount = 0;
     public Text ClickRate;
@@ -51,10 +52,7 @@ public class MerryGoRound : MonoBehaviour
     void BRRRR()
     {
         lp.gameObject.transform.position = glass.transform.position;
-        foreach (var p in points)
-        {
-            p.transform.position = randomPoint[(UnityEngine.Random.Range(0, 5))].position;
-        }
+        
     }
 
     public void GetLoot()
@@ -132,26 +130,7 @@ public class MerryGoRound : MonoBehaviour
         float speed = clickrate / 3;
         glass.color = new Color(0, 1 * clickrate / 5 + 1, 0, 1 * clickrate / 5 + 1);
         // CircleBlue.transform.Rotate(0,0,0);
-        foreach (var p in points)
-        {
-            int a = UnityEngine.Random.Range(0, 4);
-            if (a == 0)
-            {
-                p.velocity = p.gameObject.transform.up * speed;
-            }
-            if (a == 1)
-            {
-                p.velocity = p.gameObject.transform.right * speed;
-            }
-            if (a == 2)
-            {
-                p.velocity = -p.gameObject.transform.right * speed;
-            }
-            if (a == 3)
-            {
-                p.velocity = -p.gameObject.transform.up * speed;
-            }
-        }
+        particle.GetComponent<ParticleSystem>().startSpeed = clickrate * 10f;
         collision.gameObject.GetComponent<CookScript>().Freeze();
     }
     void DestroyUI()
