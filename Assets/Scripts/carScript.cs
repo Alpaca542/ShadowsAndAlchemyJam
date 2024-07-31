@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Scripting.APIUpdating;
 using System.Data.Common;
+using UnityEngine.SceneManagement;
 
 public class carScript : MonoBehaviour
 {
@@ -35,8 +36,12 @@ public class carScript : MonoBehaviour
         health -= dmg;
         if (health <= 0)
         {
-            //Lose
+            Invoke(nameof(LoadLose), 3f);
         }
+    }
+    void LoadLose()
+    {
+        SceneManager.LoadScene("Lose");
     }
     void FixedUpdate()
     {

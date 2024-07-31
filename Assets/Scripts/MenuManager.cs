@@ -20,6 +20,28 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
+
+
+    public void OnReStartClicked()
+    {
+        SmokeEffect.SetActive(true);
+        Invoke(nameof(ReInvokeOpenLevel), 1f);
+    }
+    public void ReInvokeOpenLevel()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void OnMenu()
+    {
+        SmokeEffect.SetActive(true);
+        Invoke(nameof(ReMenu), 1f);
+    }
+    public void ReMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     private void Start()
     {
         EndSmoke.SetActive(true);

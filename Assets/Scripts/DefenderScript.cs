@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using System;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DefenderScript1 : MonoBehaviour
 {
@@ -136,7 +137,10 @@ public class DefenderScript1 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
         }
     }
-
+    void LoadLose()
+    {
+        SceneManager.LoadScene("Lose");
+    }
     public void Shoot(int type)
     {
         if (type == 1)//red
@@ -364,6 +368,7 @@ public class DefenderScript1 : MonoBehaviour
             {
                 Died = true;
                 Invoke(nameof(Die), 1f);
+                Invoke(nameof(LoadLose), 2f);
             }
             else
             {
