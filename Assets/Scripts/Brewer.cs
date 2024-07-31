@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -275,7 +274,7 @@ public class Brewer : MonoBehaviour
                             else
                             {
                                 GetComponent<giverScript>().GiveLoot();
-                                gameObject.GetComponent<soundManager>().PlaySound(0,1f,1f);
+                                gameObject.GetComponent<soundManager>().PlaySound(0, 1f, 1f);
                             }
                         }
                     }
