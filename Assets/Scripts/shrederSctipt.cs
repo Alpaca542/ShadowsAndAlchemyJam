@@ -82,7 +82,7 @@ public class shrederSctipt : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (!AmIFilled && !GameGoing)
+        if (!AmIFilled && !GameGoing&&(redNum>0))
         {
             GameGoing = true;
             Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
