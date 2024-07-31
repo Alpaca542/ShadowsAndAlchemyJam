@@ -2,7 +2,6 @@ using Microlight.MicroBar;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEditor.XR;
 using UnityEngine;
 
 public class PedestalScript : MonoBehaviour
