@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         agent.updateUpAxis = false;
 
         patrollingPoint = transform.position;
-        gameObject.GetComponent<soundManager>().PlaySoundSecond(2, 1f, 1f, 0.5f);
+        gameObject.GetComponent<soundManager>().PlaySoundSecond(2,1f,1f,0.5f);
     }
 
     void LookAt(Vector3 target)
@@ -241,7 +241,7 @@ public class Enemy : MonoBehaviour
             case 3:
                 return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
             case 4:
-                return Physics2D.Raycast(transform.position, transform.up, 1f, playerLayer).collider;
+                return Physics2D.Raycast(transform.position, transform.up, 0.5f, playerLayer).collider;
             default:
                 return false;
         }
@@ -258,9 +258,9 @@ public class Enemy : MonoBehaviour
             case 3:
                 return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
             case 4:
-                return Physics2D.Raycast(transform.position, transform.up, 1f, playerLayer).collider;
+                return Physics2D.Raycast(transform.position, transform.up, 0.5f, playerLayer).collider;
             default:
-                return Physics2D.Raycast(transform.position, transform.up, 1f, playerLayer).collider;
+                return Physics2D.Raycast(transform.position, transform.up, 0.5f, playerLayer).collider;
         }
     }
 
