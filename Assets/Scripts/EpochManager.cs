@@ -2,6 +2,7 @@ using EZCameraShake;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +25,10 @@ public class EpochManager : MonoBehaviour
     public bool WaitingGate = false;
 
     public int[] killsPerEpoch;
+
+
+    public GameObject musicsoft;
+    public GameObject musictough;
     private void Start()
     {
         SetTimer();
@@ -45,16 +50,21 @@ public class EpochManager : MonoBehaviour
         CurrentEpoch += 1;
         EpochIsGoing = true;
         NeedToKill = killsPerEpoch[CurrentEpoch - 1];
+        musicsoft.SetActive(false);
+        musictough.SetActive(true);
 
     }
     void FinishEpoch()
     {
+       
         EpochIsGoing = false;
         countDownTime = seconds;
         if(CurrentEpoch+1>=10)
         {
             GameObject.FindWithTag("loser").GetComponent<loser>().win();
         }
+        musicsoft.SetActive(true);
+        musictough.SetActive(false);
         //SetTimer();
     }
     void Update()

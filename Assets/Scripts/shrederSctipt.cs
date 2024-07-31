@@ -137,11 +137,11 @@ public class shrederSctipt : MonoBehaviour
             {
                 if (Random.Range(0, 2) == 0)
                 {
-                    Instantiate(Impure, go.transform.position, Quaternion.identity, shrederUI.transform);
+                    Instantiate(Impure, go.transform.position, Quaternion.Euler(0,0,Random.Range(0,180)), shrederUI.transform);
                 }
                 else
                 {
-                    Instantiate(redMatter, go.transform.position, Quaternion.identity, shrederUI.transform);
+                    Instantiate(redMatter, go.transform.position, Quaternion.Euler(0, 0, Random.Range(0, 180)), shrederUI.transform);
                 }
             }
         }
