@@ -5735,7 +5735,6 @@ GameObject:
   - component: {fileID: 2126294148237323602}
   - component: {fileID: 7451311129403753477}
   - component: {fileID: 6837558401232192080}
-  - component: {fileID: 3556973495153681422}
   - component: {fileID: 1668142849947354083}
   - component: {fileID: 4303453771276294965}
   m_Layer: 0
@@ -5931,27 +5930,6 @@ CircleCollider2D:
   m_Offset: {x: -0.000000059604645, y: -0.00000047683716}
   serializedVersion: 2
   m_Radius: 0.74824256
---- !u!114 &3556973495153681422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3586650089294731514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc02c84009c946ba972f9dd04a65ca5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myText: {fileID: 5578706842620344324}
-  forCookOnly: 0
-  myType: 9
-  myCar: {fileID: 0}
-  StickToTheParent: 0
-  activatable: 0
-  startable: 0
-  HelperFace: {fileID: 0}
-  HelperText: 
 --- !u!114 &1668142849947354083
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -399,5 +399,9 @@ public class DefenderScript1 : MonoBehaviour
         healthBar.Initialize(health);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        for (int i = 0; i < 9; i++)
+        {
+            BulletTextUpdate(i);
+        }
     }
 }
