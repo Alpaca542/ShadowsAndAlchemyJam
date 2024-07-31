@@ -7,7 +7,7 @@ public class musicscript : MonoBehaviour
 {
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
         AudioSource audio = gameObject.GetComponent<AudioSource>();
         DOTween.To(() => GetComponent<AudioSource>().volume, x => GetComponent<AudioSource>().volume = x, 0.8f, 1f).SetUpdate(true);
     }
