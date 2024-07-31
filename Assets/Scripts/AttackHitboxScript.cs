@@ -29,5 +29,9 @@ public class AttackHitboxScript : MonoBehaviour
         {
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
+        else if (other.tag == "carTrigger")
+        {
+            other.transform.parent.GetComponent<carScript>().TakeDamage(damage);
+        }
     }
 }
