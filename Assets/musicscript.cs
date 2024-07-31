@@ -5,16 +5,10 @@ using UnityEngine;
 
 public class musicscript : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         AudioSource audio = gameObject.GetComponent<AudioSource>();
-        DOTween.To(() => audio.volume, x => audio.volume = x, 0.5f, 1f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DOTween.To(() => GetComponent<AudioSource>().volume, x => GetComponent<AudioSource>().volume = x, 0.8f, 1f).SetUpdate(true);
     }
 }
