@@ -32235,12 +32235,13 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 4c29f8b4dfb714fc3976be3894edeb17, type: 2}
   animMover: {fileID: 1032647805}
   Moveable: 0
-  health: 20
+  health: 80
   CookInMe: 0
   myEngine: {fileID: 325514690}
   defSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   damageParticle: {fileID: 6465116585832287062, guid: e782332376ab1b54a9f6ded5564d1871, type: 3}
   dieParticle: {fileID: 8385160974620243589, guid: 6f4461e98dcaa25429e87a971ca9587c, type: 3}
+  preDieParticle: {fileID: 40932824663487311, guid: e44c441fb8dbffb4ba5d10f6bfe54295, type: 3}
 --- !u!1 &2186712192938625972
 GameObject:
   m_ObjectHideFlags: 0
