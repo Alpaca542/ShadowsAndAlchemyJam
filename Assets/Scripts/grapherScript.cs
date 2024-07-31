@@ -69,6 +69,7 @@ public class grapherScript : MonoBehaviour
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
         if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && ((cook.inventory.ElementAt(cook.ActiveSlot).Key == "green") || (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")))
         {
+            GetComponent<soundManager>().PlaySound(1, 0.8f, 1.2f);
             if (!AmIFilled && !GameGoing)
             {
                 if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "greenANDblue")

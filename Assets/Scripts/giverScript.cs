@@ -52,6 +52,7 @@ public class giverScript : MonoBehaviour
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
         if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot) && cook.inventory.ElementAt(cook.ActiveSlot).Key != "white")
         {
+            GetComponent<soundManager>().PlaySound(0, 0.8f, 1.2f);
             if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
             {
                 pureRedNum += 10;

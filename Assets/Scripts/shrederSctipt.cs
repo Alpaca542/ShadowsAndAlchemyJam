@@ -82,7 +82,7 @@ public class shrederSctipt : MonoBehaviour
     public void GetStarted()
     {
         CookScript cook = collision.gameObject.GetComponent<CookScript>();
-        if (!AmIFilled && !GameGoing&&(redNum>0))
+        if (!AmIFilled && !GameGoing && (redNum > 0))
         {
             GameGoing = true;
             Camera.main.transform.parent.GetComponent<playerFollow>().enabled = false;
@@ -104,6 +104,7 @@ public class shrederSctipt : MonoBehaviour
         {
             if (!AmIFilled && !GameGoing)
             {
+                GetComponent<soundManager>().PlaySound(1, 0.8f, 1.2f);
                 redNum++;
                 collision.gameObject.GetComponent<CookScript>().RemoveItem(cook.inventory.ElementAt(cook.ActiveSlot).Key);
                 requireL.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
@@ -137,7 +138,7 @@ public class shrederSctipt : MonoBehaviour
             {
                 if (Random.Range(0, 2) == 0)
                 {
-                    Instantiate(Impure, go.transform.position, Quaternion.Euler(0,0,Random.Range(0,180)), shrederUI.transform);
+                    Instantiate(Impure, go.transform.position, Quaternion.Euler(0, 0, Random.Range(0, 180)), shrederUI.transform);
                 }
                 else
                 {

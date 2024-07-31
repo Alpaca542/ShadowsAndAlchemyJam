@@ -75,6 +75,7 @@ public class BoilerScript : MonoBehaviour
         {
             if (!AmIFilled && !GameGoing)
             {
+                GetComponent<soundManager>().PlaySound(1, 0.8f, 1.2f);
                 if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "pureRed")
                 {
                     RedNum++;

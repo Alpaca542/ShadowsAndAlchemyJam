@@ -50,6 +50,7 @@ public class MixerScript : MonoBehaviour
             {
                 if (checkIfSlotIsFull(cook.inventory, cook.ActiveSlot))
                 {
+                    GetComponent<soundManager>().PlaySound(0, 0.8f, 1.2f);
                     if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
                     {
                         redANDblue = true;

@@ -52,7 +52,7 @@ public class MerryGoRound : MonoBehaviour
     void BRRRR()
     {
         lp.gameObject.transform.position = glass.transform.position;
-        
+
     }
 
     public void GetLoot()
@@ -62,6 +62,7 @@ public class MerryGoRound : MonoBehaviour
         {
             if (!AmIFilled && !GameGoing)
             {
+                GetComponent<soundManager>().PlaySound(2, 0.8f, 1.2f);
                 if (cook.inventory.ElementAt(cook.ActiveSlot).Key == "redANDblue")
                 {
                     RedNum++;

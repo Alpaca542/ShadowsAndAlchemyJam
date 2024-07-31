@@ -18,7 +18,7 @@ public class soundManager : MonoBehaviour
         gmb.GetComponent<AudioSource>().pitch = Random.Range(pitchrangeDOWN, pitchrangeUP);
         gmb.GetComponent<AudioSource>().Play();
     }
-    public void PlaySoundSecond(int whichsound, float pitchrangeDOWN, float pitchrangeUP,float volume)
+    public void PlaySoundSecond(int whichsound, float pitchrangeDOWN, float pitchrangeUP, float volume)
     {
         GameObject gmb = Instantiate(audioHandler, transform.position, Quaternion.identity);
         gmb.GetComponent<AudioSource>().clip = soundslist[whichsound];
