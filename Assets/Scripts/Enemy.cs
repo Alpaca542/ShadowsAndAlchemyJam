@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
         agent.updateUpAxis = false;
 
         patrollingPoint = transform.position;
+        gameObject.GetComponent<soundManager>().PlaySoundSecond(2,1f,1f,0.5f);
     }
 
     void LookAt(Vector3 target)

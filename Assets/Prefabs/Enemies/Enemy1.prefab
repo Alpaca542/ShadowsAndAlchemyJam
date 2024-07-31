@@ -476,6 +476,7 @@ MonoBehaviour:
   soundslist:
   - {fileID: 8300000, guid: da32115589d134650bf7324a8d9375ef, type: 3}
   - {fileID: 8300000, guid: 847b59977a35d3547bc61b9212d0aa18, type: 3}
+  - {fileID: 8300000, guid: 7074d169caf36f24d94c864811b0b694, type: 3}
   shouldILoop: 0
   amIPlaying: 0
   shouldIPlayOnStart: 0
