@@ -9,7 +9,7 @@ public class cutsceneTransition : MonoBehaviour
     private void OnEnable()
     {
         vignetterZoomer.SetActive(true);
-        Invoke(nameof(toTheGame), 1f);
+        Invoke(nameof(toTheGame), 4f);
     }
     private void toTheGame()
     {

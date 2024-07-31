@@ -15,11 +15,11 @@ public class vignetteTweener : MonoBehaviour
     {
         if (type == 1)
         {
-            animm.transform.DOMove(place2.transform.position, 4f).SetUpdate(true); ;
+            animm.transform.DOMove(place2.transform.position, 6f).SetUpdate(true); ;
         }
         else if (type == 2)
         {
-            animm.transform.DOMove(place1.transform.position, 4f).SetUpdate(true); ;
+            animm.transform.DOMove(place1.transform.position, 6f).SetUpdate(true); ;
         }
     }
 }
