@@ -275,6 +275,7 @@ public class Brewer : MonoBehaviour
                             else
                             {
                                 GetComponent<giverScript>().GiveLoot();
+                                gameObject.GetComponent<soundManager>().PlaySound(0,1f,1f);
                             }
                         }
                     }

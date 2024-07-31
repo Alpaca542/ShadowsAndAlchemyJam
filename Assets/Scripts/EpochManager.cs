@@ -71,10 +71,15 @@ public class EpochManager : MonoBehaviour
     {
         if (!EpochIsGoing && !WaitingGate)
         {
+
             countDown.text = (countDownTime / 60).ToString() + ":" + (countDownTime - ((countDownTime / 60) * 60)).ToString();
             textHelper.text = "Shadows are coming! Cook or buy crystals!";
             killNum.color = new Color32(0, 0, 0, 0);
             countDown.color = new Color32(255, 255, 255, 255);
+            foreach (var i in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                Destroy(i.gameObject);
+            }
         }
         else if (EpochIsGoing && !WaitingGate)
         {
