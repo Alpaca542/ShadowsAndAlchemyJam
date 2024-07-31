@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     private Vector2 patrollingPoint;
     private bool isAttacking;
     private bool attackedSecondAgo;
+    private bool attackedSecondAgoDef;
 
     private void Start()
     {
@@ -60,20 +61,30 @@ public class Enemy : MonoBehaviour
     void attackBuffer()
     {
         attackedSecondAgo = false;
+        attackedSecondAgoDef = false;
     }
     void Update()
     {
         if (attackedSecondAgo)
         {
-            LookAt(GameObject.FindGameObjectWithTag("Defender").transform.position);
+            if (attackedSecondAgoDef)
+            {
+                LookAt(GameObject.FindGameObjectWithTag("Defender").transform.position);
+            }
+            else
+            {
+                LookAt(GameObject.FindGameObjectWithTag("Car").transform.position);
+            }
         }
         else
         {
             LookAt(agent.destination);
         }
-        if (CanAttack())
+        if (boolCanAttack())
         {
+            agent.SetDestination(transform.position);
             attackedSecondAgo = true;
+            attackedSecondAgoDef = colliderCanAttack().tag == "Defender";
             CancelInvoke(nameof(attackBuffer));
             Invoke(nameof(attackBuffer), 0.5f);
 
@@ -218,20 +229,37 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
             GameObject.FindWithTag("EpochManager").GetComponent<EpochManager>().killedShadows += 1;
     }
-    bool CanAttack()
+    bool boolCanAttack()
     {
         switch (MyType)
         {
             case 1:
-                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
             case 2:
-                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
             case 3:
-                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
             case 4:
-                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer);
+                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer).collider;
             default:
                 return false;
+        }
+    }
+
+    Collider2D colliderCanAttack()
+    {
+        switch (MyType)
+        {
+            case 1:
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
+            case 2:
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
+            case 3:
+                return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
+            case 4:
+                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer).collider;
+            default:
+                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer).collider;
         }
     }
 
