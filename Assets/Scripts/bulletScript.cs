@@ -157,9 +157,9 @@ public class bulletScript : MonoBehaviour
                     if ((other.tag != "Defender") || (other.tag != "Enemy"))
                     {
                         
-                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x+1f, transform.position.y + 1f), Quaternion.Euler(0,0,0f)).GetComponent<bulletScript>().spawnedByGraphed = true;
-                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x-1f, transform.position.y - 1f), Quaternion.Euler(0, 0, 90f)).GetComponent<bulletScript>().spawnedByGraphed = true;
-                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x - 1f, transform.position.y - 1f), Quaternion.Euler(0, 0, -90f)).GetComponent<bulletScript>().spawnedByGraphed = true;
+                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x+ 2f, transform.position.y + 2f), Quaternion.Euler(0,0,0f)).GetComponent<bulletScript>().spawnedByGraphed = true;
+                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x- 1f, transform.position.y - 1f), Quaternion.Euler(0, 0, 90f)).GetComponent<bulletScript>().spawnedByGraphed = true;
+                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x - 1f, transform.position.y + 1f), Quaternion.Euler(0, 0, -90f)).GetComponent<bulletScript>().spawnedByGraphed = true;
                         Instantiate(myDeathParticles, transform.position, Quaternion.identity);
                         DieInTime();
                     }

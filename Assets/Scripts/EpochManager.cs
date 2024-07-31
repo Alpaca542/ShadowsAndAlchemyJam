@@ -76,9 +76,10 @@ public class EpochManager : MonoBehaviour
 
                 WaitingGate = true;
                 Spawner spawner = GameObject.FindWithTag("Spawner").GetComponent<Spawner>();
-                CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
+                
                 spawner.arrow.SetActive(true);
                 Instantiate(gate, new Vector3(Random.Range(corner1.position.x, corner2.position.x), Random.Range(corner1.position.y, corner2.position.y), 0), Quaternion.identity);
+                CameraShaker.Instance.ShakeOnce(10f, 5f, 0.5f, 2f);
 
             }
             killNum.color = new Color32(255, 255, 255, 255);
@@ -95,7 +96,7 @@ public class EpochManager : MonoBehaviour
             textHelper.text = "Destroy the gate with your truck";
         }
         GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
-        EpochCounter.text = CurrentEpoch + "/10 gates left";
+        EpochCounter.text = (10-CurrentEpoch) + "/10 gates left";
     }
     public void CloseGate()
     {
