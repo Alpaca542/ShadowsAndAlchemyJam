@@ -32,9 +32,9 @@ public class CameraSwaper : MonoBehaviour
 
         if (player1.tag == "Car")
         {
+            MoveSave = player1.GetComponent<carScript>().Moveable;
             player1.GetComponent<carScript>().Moveable = false;
         }
-        MoveSave = GameObject.FindGameObjectWithTag("Car").GetComponent<carScript>().Moveable;
     }
 
     void SwapSizes()

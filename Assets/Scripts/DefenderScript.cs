@@ -16,6 +16,7 @@ public class DefenderScript1 : MonoBehaviour
     public float health;
     public MicroBar healthBar;
     public Gradient healthGradient;
+    public bool inAShop;
 
     //public Sprite[] weaponSprites;
     public string[] weaponNames;
@@ -100,7 +101,7 @@ public class DefenderScript1 : MonoBehaviour
 
     private void Update()
     {
-        if (GetComponent<PlayerScript>().selected)
+        if (GetComponent<PlayerScript>().selected && !inAShop)
         {
             if (Input.GetMouseButton(0) && CanIShoot2 && AmountIsOK())
             {
@@ -122,7 +123,7 @@ public class DefenderScript1 : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GetComponent<PlayerScript>().selected)
+        if (GetComponent<PlayerScript>().selected && !inAShop)
         {
             LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
@@ -137,7 +138,7 @@ public class DefenderScript1 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
         }
     }
-   
+
     public void Shoot(int type)
     {
         if (type == 1)//red
@@ -192,7 +193,7 @@ public class DefenderScript1 : MonoBehaviour
                     if (newBullet != null)
                     {
                         newBullet.transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + angle);
-                       // newBullet.GetComponent<bulletScript>().damage = 2f;
+                        // newBullet.GetComponent<bulletScript>().damage = 2f;
                         newBullet.GetComponent<bulletScript>().fromEnemy = false;
                     }
                     angle -= 8;
@@ -221,7 +222,7 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(Graphed);
             if (newBullet != null)
             {
-               // newBullet.GetComponent<bulletScript>().damage = 5f;
+                // newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
@@ -234,7 +235,7 @@ public class DefenderScript1 : MonoBehaviour
             GameObject newBullet = SummonCrystall(Analyzed);
             if (newBullet != null)
             {
-               // newBullet.GetComponent<bulletScript>().damage = 5f;
+                // newBullet.GetComponent<bulletScript>().damage = 5f;
                 newBullet.GetComponent<bulletScript>().fromEnemy = false;
             }
             CanIShoot2 = false;
@@ -365,7 +366,7 @@ public class DefenderScript1 : MonoBehaviour
             {
                 Died = true;
                 Invoke(nameof(Die), 1f);
-                
+
             }
             else
             {

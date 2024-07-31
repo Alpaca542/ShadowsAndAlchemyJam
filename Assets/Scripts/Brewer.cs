@@ -59,6 +59,10 @@ public class Brewer : MonoBehaviour
             {
                 if (myType == 8)
                 {
+                    if (other.gameObject.tag == "Defender")
+                    {
+                        other.GetComponent<DefenderScript1>().inAShop = false;
+                    }
                     Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
                     Camera.main.DOOrthoSize(5f, 0.3f);
                     GetComponent<MainShop>().Close();
@@ -224,6 +228,10 @@ public class Brewer : MonoBehaviour
                         }
                         else
                         {
+                            if (connectedPlayer.gameObject.tag == "Defender")
+                            {
+                                connectedPlayer.GetComponent<DefenderScript1>().inAShop = true;
+                            }
                             GetComponent<MainShop>().isCookHere = connectedPlayer.GetComponent<CookScript>();
                             GetComponent<MainShop>().collision = connectedPlayer.gameObject;
                             GetComponent<MainShop>().Open();
