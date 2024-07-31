@@ -79,8 +79,6 @@ public class Brewer : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && (!active || !activatable)) // activate
                 {
-                    active = true;
-
                     if (myType == 0)
                     {
                         if (!PlayerPrefs.HasKey("0"))
@@ -93,6 +91,7 @@ public class Brewer : MonoBehaviour
                         }
                         else
                         {
+
                             GetComponent<BoilerScript>().collision = connectedPlayer;
                             GetComponent<BoilerScript>().GetLoot();
                         }
@@ -109,6 +108,7 @@ public class Brewer : MonoBehaviour
                         }
                         else
                         {
+                            active = true;
                             myCar.Sit(true);
                             connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                             myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
@@ -126,6 +126,7 @@ public class Brewer : MonoBehaviour
                         }
                         else
                         {
+                            active = true;
                             myCar.Stand(false);
                             connectedPlayerScript.GetComponent<PlayerScript>().Sit(transform);
                             myText.GetComponent<TMP_Text>().text = "<i><b>shift</b> to stand up</i>";
