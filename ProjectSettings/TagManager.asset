@@ -29,6 +29,7 @@ TagManager:
   - DialogueMng
   - carTrigger
   - gatebreaker
+  - loser
   layers:
   - Default
   - TransparentFX

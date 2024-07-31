@@ -137,10 +137,7 @@ public class DefenderScript1 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
         }
     }
-    void LoadLose()
-    {
-        SceneManager.LoadScene("Lose");
-    }
+   
     public void Shoot(int type)
     {
         if (type == 1)//red
@@ -368,7 +365,7 @@ public class DefenderScript1 : MonoBehaviour
             {
                 Died = true;
                 Invoke(nameof(Die), 1f);
-                Invoke(nameof(LoadLose), 2f);
+                
             }
             else
             {
@@ -392,6 +389,7 @@ public class DefenderScript1 : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        GameObject.FindWithTag("loser").GetComponent<loser>().lose();
     }
 
     private void Start()

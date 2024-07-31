@@ -36,13 +36,10 @@ public class carScript : MonoBehaviour
         health -= dmg;
         if (health <= 0)
         {
-            Invoke(nameof(LoadLose), 3f);
+            GameObject.FindWithTag("loser").GetComponent<loser>().lose();
         }
     }
-    void LoadLose()
-    {
-        SceneManager.LoadScene("Lose");
-    }
+    
     void FixedUpdate()
     {
         if (Moveable)
