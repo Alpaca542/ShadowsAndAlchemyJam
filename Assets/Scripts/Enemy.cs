@@ -257,9 +257,9 @@ public class Enemy : MonoBehaviour
             case 3:
                 return Physics2D.Raycast(transform.position, transform.up, 5, playerLayer).collider;
             case 4:
-                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer).collider;
+                return Physics2D.Raycast(transform.position, transform.up, 0.5f, playerLayer).collider;
             default:
-                return Physics2D.Raycast(transform.position, transform.up, 2, playerLayer).collider;
+                return Physics2D.Raycast(transform.position, transform.up, 0.5f, playerLayer).collider;
         }
     }
 

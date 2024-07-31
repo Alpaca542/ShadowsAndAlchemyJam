@@ -26,7 +26,7 @@ public class carScript : MonoBehaviour
 
     private bool forwardPlaying;
     private bool enginePlaying;
-    
+
 
 
     public GameObject damageParticle;
@@ -41,19 +41,19 @@ public class carScript : MonoBehaviour
         health -= dmg;
         gameObject.GetComponent<soundManager>().PlaySound(0, 1f, 1f);
         Instantiate(damageParticle, transform.position, Quaternion.identity);
-        if(health<=20f)
+        if (health <= 20f)
         {
             Instantiate(preDieParticle, transform.position, Quaternion.identity);
         }
         if (health <= 0)
         {
             Instantiate(dieParticle, transform.position, Quaternion.identity);
-            gameObject.GetComponent<soundManager>().PlaySound(1, 1f, 1f);
+            gameObject.GetComponent<soundManager>().PlaySoundSecond(1, 1f, 1f, 0.6f);
             GameObject.FindWithTag("loser").GetComponent<loser>().lose();
-            
+
         }
     }
-    
+
     void FixedUpdate()
     {
         if (Moveable)

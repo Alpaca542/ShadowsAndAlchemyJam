@@ -260,7 +260,7 @@ MonoBehaviour:
   myCipDmg: {fileID: 8300000, guid: da32115589d134650bf7324a8d9375ef, type: 3}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 4608
+    m_Bits: 512
   attack: {fileID: 6692634139411969750}
   meleeDamage: 5
   bullet: {fileID: 4375127278496256120, guid: 4d5ba8c8c540343679415d72b5b2ec28, type: 3}
