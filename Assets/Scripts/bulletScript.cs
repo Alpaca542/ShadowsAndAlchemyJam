@@ -16,6 +16,9 @@ public class bulletScript : MonoBehaviour
     public GameObject audioHandler;
 
     public int MyType;
+
+    public GameObject greenAndBlueForGraphed;
+    public bool spawnedByGraphed = false;
     /* 
     0-RED - simple
     1-GREEN - simple
@@ -35,6 +38,7 @@ public class bulletScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(!spawnedByGraphed)
         GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
     void DieInTime()
@@ -152,6 +156,10 @@ public class bulletScript : MonoBehaviour
                 {
                     if ((other.tag != "Defender") || (other.tag != "Enemy"))
                     {
+                        
+                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x+1f, transform.position.y + 1f), Quaternion.Euler(0,0,0f)).GetComponent<bulletScript>().spawnedByGraphed = true;
+                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x-1f, transform.position.y - 1f), Quaternion.Euler(0, 0, 90f)).GetComponent<bulletScript>().spawnedByGraphed = true;
+                        Instantiate(greenAndBlueForGraphed, new Vector2(transform.position.x - 1f, transform.position.y - 1f), Quaternion.Euler(0, 0, -90f)).GetComponent<bulletScript>().spawnedByGraphed = true;
                         Instantiate(myDeathParticles, transform.position, Quaternion.identity);
                         DieInTime();
                     }

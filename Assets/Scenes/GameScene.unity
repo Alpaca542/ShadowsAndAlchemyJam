@@ -32235,7 +32235,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 4c29f8b4dfb714fc3976be3894edeb17, type: 2}
   animMover: {fileID: 1032647805}
   Moveable: 0
-  health: 80
+  health: 150
   CookInMe: 0
   myEngine: {fileID: 325514690}
   defSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}

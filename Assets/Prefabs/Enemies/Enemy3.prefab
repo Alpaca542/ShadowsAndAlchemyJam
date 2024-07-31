@@ -255,7 +255,7 @@ MonoBehaviour:
   radiusOfPatrolling: 10
   radiusOfSeeing: 5
   attackingCD: 3
-  health: 10
+  health: 15
   myValue: 10
   myCipDmg: {fileID: 8300000, guid: da32115589d134650bf7324a8d9375ef, type: 3}
   playerLayer:

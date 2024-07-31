@@ -338,6 +338,7 @@ MonoBehaviour:
   myClipHit: {fileID: 0}
   audioHandler: {fileID: 5713555590635260260, guid: 7d959584b113e45cbbd0ee8a1e74a9cb, type: 3}
   MyType: 6
+  greenAndBlueForGraphed: {fileID: 2733071860470294366, guid: c35f733c0ecfd4894b3e0104ada8b956, type: 3}
 --- !u!58 &1214378086999418699
 CircleCollider2D:
   m_ObjectHideFlags: 0
