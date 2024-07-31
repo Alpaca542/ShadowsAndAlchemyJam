@@ -30,6 +30,7 @@ TagManager:
   - carTrigger
   - gatebreaker
   - loser
+  - shadowBlocker
   layers:
   - Default
   - TransparentFX
@@ -44,8 +45,8 @@ TagManager:
   - Cook
   - Shop
   - Car
-  - 
-  - 
+  - blockShadow
+  - shadow
   - 
   - 
   - 

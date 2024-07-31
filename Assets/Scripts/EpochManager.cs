@@ -27,8 +27,8 @@ public class EpochManager : MonoBehaviour
     public int[] killsPerEpoch;
 
 
-    public GameObject musicsoft;
-    public GameObject musictough;
+   // public GameObject musicsoft;
+    //public GameObject musictough;
     private void Start()
     {
         SetTimer();
@@ -50,8 +50,8 @@ public class EpochManager : MonoBehaviour
         CurrentEpoch += 1;
         EpochIsGoing = true;
         NeedToKill = killsPerEpoch[CurrentEpoch - 1];
-        musicsoft.SetActive(false);
-        musictough.SetActive(true);
+        //musicsoft.SetActive(false);
+        //musictough.SetActive(true);
 
     }
     void FinishEpoch()
@@ -63,8 +63,8 @@ public class EpochManager : MonoBehaviour
         {
             GameObject.FindWithTag("loser").GetComponent<loser>().win();
         }
-        musicsoft.SetActive(true);
-        musictough.SetActive(false);
+       // musicsoft.SetActive(true);
+       // musictough.SetActive(false);
         //SetTimer();
     }
     void Update()
