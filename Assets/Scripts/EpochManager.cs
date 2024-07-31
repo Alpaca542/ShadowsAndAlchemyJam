@@ -59,7 +59,7 @@ public class EpochManager : MonoBehaviour
        
         EpochIsGoing = false;
         countDownTime = seconds;
-        if(CurrentEpoch+1>=10)
+        if(CurrentEpoch+1>7)
         {
             GameObject.FindWithTag("loser").GetComponent<loser>().win();
         }
@@ -86,6 +86,7 @@ public class EpochManager : MonoBehaviour
             killNum.text = killedShadows.ToString() + "/" + NeedToKill.ToString();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
             GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
+            GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             if (killedShadows >= NeedToKill)
             {
 
@@ -104,6 +105,7 @@ public class EpochManager : MonoBehaviour
         }
         else if (EpochIsGoing && WaitingGate)
         {
+            GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnEnemies();
             countDown.color = new Color32(0, 0, 0, 0);
             killNum.color = new Color32(0, 0, 0, 0);
             // GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
@@ -111,7 +113,7 @@ public class EpochManager : MonoBehaviour
             textHelper.text = "Destroy the gate with your truck";
         }
         GameObject.FindWithTag("Spawner").GetComponent<Spawner>().SpawnShops();
-        EpochCounter.text = (10-CurrentEpoch) + "/10 gates left";
+        EpochCounter.text = (7-CurrentEpoch) + " gates left";
     }
     public void CloseGate()
     {

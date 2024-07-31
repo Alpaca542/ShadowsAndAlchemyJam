@@ -15,6 +15,7 @@ public class PedestalScript : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(SpawnEnemy), 0.5f, 3f);
+        gameObject.GetComponent<soundManager>().PlaySound(1, 1, 1);
     }
     private void Die()
     {
