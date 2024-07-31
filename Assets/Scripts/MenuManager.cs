@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     public void OnStartClicked()
     {
         SmokeEffect.SetActive(true);
-        Invoke(nameof(InvokeOpenLevel), 1f);
+        Invoke(nameof(InvokeOpenLevel), 4f);
     }
     public void InvokeOpenLevel()
     {
@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
     public void OnReStartClicked()
     {
         SmokeEffect.SetActive(true);
-        Invoke(nameof(ReInvokeOpenLevel), 1f);
+        Invoke(nameof(ReInvokeOpenLevel), 4f);
     }
     public void ReInvokeOpenLevel()
     {
@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     public void OnMenu()
     {
         SmokeEffect.SetActive(true);
-        Invoke(nameof(ReMenu), 1f);
+        Invoke(nameof(ReMenu), 4f);
     }
     public void ReMenu()
     {
@@ -44,20 +44,11 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        EndSmoke.SetActive(true);
         if (!PlayerPrefs.HasKey("Started") && SceneManager.GetActiveScene().name == "Menu")
         {
             EndSmoke.SetActive(false);
             PlayerPrefs.SetInt("Started", 1);
         }
-        else
-        {
-            Invoke(nameof(InvokeSmokeStop), 3f);
-        }
-    }
-    public void InvokeSmokeStop()
-    {
-        EndSmoke.SetActive(false);
     }
     public void OpenSetting()
     {
