@@ -24,7 +24,7 @@ public class Brewer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (connectedPlayer == null)
+        if (connectedPlayer == null || myType == 10)
         {
             if (forCookOnly)
             {
@@ -46,28 +46,31 @@ public class Brewer : MonoBehaviour
     {
         if (connectedPlayer != null)
         {
-            if (forCookOnly)
+            if (connectedPlayer == other.gameObject)
             {
-                if (other.gameObject.tag == "Cook")
+                if (forCookOnly)
                 {
+                    if (other.gameObject.tag == "Cook")
+                    {
+                        connectedPlayer = null;
+                        myText.SetActive(false);
+                    }
+                }
+                else if (other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender")
+                {
+                    if (myType == 8)
+                    {
+                        if (other.gameObject.tag == "Defender")
+                        {
+                            other.GetComponent<DefenderScript1>().inAShop = false;
+                        }
+                        Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
+                        Camera.main.DOOrthoSize(5f, 0.3f);
+                        GetComponent<MainShop>().Close();
+                    }
                     connectedPlayer = null;
                     myText.SetActive(false);
                 }
-            }
-            else if (other.gameObject.tag == "Cook" || other.gameObject.tag == "Defender")
-            {
-                if (myType == 8)
-                {
-                    if (other.gameObject.tag == "Defender")
-                    {
-                        other.GetComponent<DefenderScript1>().inAShop = false;
-                    }
-                    Camera.main.transform.parent.GetComponent<playerFollow>().enabled = true;
-                    Camera.main.DOOrthoSize(5f, 0.3f);
-                    GetComponent<MainShop>().Close();
-                }
-                connectedPlayer = null;
-                myText.SetActive(false);
             }
         }
     }
