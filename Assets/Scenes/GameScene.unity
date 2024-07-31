@@ -29595,7 +29595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichMatter: red
-  matter: 4
+  matter: 42
   MatterText: {fileID: 5235329951960659135}
 --- !u!1 &746574962006082407
 GameObject:
@@ -39009,7 +39009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichMatter: blue
-  matter: 4
+  matter: 42
   MatterText: {fileID: 1700074906141237150}
 --- !u!114 &5238646950548976178
 MonoBehaviour:
@@ -47008,7 +47008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichMatter: green
-  matter: 4
+  matter: 42
   MatterText: {fileID: 8247474021673715861}
 --- !u!1 &8587977812815178918
 GameObject:
